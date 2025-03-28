@@ -13,18 +13,12 @@ import org.example.ProjectLaika;
 
 import java.util.List;
 
-public class HitBox extends DynamicCircleEntity implements Collided, MouseButtonPressedListener, MouseEnterListener, MouseExitListener, MouseButtonReleasedListener, UpdateExposer {
+public class HitBox extends DynamicCircleEntity implements Collided, MouseExitListener, MouseDraggedListener  {
 
     private ProjectLaika game;
     int size;
-    boolean isClicked = false;
-    boolean isEntered = false;
-    boolean isExited = false;
-    boolean isDragged;
-    SchermHitbox schermHitbox;
-    int ding = 0;
-
-    protected HitBox(Coordinate2D initialLocation, ProjectLaika game, int size, SchermHitbox isDragged) {
+    boolean isDragged = false;
+    protected HitBox(Coordinate2D initialLocation, ProjectLaika game, int size) {
         super(initialLocation);
         this.game = game;
         this.size = size;
@@ -34,55 +28,29 @@ public class HitBox extends DynamicCircleEntity implements Collided, MouseButton
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
-    public void test() {
-       schermHitbox  = new SchermHitbox(game);
-    }
-
-    @Override
-    public void explicitUpdate(long l) {
-        ding ++;
-        if(ding == 1){
-            test();
-        }
-        this.isDragged = schermHitbox.getIsDragged();
-    }
-
     @Override
     public void onCollision(List<Collider> list) {
     }
 
     @Override
-    public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        isClicked = true;
-    }
-
-    @Override
-    public void onMouseButtonReleased(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        isClicked = false;
-        isEntered = false;
-        isExited = false;
-    }
-
-    @Override
-    public void onMouseEntered() {
-
-        isEntered = true;
-    }
-
-    @Override
     public void onMouseExited() {
-        isExited = true;
         checkForSlice();
     }
 
-    public void checkForSlice(){
-        if (isDragged && isEntered && isExited) {
-            game.setActiveScene(0);
+    @Override
+    public void onDragged(Coordinate2D coordinate2D) {
+        isDragged = true;
+    }
+
+    @Override
+    public void onDropped(Coordinate2D coordinate2D) {
+        isDragged = false;
+    }
+
+    private void checkForSlice() {
+        System.out.println(":)");
+        if (isDragged) {
+            System.out.println("yay");
         }
-//        System.out.println(
-//                "isDragged: " + isDragged
-//                + ", isEntered: " + isEntered
-//                + ", isExited: " + isExited
-//        );
     }
 }

@@ -26,10 +26,8 @@ public class OnbewoondPlaneet extends Planeet{
         OnbewoondPlaneetSprite sprite = new OnbewoondPlaneetSprite("sprites/planeten/overlays/onbewoond.png", new Coordinate2D(intitialLocation) , new Size(size, size));
         addEntity(sprite);
 
-        SchermHitbox schermHitbox = new SchermHitbox(game);
-        addEntity(schermHitbox);
 
-        HitBox hitBox = new HitBox(new Coordinate2D(intitialLocation), game, this.size, schermHitbox);
+        HitBox hitBox = new HitBox(new Coordinate2D(intitialLocation), game, this.size);
         addEntity(hitBox);
 
 
