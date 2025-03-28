@@ -15,6 +15,7 @@ public class Laser extends DynamicCompositeEntity {
 
     @Override
     protected void setupEntities() {
-      
+        LaserRect laserRect = new LaserRect(new Coordinate2D(0, 0), new Size(10, 10));
+        addEntity(laserRect);
     }
 }
