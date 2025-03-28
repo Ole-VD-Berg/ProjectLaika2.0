@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.YaegerGame;
  * Hello world!
  *
  */
-public class ProjectLaika20 extends YaegerGame
+public class ProjectLaika extends YaegerGame
 {
     public static void main( String[] args ) {
         launch(args);
