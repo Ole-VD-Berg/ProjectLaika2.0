@@ -1,19 +1,18 @@
 package org.example.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.UpdateExposer;
+import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
-import com.github.hanyaeger.api.userinput.MouseDraggedListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
-import org.example.entities.buttons.StartButton;
+import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.laser.Laser;
-import org.example.entities.laser.LaserRect;
-import org.example.entities.planeten.onbewoondPlaneet.OnbewoondPlaneet;
+import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 
-public class GameScene extends DynamicScene implements MouseButtonPressedListener, UpdateExposer {
+
+
+public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer {
     private ProjectLaika game;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     public GameScene(ProjectLaika game) {
@@ -27,9 +26,9 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-        OnbewoondPlaneet O1 = new OnbewoondPlaneet(new Coordinate2D(100,100) ,200, game, this);
+        OnbewoondePlaneet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,200, game, this);
         addEntity(O1);
-        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight() / 2), mouseCoordinates);
+        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight() / 2), this);
         addEntity(laser);
 
     }
@@ -39,9 +38,12 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         mouseCoordinates = coordinate2D;
 
     }
+    public Coordinate2D getMouseCoordinates() {
+        return mouseCoordinates;
+    }
 
     @Override
-    public void explicitUpdate(long l) {
-        System.out.println("Mouse coordinatess: " + mouseCoordinates);
+    public void setupEntitySpawners() {
+        addEntitySpawner(new ObjectenSpawner(getWidth(), getHeight(), game, this));
     }
 }

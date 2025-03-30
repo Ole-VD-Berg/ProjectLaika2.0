@@ -4,10 +4,8 @@ package org.example.entities.planeten;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
-import javafx.geometry.Point2D;
-import org.example.entities.planeten.onbewoondPlaneet.OnbewoondPlaneetSprite;
 
-    public class Planeet extends DynamicCompositeEntity {
+public class Planeet extends DynamicCompositeEntity {
 
 
         private int randomNummer;
@@ -19,7 +17,10 @@ import org.example.entities.planeten.onbewoondPlaneet.OnbewoondPlaneetSprite;
     }
 
     @Override
-    protected void setupEntities() {}
+ protected void setupEntities() {
+//        OnbewoondPlaneet onbewoondePlaneet = new OnbewoondPlaneet(innitialLocation, size, g, null);
+//        addEntity(onbewoondePlaneet);
+    }
 
     protected void getPlaneetSprite( Coordinate2D initialLocation) {
 

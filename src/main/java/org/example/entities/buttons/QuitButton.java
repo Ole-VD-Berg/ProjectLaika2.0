@@ -12,7 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.example.ProjectLaika;
 
-public class QuitButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+public class QuitButton extends TextEntity implements MouseButtonPressedListener {
     private ProjectLaika game;
     public QuitButton(Coordinate2D initialLocation , ProjectLaika game) {
         super(initialLocation, "quit");
@@ -20,6 +20,7 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
         setFill(Color.BLUE);
         setFont(Font.font("Comic Sans MS", FontWeight.BOLD, 30));
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        setOpacity(0.1);
     }
 
     @Override
@@ -27,13 +28,4 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
         game.quit();
     }
 
-    @Override
-    public void onMouseEntered() {
-
-    }
-
-    @Override
-    public void onMouseExited() {
-
-    }
 }

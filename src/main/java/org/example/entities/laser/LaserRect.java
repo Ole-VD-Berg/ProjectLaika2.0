@@ -7,38 +7,39 @@ import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseMovedListener;
 import javafx.scene.input.MouseButton;
+import org.example.scenes.GameScene;
 
 import static com.github.hanyaeger.api.entities.Direction.UP;
 import static javafx.scene.paint.Color.color;
 
-public class LaserRect extends DynamicRectangleEntity implements UpdateExposer, MouseMovedListener {
+public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {
     Coordinate2D mouseCoordinates;
     double angle = 0;
-    protected LaserRect(Coordinate2D initialLocation, Size size, Coordinate2D mouseCoordinates) {
+    GameScene gameScene;
+    int height = 50;
+    protected LaserRect(Coordinate2D initialLocation, GameScene gameScene) {
         super(initialLocation);
-        setMotion(0.1, UP);
+        //setMotion(0.1, UP);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        this.mouseCoordinates = mouseCoordinates;
+        this.gameScene = gameScene;
         setFill(color(1, 0, 0));
         setWidth(15);
-        setHeight(100);
+        setRotate(180);
+        setHeight(50);
+
 
     }
 
-    @Override
-    public void onMouseMoved(Coordinate2D coordinate2D) {
 
-        //mouseCoordinates = coordinate2D;
-    }
 
     @Override
     public void explicitUpdate(long l) {
-//System.out.println("Mouse coordinates heere: " + mouseCoordinates);
+        mouseCoordinates = gameScene.getMouseCoordinates();
         angle = angleTo(mouseCoordinates);
+        height++;
         setRotate(angle);
-        setMotion(0.5, angle);
+        //setMotion(0.5, angle);
+        setHeight(distanceTo(mouseCoordinates));
 
     }
-
-
 }

@@ -28,8 +28,11 @@ public class ProjectLaika extends YaegerGame
 
     @Override
     public void setupScenes() {
-        addScene(0, new GameScene(this));
-        addScene(1, new TitleScene(this));
+//        addScene(0, new GameScene(this));// laad eerst de game scene
+//        addScene(1, new TitleScene(this));
+
+        addScene(0, new TitleScene(this)); //laad eerst de title scene
+        addScene(1, new GameScene(this));
 
     }
 

@@ -2,18 +2,17 @@ package org.example.entities.planeten.onbewoondPlaneet;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.userinput.MouseDraggedListener;
 import org.example.ProjectLaika;
 import org.example.entities.planeten.Planeet;
 import org.example.scenes.GameScene;
 
-public class OnbewoondPlaneet extends Planeet  {
+public class OnbewoondePlaneet extends Planeet  {
     private Coordinate2D intitialLocation;
     private Coordinate2D test;
     private ProjectLaika game;
     private GameScene gameScene;
     private int size;
-    public OnbewoondPlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene) {
+    public OnbewoondePlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene) {
         super(initiallocation, size);
         this.intitialLocation = initiallocation;
         this.game = game;
@@ -28,7 +27,7 @@ public class OnbewoondPlaneet extends Planeet  {
     public void setupEntities() {
 
         getPlaneetSprite(intitialLocation);
-        OnbewoondPlaneetSprite sprite = new OnbewoondPlaneetSprite("sprites/planeten/overlays/onbewoond.png", new Coordinate2D(intitialLocation), new Size(size, size));
+        OnbewoondePlaneetSprite sprite = new OnbewoondePlaneetSprite("sprites/planeten/overlays/onbewoond.png", new Coordinate2D(intitialLocation), new Size(size, size));
         addEntity(sprite);
 
         SchermHitBox schermHitBox = new SchermHitBox(new Coordinate2D(intitialLocation), game, this.test);

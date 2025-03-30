@@ -3,7 +3,8 @@ module ProjectLaika20 {
     requires java.desktop;
 
     opens backgrounds;
-    opens sprites;
+    //opens sprites;
+    opens sprites.titleScene;
     opens sprites.planeten;
     opens sprites.planeten.overlays;
     exports org.example;
