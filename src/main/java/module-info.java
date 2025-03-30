@@ -4,6 +4,7 @@ module ProjectLaika20 {
 
     opens backgrounds;
     //opens sprites;
+    opens backgrounds.overlays;
     opens sprites.titleScene;
     opens sprites.planeten;
     opens sprites.planeten.overlays;
