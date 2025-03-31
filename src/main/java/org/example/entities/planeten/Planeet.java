@@ -56,7 +56,7 @@ public class Planeet extends DynamicCompositeEntity implements UpdateExposer {
 
     public void checkForSlice(){
         if(hitBox.getExit() && schermHitBox.getIsDragged()){
-            game.setActiveScene(0);
+            game.setActiveScene(2);
         }
 
     }
