@@ -24,9 +24,9 @@ public class TitleScene extends StaticScene {
     @Override
     public void setupEntities() {
        // var TitleText
-        PlayButtonSprite playButtonSprite = new PlayButtonSprite("sprites/titleScene/playButton.png", new Coordinate2D(getWidth() / 2 - 11, getHeight() / 2 + 12), new Size( 150), game);
+        PlayButtonSprite playButtonSprite = new PlayButtonSprite("sprites/titleScene/playButtonSpriteSheet.png", new Coordinate2D(getWidth() / 2 - 11, getHeight() / 2 + 12), new Size( 150), 2,1, game);
         addEntity(playButtonSprite);
-        QuitButtonSprite quitButtonSprite = new QuitButtonSprite("sprites/titleScene/quitButton.png", new Coordinate2D(getWidth() / 2 + 50, getHeight() / 2 + 50), new Size( 35), game);
+        QuitButtonSprite quitButtonSprite = new QuitButtonSprite("sprites/titleScene/quitButtonSpriteSheet.png", new Coordinate2D(getWidth() / 2 + 50, getHeight() / 2 + 50), new Size( 35), 2,1, game);
         addEntity(quitButtonSprite);
     }
 }
