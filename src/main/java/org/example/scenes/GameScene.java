@@ -29,14 +29,14 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     @Override
     public void setupEntities() {
         ScoreText scoreText = new ScoreText(new Coordinate2D(200, 200));
-
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayNormal.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
+        addEntity(scoreText);
+        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
         addEntity(overlaySprite);
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight() / 2), this);
         addEntity(laser);
         OnbewoondePlaneet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,200, game, this);
         addEntity(O1);
-        addEntity(scoreText);
+        
 
     }
 
