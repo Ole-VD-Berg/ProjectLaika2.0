@@ -44,7 +44,7 @@ public class OnbewoondePlaneet extends Planeet implements UpdateExposer {
             checkForSlice();
         }
         if(hitBox != null){
-            System.out.println("help");
+
         }
     }
 
@@ -52,9 +52,6 @@ public class OnbewoondePlaneet extends Planeet implements UpdateExposer {
         if(hitBox.getExit() && schermHitBox.getIsDragged()){
             game.setActiveScene(0);
         }
-        System.out.println(
-                "Hitbox: " + hitBox.getExit() + "\n" +
-                "SchermHitbox: " + schermHitBox.getIsDragged() + "\n"
-        );
+
     }
 }
