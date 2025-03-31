@@ -23,7 +23,7 @@ public class QuitButtonSprite extends DynamicSpriteEntity implements MouseButton
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        game.setActiveScene(1);
+        game.quit();
     }
 
     @Override

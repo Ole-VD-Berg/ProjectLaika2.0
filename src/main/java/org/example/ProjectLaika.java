@@ -2,6 +2,7 @@ package org.example;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
+import org.example.scenes.EndScene;
 import org.example.scenes.GameScene;
 import org.example.scenes.TitleScene;
 
@@ -33,6 +34,7 @@ public class ProjectLaika extends YaegerGame
 
         addScene(0, new TitleScene(this)); //laad eerst de title scene
         addScene(1, new GameScene(this));
+        addScene(2, new EndScene(this));
 
     }
 
