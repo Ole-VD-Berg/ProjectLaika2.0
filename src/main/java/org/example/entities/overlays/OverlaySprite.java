@@ -9,6 +9,4 @@ public class OverlaySprite extends SpriteEntity {
     public OverlaySprite(String resource, Coordinate2D initialLocation, Size size) {
         super(resource, initialLocation, size);
     }
-
-
 }
