@@ -16,7 +16,7 @@ public class TimerText extends TextEntity {
         setText("00    00");
     }
 
-    public void setScoreText(int minute, int second) {
+    public void setTimerText(int minute, int second) {
         setText(minute + "  " + second);
     }
 }

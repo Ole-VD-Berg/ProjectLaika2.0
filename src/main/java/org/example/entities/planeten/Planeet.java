@@ -11,6 +11,8 @@ import org.example.ProjectLaika;
 import org.example.entities.overlays.SchermHitBox;
 import org.example.scenes.GameScene;
 
+import java.util.Random;
+
 public abstract class Planeet extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
         protected int size;
         protected HitBox hitBox;
@@ -26,8 +28,8 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
         this.game = game;
         this.gameScene = gameScene;
         this.schermHitBox = gameScene.schermHitBox;
-       // setMotion(1, direction);
-
+        double SPEED = new Random().nextDouble(1) + 1;
+        setMotion(SPEED, direction);
     }
 
     @Override
@@ -36,7 +38,6 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
 
     protected void setupyEntities() {
         getPlaneetSprite(intitialLocation);
-
     }
 
     protected void getPlaneetSprite( Coordinate2D initialLocation) {

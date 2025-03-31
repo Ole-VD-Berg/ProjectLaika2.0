@@ -27,7 +27,7 @@ public class BewoondePlaneet extends Planeet {
 
     @Override
     protected void doSlicingActie() {
-        ScoreText.telBijScoreOp(1);
+      //  ScoreText.telBijScoreOp(1);
         remove();
     }
 }

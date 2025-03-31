@@ -3,6 +3,8 @@ package org.example.Spawners;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import org.example.ProjectLaika;
+import org.example.entities.planeten.bewoondePlaneet.BewoondePlaneet;
+import org.example.entities.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 import org.example.scenes.GameScene;
 
@@ -14,9 +16,9 @@ public class ObjectenSpawner extends EntitySpawner {
     private final double sceneHeight;
     GameScene gameScene;
     ProjectLaika game;
-    int direction = 0;
+    int direction = 1;
     public ObjectenSpawner(double sceneWidth, double sceneHeight, ProjectLaika game, GameScene gameScene) {
-        super(100);
+        super(300);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.game = game;
@@ -25,12 +27,15 @@ public class ObjectenSpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
-        spawn(new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, direction));
-//        if (new Random().nextInt(10) < 4) {
-//
-//        } else {
-//
-//        }
+    int randomNummer = new Random().nextInt(10);
+        if (randomNummer < 4) {
+            spawn(new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, direction));
+        } else if(randomNummer < 7) {
+            spawn(new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, direction));
+        }
+        else{
+            spawn(new OnbekendePlaneet(randomLocation(direction), 150, game, gameScene, direction));
+        }
 
     }
 

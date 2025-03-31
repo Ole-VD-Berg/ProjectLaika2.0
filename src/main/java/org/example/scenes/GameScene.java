@@ -47,12 +47,12 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(timerText);
         schermHitBox = new SchermHitBox(new Coordinate2D(0,0), game);
         addEntity(schermHitBox);
-        Planeet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,150, game, this, direction);
-        addEntity(O1);
-        Planeet O2 = new BewoondePlaneet(new Coordinate2D(300,100) ,150, game, this, direction);
-        addEntity(O2);
-        Planeet O3 = new OnbekendePlaneet(new Coordinate2D(200,100) ,150, game, this, direction);
-        addEntity(O3);
+//        Planeet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,150, game, this, direction);
+//        addEntity(O1);
+//        Planeet O2 = new BewoondePlaneet(new Coordinate2D(300,100) ,150, game, this, direction);
+//        addEntity(O2);
+//        Planeet O3 = new OnbekendePlaneet(new Coordinate2D(200,100) ,150, game, this, direction);
+//        addEntity(O3);
     }
 
     @Override
