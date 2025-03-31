@@ -14,8 +14,10 @@ public class TestTimer extends Timer{
 
     @Override
     public void onAnimationUpdate(long l) {
-
-        System.out.println(i);
         i++;
+    }
+
+    public int getI() {
+        return i;
     }
 }

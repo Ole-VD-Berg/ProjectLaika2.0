@@ -49,7 +49,7 @@ public class OnbewoondePlaneet extends Planeet implements UpdateExposer {
 
     public void checkForSlice(){
         if(hitBox.getExit() && schermHitBox.getIsDragged()){
-            game.setActiveScene(0);
+            game.setActiveScene(2);
         }
 
     }
