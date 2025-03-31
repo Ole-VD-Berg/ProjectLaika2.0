@@ -1,4 +1,4 @@
-package org.example.entities.planeten.onbewoondPlaneet;
+package org.example.entities.planeten;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;

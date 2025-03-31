@@ -14,6 +14,8 @@ import org.example.entities.overlays.ScoreText;
 import org.example.entities.overlays.TestTimer;
 import org.example.entities.overlays.TimerText;
 import org.example.entities.planeten.Planeet;
+import org.example.entities.planeten.bewoondePlaneet.BewoondePlaneet;
+import org.example.entities.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 
 
@@ -45,6 +47,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(schermHitBox);
         Planeet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,200, game, this);
         addEntity(O1);
+        Planeet O2 = new BewoondePlaneet(new Coordinate2D(300,100) ,200, game, this);
+        addEntity(O2);
+        Planeet O3 = new OnbekendePlaneet(new Coordinate2D(200,100) ,200, game, this);
+        addEntity(O3);
     }
 
     @Override

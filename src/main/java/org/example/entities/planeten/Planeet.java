@@ -7,7 +7,6 @@ import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import org.example.ProjectLaika;
 import org.example.entities.overlays.SchermHitBox;
-import org.example.entities.planeten.onbewoondPlaneet.HitBox;
 import org.example.scenes.GameScene;
 
 public class Planeet extends DynamicCompositeEntity implements UpdateExposer {
