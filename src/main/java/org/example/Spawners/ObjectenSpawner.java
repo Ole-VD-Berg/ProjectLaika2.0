@@ -14,7 +14,7 @@ public class ObjectenSpawner extends EntitySpawner {
     private final double sceneHeight;
     GameScene gameScene;
     ProjectLaika game;
-
+    int direction = 0;
     public ObjectenSpawner(double sceneWidth, double sceneHeight, ProjectLaika game, GameScene gameScene) {
         super(100);
         this.sceneWidth = sceneWidth;
@@ -25,7 +25,7 @@ public class ObjectenSpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
-        spawn(new OnbewoondePlaneet(randomLocation(3), 200, game, gameScene));
+        spawn(new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, direction));
 //        if (new Random().nextInt(10) < 4) {
 //
 //        } else {

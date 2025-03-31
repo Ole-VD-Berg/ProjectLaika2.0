@@ -6,11 +6,12 @@ import org.example.ProjectLaika;
 import org.example.entities.planeten.Planeet;
 import org.example.entities.planeten.HitBox;
 import org.example.scenes.GameScene;
+import org.example.entities.overlays.ScoreText;
 
 public class BewoondePlaneet extends Planeet {
 
-    public BewoondePlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene) {
-        super(initiallocation, size, game, gameScene);
+    public BewoondePlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
+        super(initiallocation, size, game, gameScene, direction);
     }
 
 
@@ -23,5 +24,11 @@ public class BewoondePlaneet extends Planeet {
         hitBox = new HitBox(new Coordinate2D(intitialLocation), game, this.size);
         addEntity(hitBox);
 
+    }
+
+    @Override
+    protected void doSlicingActie() {
+        //ScoreText.telBijScoreOp(1);
+        remove();
     }
 }

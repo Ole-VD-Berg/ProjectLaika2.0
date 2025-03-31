@@ -42,8 +42,8 @@ public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {
         //setMotion(0.5, angle);
 
         double invertedDistance = distanceTo(mouseCoordinates) * -1;
-        setHeight(invertedDistance);
-        System.out.println("x -1 " + distanceTo(mouseCoordinates) * -1 + ", zonder: " + distanceTo(mouseCoordinates));
+        setHeight(distanceTo(mouseCoordinates));
+      //  System.out.println("x -1 " + distanceTo(mouseCoordinates) * -1 + ", zonder: " + distanceTo(mouseCoordinates));
 
     }
 }

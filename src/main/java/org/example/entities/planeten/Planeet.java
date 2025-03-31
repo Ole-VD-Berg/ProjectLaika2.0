@@ -5,11 +5,13 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
+import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 import org.example.ProjectLaika;
 import org.example.entities.overlays.SchermHitBox;
 import org.example.scenes.GameScene;
 
-public class Planeet extends DynamicCompositeEntity implements UpdateExposer {
+public abstract class Planeet extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
         protected int size;
         protected HitBox hitBox;
         protected SchermHitBox schermHitBox;
@@ -17,13 +19,14 @@ public class Planeet extends DynamicCompositeEntity implements UpdateExposer {
         protected ProjectLaika game;
         protected GameScene gameScene;
 
-    public Planeet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene) {
+    public Planeet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation);
         this.size = size;
         this.intitialLocation = initiallocation;
         this.game = game;
         this.gameScene = gameScene;
         this.schermHitBox = gameScene.schermHitBox;
+        setMotion(1, direction);
 
     }
 
@@ -51,12 +54,21 @@ public class Planeet extends DynamicCompositeEntity implements UpdateExposer {
         if(hitBox != null && schermHitBox != null) {
             checkForSlice();
         }
+
     }
 
     public void checkForSlice(){
         if(hitBox.getExit() && schermHitBox.getIsDragged()){
-            game.setActiveScene(2);
+           
+            doSlicingActie();
         }
 
     }
+
+    @Override
+    public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+        remove();
+    }
+
+    protected abstract void doSlicingActie();
 }

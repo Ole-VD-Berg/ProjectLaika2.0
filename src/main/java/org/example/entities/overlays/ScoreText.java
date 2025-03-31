@@ -9,7 +9,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import javafx.scene.paint.Color;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
 public class ScoreText extends TextEntity {
-
+    private int score;
     public ScoreText(Coordinate2D initialLocation){
         super(initialLocation);
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
@@ -17,8 +17,12 @@ public class ScoreText extends TextEntity {
         setText("Score: 0");
     }
 
-    public void setScoreText(int score){
+    public void telBijScoreOp(int scoreErbij){
+        score += scoreErbij;
         setText("Score: " + score);
+    }
+    public int getScore(){
+        return score;
     }
 
 }

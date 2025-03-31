@@ -9,8 +9,8 @@ import org.example.scenes.GameScene;
 
 public class OnbewoondePlaneet extends Planeet {
 
-    public OnbewoondePlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene) {
-        super(initiallocation, size, game, gameScene);
+    public OnbewoondePlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
+        super(initiallocation, size, game, gameScene, direction);
     }
 
 
@@ -23,5 +23,10 @@ public class OnbewoondePlaneet extends Planeet {
         hitBox = new HitBox(new Coordinate2D(intitialLocation), game, this.size);
         addEntity(hitBox);
 
+    }
+
+    @Override
+    protected void doSlicingActie() {
+        remove();
     }
 }
