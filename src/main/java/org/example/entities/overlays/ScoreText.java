@@ -13,7 +13,7 @@ public class ScoreText extends TextEntity {
     public ScoreText(Coordinate2D initialLocation){
         super(initialLocation);
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
-        setFill(Color.RED);
+        setFill(Color.WHITE);
         setText("Score: 0");
     }
 

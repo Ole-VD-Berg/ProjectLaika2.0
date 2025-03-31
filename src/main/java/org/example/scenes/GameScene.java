@@ -10,6 +10,7 @@ import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.laser.Laser;
 import org.example.entities.overlays.OverlaySprite;
 import org.example.entities.overlays.ScoreText;
+import org.example.entities.overlays.TimerText;
 import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 import com.github.hanyaeger.api.Size;
 
@@ -28,15 +29,16 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-        ScoreText scoreText = new ScoreText(new Coordinate2D(200, 200));
-        addEntity(scoreText);
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
-        addEntity(overlaySprite);
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight() / 2), this);
         addEntity(laser);
         OnbewoondePlaneet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,200, game, this);
         addEntity(O1);
-        
+        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
+        addEntity(overlaySprite);
+        ScoreText scoreText = new ScoreText(new Coordinate2D(390, getHeight() - 32));
+        addEntity(scoreText);
+        TimerText timerText = new TimerText(new Coordinate2D(278, getHeight() - 32));
+        addEntity(timerText);
 
     }
 
