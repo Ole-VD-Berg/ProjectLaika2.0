@@ -20,6 +20,7 @@ import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer, TimerContainer {
+    public ScoreText scoreText;
     private ProjectLaika game;
     boolean isDragged = false;
     int direction = 0;
@@ -57,6 +58,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         mouseCoordinates = coordinate2D;
+
 
     }
     public Coordinate2D getMouseCoordinates() {

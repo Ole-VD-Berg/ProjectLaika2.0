@@ -26,5 +26,6 @@ public class OnbekendePlaneet extends Planeet {
     @Override
     protected void doSlicingActie() {
         System.out.println("Onbekende planeet gesliced");
+        remove();
     }
 }

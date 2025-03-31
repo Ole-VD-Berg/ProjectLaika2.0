@@ -26,13 +26,12 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
         this.game = game;
         this.gameScene = gameScene;
         this.schermHitBox = gameScene.schermHitBox;
-        setMotion(1, direction);
+       // setMotion(1, direction);
 
     }
 
     @Override
     protected void setupEntities() {
-
     }
 
     protected void setupyEntities() {
@@ -59,7 +58,6 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
 
     public void checkForSlice(){
         if(hitBox.getExit() && schermHitBox.getIsDragged()){
-           
             doSlicingActie();
         }
 

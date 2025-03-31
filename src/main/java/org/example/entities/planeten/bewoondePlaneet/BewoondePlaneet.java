@@ -23,12 +23,11 @@ public class BewoondePlaneet extends Planeet {
 
         hitBox = new HitBox(new Coordinate2D(intitialLocation), game, this.size);
         addEntity(hitBox);
-
     }
 
     @Override
     protected void doSlicingActie() {
-        //ScoreText.telBijScoreOp(1);
+        ScoreText.telBijScoreOp(1);
         remove();
     }
 }
