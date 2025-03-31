@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseDraggedListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
+import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.overlays.SchermHitBox;
 import org.example.entities.laser.Laser;
 import org.example.entities.overlays.OverlaySprite;
