@@ -18,8 +18,8 @@ public class Planeet extends DynamicCompositeEntity {
 
     @Override
  protected void setupEntities() {
-//        OnbewoondPlaneet onbewoondePlaneet = new OnbewoondPlaneet(innitialLocation, size, g, null);
-//        addEntity(onbewoondePlaneet);
+//       OnbewoondPlaneet onbewoondePlaneet = new OnbewoondPlaneet(innitialLocation, size, g, null);
+//       addEntity(onbewoondePlaneet);
     }
 
     protected void getPlaneetSprite( Coordinate2D initialLocation) {

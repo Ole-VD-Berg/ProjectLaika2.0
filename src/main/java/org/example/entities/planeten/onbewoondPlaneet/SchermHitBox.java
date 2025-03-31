@@ -25,4 +25,8 @@ public class SchermHitBox extends RectangleEntity implements MouseDraggedListene
     public void onDropped(Coordinate2D coordinate2D) {
         isDragged = false;
     }
+
+    public boolean getIsDragged() {
+        return isDragged;
+    }
 }
