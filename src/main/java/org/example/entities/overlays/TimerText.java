@@ -12,11 +12,19 @@ public class TimerText extends TextEntity {
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
         setFill(Color.WHITE);
         setText("00    00");
+        Timer timer = new Timer(gameTimer);
+        timer.initTimers();
+
+
 
     }
 
     public void setScoreText(int minute, int second) {
         setText(minute + "  " + second);
+
     }
+
+
+
 
 }
