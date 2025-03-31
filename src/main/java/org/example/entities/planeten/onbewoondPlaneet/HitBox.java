@@ -6,18 +6,17 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.userinput.*;
-import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import org.example.ProjectLaika;
 
 import java.util.List;
 
-public class HitBox extends DynamicCircleEntity implements Collided, MouseDragExitedListener, MouseButtonReleasedListener {
+public class HitBox extends DynamicCircleEntity implements Collided, MouseDragExitedListener, MouseExitListener {
 
     private ProjectLaika game;
     int size;
-    private boolean exit = false;
-    protected HitBox(Coordinate2D initialLocation, ProjectLaika game, int size) {
+    public boolean exit = false;
+    public HitBox(Coordinate2D initialLocation, ProjectLaika game, int size) {
         super(initialLocation);
         this.game = game;
         this.size = size;
@@ -36,13 +35,16 @@ public class HitBox extends DynamicCircleEntity implements Collided, MouseDragEx
         exit = true;
     }
 
-    @Override
-    public void onMouseButtonReleased(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        exit = false;
-    }
-
     public boolean getExit() {
         return exit;
     }
 
+    public void setExit(boolean exit) {
+        this.exit = exit;
+    }
+
+    @Override
+    public void onMouseExited() {
+        exit = false;
+    }
 }
