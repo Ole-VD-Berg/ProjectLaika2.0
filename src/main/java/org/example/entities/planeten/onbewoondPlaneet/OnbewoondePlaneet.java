@@ -43,18 +43,14 @@ public class OnbewoondePlaneet extends Planeet implements UpdateExposer {
         if(hitBox != null && schermHitBox != null){
             checkForSlice();
         }
-//        if(hitBox != null){
-//            System.out.println("help");
-//        }
+
+
     }
 
     public void checkForSlice(){
         if(hitBox.getExit() && schermHitBox.getIsDragged()){
             game.setActiveScene(0);
         }
-//        System.out.println(
-//                "Hitbox: " + hitBox.getExit() + "\n" +
-//                "SchermHitbox: " + schermHitBox.getIsDragged() + "\n"
-//        );
+
     }
 }
