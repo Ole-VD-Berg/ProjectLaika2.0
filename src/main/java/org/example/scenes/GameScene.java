@@ -1,10 +1,9 @@
 package org.example.scenes;
 
-import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.EntitySpawnerContainer;
-import com.github.hanyaeger.api.TimerContainer;
+import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
+import com.github.hanyaeger.api.userinput.MouseDraggedListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.entities.overlays.SchermHitBox;
@@ -15,11 +14,11 @@ import org.example.entities.overlays.TestTimer;
 import org.example.entities.overlays.TimerText;
 import org.example.entities.planeten.Planeet;
 import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
-import com.github.hanyaeger.api.Size;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer, TimerContainer {
     private ProjectLaika game;
+    boolean isDragged = false;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     public SchermHitBox schermHitBox;
     public GameScene(ProjectLaika game) {
@@ -58,7 +57,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntitySpawners() {
-        //addEntitySpawner(new ObjectenSpawner(getWidth(), getHeight(), game, this));
+        addEntitySpawner(new ObjectenSpawner(getWidth(), getHeight(), game, this));
     }
 
     @Override
@@ -66,4 +65,5 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         TestTimer timer = new TestTimer(1000);
         addTimer(timer);
     }
+
 }

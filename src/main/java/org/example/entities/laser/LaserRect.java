@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseMovedListener;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
 import org.example.scenes.GameScene;
 
 import static com.github.hanyaeger.api.entities.Direction.UP;
@@ -22,7 +23,7 @@ public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {
         //setMotion(0.1, UP);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         this.gameScene = gameScene;
-        setFill(color(1, 0, 0));
+        setFill(Color.RED);
         setWidth(15);
         setRotate(180);
         //setHeight(50);

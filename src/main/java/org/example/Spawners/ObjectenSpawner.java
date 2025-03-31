@@ -20,12 +20,12 @@ public class ObjectenSpawner extends EntitySpawner {
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.game = game;
-        gameScene = gameScene;
+        this.gameScene = gameScene;
     }
 
     @Override
     protected void spawnEntities() {
-        spawn(new OnbewoondePlaneet(randomLocation(0), 200, game, gameScene));
+        spawn(new OnbewoondePlaneet(randomLocation(3), 200, game, gameScene));
 //        if (new Random().nextInt(10) < 4) {
 //
 //        } else {
