@@ -3,6 +3,7 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
+import com.github.hanyaeger.api.userinput.MouseMovedListener;
 import javafx.scene.paint.Color;
 import org.example.entities.overlays.SchermHitbox;
 import org.example.scenes.GameScene;

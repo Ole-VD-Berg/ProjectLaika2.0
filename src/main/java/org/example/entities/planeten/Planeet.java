@@ -16,7 +16,7 @@ import java.util.Random;
 public abstract class Planeet extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
         protected int size;
         protected Hitbox hitBox;
-        protected SchermHitbox schermHitBox;
+        protected SchermHitbox schermHitbox;
         protected Coordinate2D intitialLocation;
         protected ProjectLaika game;
         protected GameScene gameScene;
@@ -27,7 +27,7 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
         this.intitialLocation = initiallocation;
         this.game = game;
         this.gameScene = gameScene;
-        this.schermHitBox = gameScene.schermHitBox;
+        this.schermHitbox = gameScene.schermHitbox;
         double SPEED = new Random().nextDouble(1) + 1;
         setMotion(SPEED, direction);
     }
@@ -51,14 +51,14 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
 
     @Override
     public void explicitUpdate(long l) {
-        if(hitBox != null && schermHitBox != null) {
+        if(hitBox != null && schermHitbox != null) {
             checkForSlice();
         }
 
     }
 
     public void checkForSlice(){
-        if(hitBox.getExit() && schermHitBox.getIsDragged()){
+        if(hitBox.getExit() && schermHitbox.getIsDragged()){
             doSlicingActie();
         }
 
