@@ -6,10 +6,10 @@ import com.github.hanyaeger.api.userinput.MouseDraggedListener;
 import javafx.scene.paint.Color;
 import org.example.ProjectLaika;
 
-public class SchermHitBox extends RectangleEntity implements MouseDraggedListener {
+public class SchermHitbox extends RectangleEntity implements MouseDraggedListener {
 
     private boolean isDragged = false;
-    public SchermHitBox(Coordinate2D initialLocation, ProjectLaika game) {
+    public SchermHitbox(Coordinate2D initialLocation, ProjectLaika game) {
         super(initialLocation);
         setWidth(game.getWidth());
         setHeight(game.getHeight());

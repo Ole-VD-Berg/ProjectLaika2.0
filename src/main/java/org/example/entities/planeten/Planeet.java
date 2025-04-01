@@ -8,15 +8,15 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import org.example.ProjectLaika;
-import org.example.entities.overlays.SchermHitBox;
+import org.example.entities.overlays.SchermHitbox;
 import org.example.scenes.GameScene;
 
 import java.util.Random;
 
 public abstract class Planeet extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
         protected int size;
-        protected HitBox hitBox;
-        protected SchermHitBox schermHitBox;
+        protected Hitbox hitBox;
+        protected SchermHitbox schermHitBox;
         protected Coordinate2D intitialLocation;
         protected ProjectLaika game;
         protected GameScene gameScene;

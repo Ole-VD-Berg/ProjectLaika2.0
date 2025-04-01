@@ -11,12 +11,12 @@ import org.example.ProjectLaika;
 
 import java.util.List;
 
-public class HitBox extends DynamicCircleEntity implements Collided, MouseDragExitedListener, MouseExitListener {
+public class Hitbox extends DynamicCircleEntity implements Collided, MouseDragExitedListener, MouseExitListener {
 
     private ProjectLaika game;
     int size;
     public boolean exit = false;
-    public HitBox(Coordinate2D initialLocation, ProjectLaika game, int size) {
+    public Hitbox(Coordinate2D initialLocation, ProjectLaika game, int size) {
         super(initialLocation);
         this.game = game;
         this.size = size;

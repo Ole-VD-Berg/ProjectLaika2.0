@@ -3,20 +3,15 @@ package org.example.scenes;
 import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
-import com.github.hanyaeger.api.userinput.MouseDraggedListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
-import org.example.entities.overlays.SchermHitBox;
+import org.example.entities.overlays.SchermHitbox;
 import org.example.entities.laser.Laser;
 import org.example.entities.overlays.OverlaySprite;
 import org.example.entities.overlays.ScoreText;
 import org.example.entities.overlays.TestTimer;
 import org.example.entities.overlays.TimerText;
-import org.example.entities.planeten.Planeet;
-import org.example.entities.planeten.bewoondePlaneet.BewoondePlaneet;
-import org.example.entities.planeten.onbekendePlaneet.OnbekendePlaneet;
-import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer, TimerContainer {
@@ -26,7 +21,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     boolean isDragged = false;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
-    public SchermHitBox schermHitBox;
+    public SchermHitbox schermHitBox;
     public GameScene(ProjectLaika game) {
         this.game = game;
     }
@@ -38,16 +33,16 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
+
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
+        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
-        ScoreText scoreText = new ScoreText(new Coordinate2D(getWidth() / 1.6, getHeight() - 32), this);
-        addEntity(scoreText);
         TimerText timerText = new TimerText(new Coordinate2D(getWidth() / 2, getHeight() - 32));
         addEntity(timerText);
-        schermHitBox = new SchermHitBox(new Coordinate2D(0,0), game);
+        schermHitBox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitBox);
+
 //        Planeet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,150, game, this, direction);
 //        addEntity(O1);
 //        Planeet O2 = new BewoondePlaneet(new Coordinate2D(300,100) ,150, game, this, direction);
