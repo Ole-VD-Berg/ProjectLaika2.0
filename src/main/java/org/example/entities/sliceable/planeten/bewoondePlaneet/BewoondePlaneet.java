@@ -16,12 +16,12 @@ public class BewoondePlaneet extends Planeet {
 
     protected void setupEntities() {
         System.out.println(intitialLocation);
-        setupyEntities();
+        super.setupEntities();
 
         BewoondePlaneetSprite sprite = new BewoondePlaneetSprite("sprites/planeten/overlays/bewoond.png", new Coordinate2D(intitialLocation), new Size(size, size));
         addEntity(sprite);
 
-        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this.size);
+        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this.size, gameScene);
         addEntity(hitBox);
     }
 
