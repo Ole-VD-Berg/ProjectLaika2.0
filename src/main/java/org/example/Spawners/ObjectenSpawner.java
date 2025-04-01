@@ -28,13 +28,13 @@ public class ObjectenSpawner extends EntitySpawner {
     @Override
     protected void spawnEntities() {
     int randomNummer = new Random().nextInt(10);
-        if (randomNummer < 4) {
-            spawn(new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, direction));
-        } else if(randomNummer < 7) {
-            spawn(new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, direction));
+        if (randomNummer < 6) {
+            spawn(new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
+        } else if(randomNummer < 8){
+            spawn(new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
         }
         else{
-            spawn(new OnbekendePlaneet(randomLocation(direction), 150, game, gameScene, direction));
+            spawn(new OnbekendePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
         }
 
     }
@@ -61,6 +61,21 @@ public class ObjectenSpawner extends EntitySpawner {
             default:
                 return new Coordinate2D(0, 0);
 
+        }
+    }
+
+    private int angleConverter(int direction) {
+        switch (direction) {
+            case 0:
+                return 0;
+            case 1:
+                return 90;
+            case 2:
+                return 180;
+            case 3:
+                return 270;
+            default:
+                return 0;
         }
     }
 }

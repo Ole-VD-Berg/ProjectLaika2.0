@@ -18,9 +18,10 @@ public class ScoreText extends TextEntity implements UpdateExposer {
         setText("Score: 0");
     }
 
-//    public void telBijScoreOp(int scoreErbij){
+//     public static void telBijScoreOp(int scoreErbij){
 //       score+= scoreErbij;
-//    }
+       //setText("Score: " + score);
+    }
 
 
     @Override
