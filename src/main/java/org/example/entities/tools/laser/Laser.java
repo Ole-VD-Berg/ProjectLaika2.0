@@ -20,7 +20,6 @@ public class Laser extends DynamicCompositeEntity implements MouseMovedListener,
     protected void setupEntities() {
         LaserRect laserRect = new LaserRect(new Coordinate2D(0, 0), gameScene, this);
         addEntity(laserRect);
-
         LaserPunt laserPunt = new LaserPunt(new Coordinate2D(0, 0), gameScene, this);
         addEntity(laserPunt);
 

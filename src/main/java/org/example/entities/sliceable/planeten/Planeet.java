@@ -3,24 +3,31 @@ package org.example.entities.sliceable.planeten;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.UpdateExposer;
-import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
-import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
-import com.github.hanyaeger.api.scenes.SceneBorder;
 import org.example.ProjectLaika;
-import org.example.entities.overlays.SchermHitbox;
-import org.example.entities.sliceable.planeten.SliceableObjecten;
+import org.example.entities.sliceable.SliceableObject;
 import org.example.scenes.GameScene;
 
-import java.util.Random;
 
-public abstract class Planeet extends SliceableObjecten {
+public abstract class Planeet extends SliceableObject {
         private static int geslicedePlaneten = 0;
 
     public Planeet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation, size, game, gameScene, direction);
-        double SPEED = new Random().nextDouble(1) + 1;
         setMotion(SPEED, direction);
+    }
+    protected void setupEntities() {
+        getPlaneetSprite(intitialLocation);
+        super.setupEntities();
+
+    }
+    protected void getPlaneetSprite( Coordinate2D initialLocation) {
+        PlaneetSprite sprite = new PlaneetSprite("sprites/planeten/planeet" + getRandomSprite() + ".png", new Coordinate2D(initialLocation), new Size(size, size));
+        addEntity(sprite);
+
+    }
+
+    protected int getRandomSprite() {
+        return (int) (Math.random() * 8) + 1;
     }
     public int getGeslicedePlaneten() {
         return geslicedePlaneten;

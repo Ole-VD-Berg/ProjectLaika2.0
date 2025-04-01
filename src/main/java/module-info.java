@@ -9,7 +9,9 @@ module ProjectLaika20 {
     opens sprites.titleScene;
     opens sprites.planeten;
     opens sprites.planeten.overlays;
+    opens sprites.vijandig;
     exports org.example;
+
 
 
 }

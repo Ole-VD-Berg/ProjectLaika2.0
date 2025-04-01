@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
+import javafx.scene.Cursor;
 import javafx.scene.paint.Color;
 import org.example.scenes.GameScene;
 
@@ -27,8 +28,10 @@ public class LaserPunt extends DynamicCircleEntity implements Collider, UpdateEx
         this.laserSwitch = gameScene.getLaser();
         if (!laserSwitch) {
             setFill(Color.TRANSPARENT);
+            setCursor(Cursor.DEFAULT);
         } else {
             setFill(Color.RED);
+            setCursor(Cursor.NONE);
         }
         Coordinate2D mouseCoordinates = laser.getMouseCoordinates();
 

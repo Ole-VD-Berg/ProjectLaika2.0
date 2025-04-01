@@ -7,8 +7,7 @@ import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.overlays.*;
-import org.example.entities.sliceable.planeten.SliceableObjecten;
-import org.example.entities.sliceable.planeten.bewoondePlaneet.BewoondePlaneet;
+import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.laser.Laser;
 
@@ -45,6 +44,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(timerText2);
         schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitbox);
+        Schip schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
+        addEntity(schip);
     }
     @Override
     public void setupEntitySpawners() {
