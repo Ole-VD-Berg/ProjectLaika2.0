@@ -1,6 +1,7 @@
 module ProjectLaika20 {
     requires hanyaeger;
     requires java.desktop;
+    requires com.google.guice;
 
     opens backgrounds;
     //opens sprites;

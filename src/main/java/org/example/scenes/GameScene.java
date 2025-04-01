@@ -6,7 +6,9 @@ import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
+import org.example.entities.SpaceShip.DamageHitbox;
 import org.example.entities.overlays.*;
+import org.example.entities.sliceable.vijandig.schip.BulletSpawner;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.laser.Laser;
@@ -19,6 +21,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private boolean laser = false;
     ObjectenSpawner objectenSpawner;
     int direction = 0;
+    BulletSpawner bulletSpawner;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     public SchermHitbox schermHitbox;
     public GameScene(ProjectLaika game) {
@@ -29,7 +32,14 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void setupScene() {
         setBackgroundImage("backgrounds/backgroundUpscale.png");
     }
+    @Override
+    public void setupEntitySpawners() {
+        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
+        addEntitySpawner(objectenSpawner);
+        bulletSpawner = new BulletSpawner(getWidth(), getHeight());
+        addEntitySpawner(bulletSpawner);
 
+    }
     @Override
     public void setupEntities() {
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
@@ -44,14 +54,11 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(timerText2);
         schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitbox);
-        Schip schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
+        Schip schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270, bulletSpawner);
         addEntity(schip);
+        DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight()), new Size(getWidth(), -10));
     }
-    @Override
-    public void setupEntitySpawners() {
-        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
-        addEntitySpawner(objectenSpawner);
-    }
+
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {

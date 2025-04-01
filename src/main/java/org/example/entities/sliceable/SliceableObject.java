@@ -33,7 +33,6 @@ public abstract class SliceableObject extends DynamicCompositeEntity implements 
         this.gameScene = gameScene;
         this.schermHitbox = gameScene.schermHitbox;
         double SPEED = new Random().nextDouble(1) + 1;
-        setMotion(SPEED, direction);
     }
 
     @Override

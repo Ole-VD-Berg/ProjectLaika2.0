@@ -1,15 +1,21 @@
 package org.example.entities.sliceable.vijandig.schip;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.EntitySpawner;
+
+import com.google.inject.Injector;
 import org.example.ProjectLaika;
 import org.example.entities.sliceable.SliceableObject;
 import org.example.scenes.GameScene;
 
 public class Schip extends SliceableObject {
-    public Schip(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
+    BulletSpawner spawner;
+    public Schip(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction, BulletSpawner spawner) {
         super(initialLocation, size, game, gameScene, direction);
         //setMotion(SPEED, direction);
+        this.spawner = spawner;
     }
 
     @Override
@@ -26,6 +32,9 @@ public class Schip extends SliceableObject {
 
 
     private void schiet(int direction){
-        new bullet("sprites/vijandig/bullet.png", new Coordinate2D(intitialLocation), direction, 10);
+        spawner.setDirection(direction);
     }
+
+
+
 }
