@@ -7,6 +7,8 @@ import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.overlays.*;
+import org.example.entities.sliceable.planeten.SliceableObjecten;
+import org.example.entities.sliceable.planeten.bewoondePlaneet.BewoondePlaneet;
 import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.laser.Laser;
 
@@ -30,12 +32,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     }
 
     @Override
-    public void setupEntitySpawners() {
-        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
-        addEntitySpawner(objectenSpawner);
-    }
-
-    @Override
     public void setupEntities() {
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
@@ -49,6 +45,11 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(timerText2);
         schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitbox);
+    }
+    @Override
+    public void setupEntitySpawners() {
+        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
+        addEntitySpawner(objectenSpawner);
     }
 
     @Override
