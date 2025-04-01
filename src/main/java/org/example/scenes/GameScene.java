@@ -7,6 +7,7 @@ import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.overlays.SchermHitbox;
+import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.Laser;
 import org.example.entities.overlays.OverlaySprite;
 import org.example.entities.overlays.ScoreText;
@@ -39,6 +40,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(overlaySprite);
         TimerText timerText = new TimerText(new Coordinate2D(getWidth() / 2, getHeight() - 32));
         addEntity(timerText);
+        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() / 2), game);
+        addEntity(timerText2);
         schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitbox);
     }
