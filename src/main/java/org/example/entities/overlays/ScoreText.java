@@ -22,7 +22,7 @@ public class ScoreText extends DynamicTextEntity implements UpdateExposer {
     @Override
     public void explicitUpdate(long l) {
         this.score = gameScene.getScore();
-        System.out.println("Score: " + score);
+        //System.out.println("Score: " + score);
         setText("Score: " + score);
     }
 }

@@ -15,13 +15,10 @@ public class OnbewoondePlaneet extends Planeet {
 
 
     protected void setupEntities() {
-        setupyEntities();
+        super.setupEntities();
 
         OnbewoondePlaneetSprite sprite = new OnbewoondePlaneetSprite("sprites/planeten/overlays/onbewoond.png", new Coordinate2D(intitialLocation), new Size(size, size));
         addEntity(sprite);
-
-        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this.size);
-        addEntity(hitBox);
     }
 
     protected void doSlicingActie() {

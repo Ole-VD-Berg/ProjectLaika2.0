@@ -14,14 +14,9 @@ public class OnbekendePlaneet extends Planeet {
         super(initiallocation, size, game, gameScene, direction);
     }
     protected void setupEntities() {
-        setupyEntities();
-
+        super.setupEntities();
         OnbekendePlaneetSprite sprite = new OnbekendePlaneetSprite("sprites/planeten/overlays/onbekend.png", new Coordinate2D(intitialLocation), new Size(size, size));
         addEntity(sprite);
-
-        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this.size);
-        addEntity(hitBox);
-
     }
     @Override
     protected void doSlicingActie() {

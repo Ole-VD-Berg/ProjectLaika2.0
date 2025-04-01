@@ -35,10 +35,10 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
 
     @Override
     protected void setupEntities() {
-    }
-
-    protected void setupyEntities() {
         getPlaneetSprite(intitialLocation);
+
+        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this.size, gameScene);
+        addEntity(hitBox);
     }
 
     protected void getPlaneetSprite( Coordinate2D initialLocation) {
@@ -52,14 +52,17 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
 
     @Override
     public void explicitUpdate(long l) {
-        if(hitBox != null && schermHitbox != null) {
+        if(hitBox != null) {
             checkForSlice();
         }
 
     }
 
     public void checkForSlice(){
-        if(hitBox.getExit() && schermHitbox.getIsDragged()){
+        if(!gameScene.getLaser()){
+            hitBox.setExit(false);
+        }
+        if(hitBox.getExit() && gameScene.getLaser()){
             doSlicingActie();
             geslicedePlaneten++;
         }
