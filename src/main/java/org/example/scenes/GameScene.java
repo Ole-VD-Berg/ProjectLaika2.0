@@ -45,13 +45,11 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(timerText2);
         schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitbox);
-        SliceableObjecten bewoondePlaneet = new BewoondePlaneet(new Coordinate2D(100,100), 150, game, this, 90);
-        addEntity(bewoondePlaneet);
     }
     @Override
     public void setupEntitySpawners() {
-//        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
-//        addEntitySpawner(objectenSpawner);
+        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
+        addEntitySpawner(objectenSpawner);
     }
 
     @Override

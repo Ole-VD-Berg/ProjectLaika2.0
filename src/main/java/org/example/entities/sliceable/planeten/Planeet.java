@@ -15,12 +15,7 @@ import org.example.scenes.GameScene;
 import java.util.Random;
 
 public abstract class Planeet extends SliceableObjecten {
-        protected int size;
         private static int geslicedePlaneten = 0;
-        protected Hitbox hitBox;
-        protected Coordinate2D intitialLocation;
-        protected ProjectLaika game;
-        protected GameScene gameScene;
 
     public Planeet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation, size, game, gameScene, direction);
