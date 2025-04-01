@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import org.example.ProjectLaika;
+import org.example.entities.planeten.Planeet;
 import org.example.entities.planeten.bewoondePlaneet.BewoondePlaneet;
 import org.example.entities.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
@@ -26,6 +27,7 @@ public class ObjectenSpawner extends EntitySpawner {
     private final int RIGHT = 90;
     private final int UP = 180;
     private final int LEFT = 270;
+    Planeet planeet;
     public ObjectenSpawner(double sceneWidth, double sceneHeight, ProjectLaika game, GameScene gameScene) {
         super(300);
         this.sceneWidth = sceneWidth;
@@ -38,12 +40,19 @@ public class ObjectenSpawner extends EntitySpawner {
     protected void spawnEntities() {
     int randomNummer = new Random().nextInt(15);
         if (randomNummer < 6) {
-            spawn(new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
+            OnbewoondePlaneet onbewoondePlaneet = new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
+            spawn(onbewoondePlaneet);
+            planeet = onbewoondePlaneet;
+
         } else if(randomNummer < 8){
-            spawn(new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
+            BewoondePlaneet bewoondePlaneet = new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
+            spawn(bewoondePlaneet);
+            planeet = bewoondePlaneet;
         }
         else if(randomNummer < 10){
-            spawn(new OnbekendePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
+            OnbekendePlaneet onbekendePlaneet = new OnbekendePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
+            spawn(onbekendePlaneet);
+            planeet = onbekendePlaneet;
         }
         else {
             spawn(new Astroide(randomLocation(direction), 150, game, gameScene, angleConverter(direction)) {

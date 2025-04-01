@@ -6,12 +6,10 @@ import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
-import org.example.entities.overlays.SchermHitbox;
+import org.example.entities.overlays.*;
+import org.example.entities.planeten.Planeet;
+import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.Laser;
-import org.example.entities.overlays.OverlaySprite;
-import org.example.entities.overlays.ScoreText;
-import org.example.entities.overlays.TestTimer;
-import org.example.entities.overlays.TimerText;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer {
@@ -19,6 +17,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private ProjectLaika game;
     private int score;
     private boolean laser = false;
+    Planeet planeet;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     public SchermHitbox schermHitbox;
@@ -37,8 +36,11 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(laser);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
-        TimerText timerText = new TimerText(new Coordinate2D(getWidth() / 2, getHeight() - 32));
-        addEntity(timerText);
+        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2), this, planeet);
+        scoreText = new ScoreText(new Coordinate2D(getWidth() / 2, getHeight() / 2), this);
+        addEntity(scoreText);
+        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() / 2), game);
+        addEntity(timerText2);
         schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitbox);
     }
@@ -72,5 +74,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void setLaser(boolean laser) {
         this.laser = laser;
     }
+
 
 }

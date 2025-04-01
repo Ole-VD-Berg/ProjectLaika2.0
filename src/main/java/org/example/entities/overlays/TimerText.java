@@ -5,9 +5,11 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import javafx.scene.paint.Color;
+import org.example.entities.timer.Timer2;
 
 public class TimerText extends DynamicTextEntity implements UpdateExposer, TimerContainer {
     TestTimer timer;
+
     private int minute = 0;
     boolean help = true;
     public TimerText(Coordinate2D initialLocation){
