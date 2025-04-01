@@ -55,14 +55,13 @@ public class ObjectenSpawner extends EntitySpawner {
             planeet = onbekendePlaneet;
         }
         else {
-            spawn(new Astroide(randomLocation(direction), 150, game, gameScene, angleConverter(direction)) {
-                @Override
-                protected void doSlicingActie() {
-
-                }
-            });
+         //   spawn(new Astroide(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
+            // waarom tf is astroide abstract huhhh
         }
 
+    }
+    public Planeet getPlaneet() {
+        return planeet;
     }
 
     private Coordinate2D randomLocation(int direction) {

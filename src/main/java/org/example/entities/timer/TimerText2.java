@@ -8,19 +8,27 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import javafx.scene.paint.Color;
 import org.example.ProjectLaika;
+import org.example.Spawners.ObjectenSpawner;
+import org.example.entities.planeten.Planeet;
 
 
 public class TimerText2 extends DynamicTextEntity implements UpdateExposer, TimerContainer {
     ProjectLaika game;
     Timer2 timer2;
-    public TimerText2(Coordinate2D initialLocation, ProjectLaika game) {
+    Planeet planeet;
+
+    public TimerText2(Coordinate2D initialLocation, ProjectLaika game, ObjectenSpawner objectenSpawner) {
         super(initialLocation);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         setText("00    00");
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
         setFill(Color.WHITE);
         this.game = game;
+        this.planeet = planeet;
+        if (objectenSpawner != null)
+            this.planeet = objectenSpawner.getPlaneet();
     }
+
 
 
     @Override
@@ -32,7 +40,7 @@ public class TimerText2 extends DynamicTextEntity implements UpdateExposer, Time
 
     @Override
     public void setupTimers() {
-        timer2 = new Timer2(1000, game);
+        timer2 = new Timer2(1000, game, planeet);
         addTimer(timer2);
     }
 }

@@ -1,4 +1,4 @@
-package org.example.entities.tools;
+package org.example.entities.tools.zaklamp;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
