@@ -21,7 +21,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     boolean isDragged = false;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
-    public SchermHitBox schermHitBox;
+    public SchermHitbox schermHitBox;
     public GameScene(ProjectLaika game) {
         this.game = game;
     }
@@ -33,16 +33,16 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
+
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
+        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
-        ScoreText scoreText = new ScoreText(new Coordinate2D(getWidth() / 1.6, getHeight() - 32), this);
-        addEntity(scoreText);
-        schermHitBox = new SchermHitBox(new Coordinate2D(0,0), game);
-        addEntity(schermHitBox);
         TimerText timerText = new TimerText(new Coordinate2D(getWidth() / 2, getHeight() - 32));
         addEntity(timerText);
+        schermHitBox = new SchermHitbox(new Coordinate2D(0,0), game);
+        addEntity(schermHitBox);
+
 //        Planeet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,150, game, this, direction);
 //        addEntity(O1);
 //        Planeet O2 = new BewoondePlaneet(new Coordinate2D(300,100) ,150, game, this, direction);

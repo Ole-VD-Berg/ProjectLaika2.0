@@ -3,8 +3,7 @@ package org.example.entities.planeten.onbewoondPlaneet;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import org.example.ProjectLaika;
-import org.example.entities.overlays.ScoreText;
-import org.example.entities.planeten.HitBox;
+import org.example.entities.planeten.Hitbox;
 import org.example.entities.planeten.Planeet;
 import org.example.scenes.GameScene;
 
@@ -21,7 +20,7 @@ public class OnbewoondePlaneet extends Planeet {
         OnbewoondePlaneetSprite sprite = new OnbewoondePlaneetSprite("sprites/planeten/overlays/onbewoond.png", new Coordinate2D(intitialLocation), new Size(size, size));
         addEntity(sprite);
 
-        hitBox = new HitBox(new Coordinate2D(intitialLocation), game, this.size);
+        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this.size);
         addEntity(hitBox);
     }
 

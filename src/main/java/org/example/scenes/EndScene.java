@@ -33,7 +33,7 @@ public class EndScene extends StaticScene {
         addEntity(playButtonSprite);
         QuitButtonSprite quitButtonSprite = new QuitButtonSprite("sprites/titleScene/quitButtonSpriteSheet.png", new Coordinate2D(getWidth() / 2 + 50, getHeight() / 2 + 50), new Size( 35), 2,1, game);
         addEntity(quitButtonSprite);
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
+        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()), 1,3);
         addEntity(overlaySprite);
         ScoreText scoreText = new ScoreText(new Coordinate2D(390, getHeight() - 32), gameScene);
         addEntity(scoreText);
