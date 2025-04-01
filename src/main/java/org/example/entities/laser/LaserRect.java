@@ -20,15 +20,11 @@ public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {
     int height = 50;
     protected LaserRect(Coordinate2D initialLocation, GameScene gameScene) {
         super(initialLocation);
-        //setMotion(0.1, UP);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         this.gameScene = gameScene;
         setFill(Color.RED);
         setWidth(15);
-        setRotate(180);
-        //setHeight(50);
-
-
+        setHeight(1050);
     }
 
 
@@ -37,13 +33,9 @@ public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {
     public void explicitUpdate(long l) {
         mouseCoordinates = gameScene.getMouseCoordinates();
         angle = angleTo(mouseCoordinates);
-        //height++;
-        //setRotate(angle);
-        //setMotion(0.5, angle);
-
-        double invertedDistance = distanceTo(mouseCoordinates) * -1;
-        setHeight(distanceTo(mouseCoordinates));
-      //  System.out.println("x -1 " + distanceTo(mouseCoordinates) * -1 + ", zonder: " + distanceTo(mouseCoordinates));
-
+        var distance = distanceTo(mouseCoordinates);
+        setRotate(angle);
+        setHeight(distance * 2);
+        setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 }
