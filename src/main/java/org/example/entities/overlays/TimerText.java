@@ -30,7 +30,7 @@ public class TimerText extends DynamicTextEntity implements UpdateExposer, Timer
     @Override
     public void explicitUpdate(long l) {
         if(timer.getSeconde() % 60 == 20){help = false;}
-        if(timer.getSeconde() % 60 == 0 && help == false) {
+        if(timer.getSeconde() % 60 == 0 && !help) {
             minute++;
             help = true;
         }

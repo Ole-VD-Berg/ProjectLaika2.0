@@ -8,11 +8,9 @@ public class Laser extends DynamicCompositeEntity {
 
 
     private final GameScene gameScene;
-
     public Laser(Coordinate2D initialLocation, GameScene gameScene) {
         super(initialLocation);
         this.gameScene = gameScene;
-
     }
 
     @Override

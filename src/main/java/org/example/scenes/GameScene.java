@@ -18,7 +18,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public ScoreText scoreText;
     private ProjectLaika game;
     private int score;
-    boolean isDragged = false;
+    private boolean laser = false;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     public SchermHitbox schermHitbox;
@@ -33,7 +33,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()), 3,1);
@@ -42,20 +41,12 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(timerText);
         schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitbox);
-
-//        Planeet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,150, game, this, direction);
-//        addEntity(O1);
-//        Planeet O2 = new BewoondePlaneet(new Coordinate2D(300,100) ,150, game, this, direction);
-//        addEntity(O2);
-//        Planeet O3 = new OnbekendePlaneet(new Coordinate2D(200,100) ,150, game, this, direction);
-//        addEntity(O3);
     }
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         mouseCoordinates = coordinate2D;
-
-
+        laser = !laser;
     }
     public Coordinate2D getMouseCoordinates() {
         return mouseCoordinates;
@@ -72,6 +63,14 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     public int getScore() {
         return score;
+    }
+
+    public boolean getLaser() {
+        return laser;
+    }
+
+    public void setLaser(boolean laser) {
+        this.laser = laser;
     }
 
 }
