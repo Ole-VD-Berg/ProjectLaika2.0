@@ -2,8 +2,7 @@ package org.example.entities.timer;
 
 import com.github.hanyaeger.api.Timer;
 import org.example.ProjectLaika;
-import org.example.Spawners.ObjectenSpawner;
-import org.example.entities.planeten.Planeet;
+import org.example.entities.sliceable.planeten.Planeet;
 
 public class Timer2 extends Timer {
     private ProjectLaika game;
@@ -25,7 +24,7 @@ public class Timer2 extends Timer {
             }
         }
         else{
-            planeet.resetGeslicedePlaneten();
+            //planeet.resetGeslicedePlaneten();
             game.setActiveScene(2);
         }
     }

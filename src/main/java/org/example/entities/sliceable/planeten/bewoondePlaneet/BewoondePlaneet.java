@@ -1,17 +1,17 @@
-package org.example.entities.planeten.bewoondePlaneet;
+package org.example.entities.sliceable.planeten.bewoondePlaneet;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import org.example.ProjectLaika;
-import org.example.entities.planeten.Hitbox;
-import org.example.entities.planeten.Planeet;
+import org.example.entities.sliceable.planeten.Hitbox;
+import org.example.entities.sliceable.planeten.Planeet;
 import org.example.scenes.GameScene;
-import org.example.entities.overlays.ScoreText;
 
 public class BewoondePlaneet extends Planeet {
 
     public BewoondePlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation, size, game, gameScene, direction);
+        this.initialLocation = initiallocation;
     }
 
 

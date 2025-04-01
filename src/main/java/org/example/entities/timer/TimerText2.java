@@ -9,7 +9,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import javafx.scene.paint.Color;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
-import org.example.entities.planeten.Planeet;
+import org.example.entities.sliceable.planeten.Planeet;
 
 
 public class TimerText2 extends DynamicTextEntity implements UpdateExposer, TimerContainer {
@@ -25,8 +25,9 @@ public class TimerText2 extends DynamicTextEntity implements UpdateExposer, Time
         setFill(Color.WHITE);
         this.game = game;
         this.planeet = planeet;
-        if (objectenSpawner != null)
-            this.planeet = objectenSpawner.getPlaneet();
+//      if (objectenSpawner != null){
+//          this.planeet = objectenSpawner.getPlaneet();
+//      }
     }
 
 

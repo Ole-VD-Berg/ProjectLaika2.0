@@ -1,4 +1,4 @@
-package org.example.entities.planeten;
+package org.example.entities.sliceable.vijandig.astroide;
 
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -9,20 +9,20 @@ import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import org.example.ProjectLaika;
 import org.example.entities.overlays.SchermHitbox;
+import org.example.entities.sliceable.planeten.Hitbox;
 import org.example.scenes.GameScene;
 
 import java.util.Random;
 
-public abstract class Planeet extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
+public abstract class Astroide extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
         protected int size;
-        private static int geslicedePlaneten = 0;
-        protected Hitbox hitBox;
+        protected Hitbox hitbox;
         protected SchermHitbox schermHitbox;
         protected Coordinate2D intitialLocation;
         protected ProjectLaika game;
         protected GameScene gameScene;
 
-    public Planeet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
+    public Astroide(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation);
         this.size = size;
         this.intitialLocation = initiallocation;
@@ -42,26 +42,23 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
     }
 
     protected void getPlaneetSprite( Coordinate2D initialLocation) {
-        PlaneetSprite sprite = new PlaneetSprite("sprites/planeten/planeet" + getRandomSprite() + ".png", new Coordinate2D(initialLocation), new Size(size, size));
+        AstroideSprite sprite = new AstroideSprite("sprites/titleScene/playButton.png", new Coordinate2D(initialLocation), new Size(size, size));
         addEntity(sprite);
-    }
-
-    protected int getRandomSprite() {
-        return (int) (Math.random() * 8) + 1;
     }
 
     @Override
     public void explicitUpdate(long l) {
-        if(hitBox != null && schermHitbox != null) {
+        size++;
+        //System.out.println(size);
+        if(hitbox != null && schermHitbox != null) {
             checkForSlice();
         }
 
     }
 
     public void checkForSlice(){
-        if(hitBox.getExit() && schermHitbox.getIsDragged()){
+        if(hitbox.getExit() && schermHitbox.getIsDragged()){
             doSlicingActie();
-            geslicedePlaneten++;
         }
 
     }
@@ -72,12 +69,4 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
     }
 
     protected abstract void doSlicingActie();
-
-    public int getGeslicedePlaneten() {
-        return geslicedePlaneten;
-    }
-
-    public void resetGeslicedePlaneten() {
-        geslicedePlaneten = 0;
-    }
 }

@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import javafx.scene.paint.Color;
 import org.example.Spawners.ObjectenSpawner;
-import org.example.entities.planeten.Planeet;
+import org.example.entities.sliceable.planeten.Planeet;
 import org.example.scenes.GameScene;
 
 public class PlanetenText extends DynamicTextEntity implements UpdateExposer {
@@ -26,8 +26,8 @@ public class PlanetenText extends DynamicTextEntity implements UpdateExposer {
     @Override
     public void explicitUpdate(long l) {
         if (objectenSpawner != null) {
-            Planeet planeet = objectenSpawner.getPlaneet();
-            setText("planeten: " + (planeet.getGeslicedePlaneten()));
+//            Planeet planeet = objectenSpawner.getPlaneet();
+//            setText("planeten: " + (planeet.getGeslicedePlaneten()));
         }
     }
 }

@@ -1,4 +1,4 @@
-package org.example.entities.vijandig;
+package org.example.entities.sliceable.planeten;
 
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -9,20 +9,21 @@ import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import org.example.ProjectLaika;
 import org.example.entities.overlays.SchermHitbox;
-import org.example.entities.planeten.Hitbox;
 import org.example.scenes.GameScene;
 
 import java.util.Random;
 
-public abstract class Astroide extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
-        protected int size;
-        protected Hitbox hitbox;
-        protected SchermHitbox schermHitbox;
-        protected Coordinate2D intitialLocation;
-        protected ProjectLaika game;
-        protected GameScene gameScene;
+public abstract class SliceableObjecten extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
+    protected int size;
+    private static int geslicedePlaneten = 0;
+    protected Hitbox hitBox;
+    protected SchermHitbox schermHitbox;
+    protected Coordinate2D intitialLocation;
+    protected ProjectLaika game;
+    protected GameScene gameScene;
+    protected Coordinate2D initialLocation;
 
-    public Astroide(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
+    public SliceableObjecten(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation);
         this.size = size;
         this.intitialLocation = initiallocation;
@@ -42,23 +43,27 @@ public abstract class Astroide extends DynamicCompositeEntity implements UpdateE
     }
 
     protected void getPlaneetSprite( Coordinate2D initialLocation) {
-        AstroideSprite sprite = new AstroideSprite("sprites/titleScene/playButton.png", new Coordinate2D(initialLocation), new Size(size, size));
+        PlaneetSprite sprite = new PlaneetSprite("sprites/planeten/planeet" + getRandomSprite() + ".png", new Coordinate2D(initialLocation), new Size(size, size));
         addEntity(sprite);
+
+    }
+
+    protected int getRandomSprite() {
+        return (int) (Math.random() * 8) + 1;
     }
 
     @Override
     public void explicitUpdate(long l) {
-        size++;
-        //System.out.println(size);
-        if(hitbox != null && schermHitbox != null) {
+        if(hitBox != null && schermHitbox != null) {
             checkForSlice();
         }
 
     }
 
     public void checkForSlice(){
-        if(hitbox.getExit() && schermHitbox.getIsDragged()){
+        if(hitBox.getExit() && schermHitbox.getIsDragged()){
             doSlicingActie();
+            geslicedePlaneten++;
         }
 
     }
@@ -69,4 +74,6 @@ public abstract class Astroide extends DynamicCompositeEntity implements UpdateE
     }
 
     protected abstract void doSlicingActie();
+
+
 }
