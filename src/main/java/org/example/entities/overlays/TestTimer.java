@@ -7,17 +7,17 @@ import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.UpdateExposer;
 
 public class TestTimer extends Timer{
-    private int i = 0;
+    private int seconde = 0;
     public TestTimer(long intervalInMs) {
         super(intervalInMs);
     }
 
     @Override
     public void onAnimationUpdate(long l) {
-        i++;
+        seconde++;
     }
 
-    public int getI() {
-        return i;
+    public int getSeconde() {
+        return seconde;
     }
 }

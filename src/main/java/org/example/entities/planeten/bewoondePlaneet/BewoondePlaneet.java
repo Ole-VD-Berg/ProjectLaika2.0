@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.Size;
 import org.example.ProjectLaika;
 import org.example.entities.planeten.Hitbox;
 import org.example.entities.planeten.Planeet;
-import org.example.entities.planeten.HitBox;
+import org.example.entities.planeten.Hitbox;
 import org.example.scenes.GameScene;
 import org.example.entities.overlays.ScoreText;
 

@@ -1,24 +1,41 @@
 package org.example.entities.overlays;
 
-import com.github.hanyaeger.api.AnchorPoint;
-import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Timer;
-import com.github.hanyaeger.api.TimerContainer;
+import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
+import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import javafx.scene.paint.Color;
 
-public class TimerText extends TextEntity {
-
+public class TimerText extends DynamicTextEntity implements UpdateExposer, TimerContainer {
+    TestTimer timer;
+    private int minute = 0;
+    boolean help = true;
     public TimerText(Coordinate2D initialLocation){
         super(initialLocation);
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
         setFill(Color.WHITE);
-        setText("00    00");
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
     public void setTimerText(int minute, int second) {
         setText(minute + "  " + second);
+    }
+
+    @Override
+    public void setupTimers() {
+        timer = new TestTimer(100);
+        addTimer(timer);
+    }
+
+    @Override
+    public void explicitUpdate(long l) {
+        if(timer.getSeconde() % 60 == 20){help = false;}
+        if(timer.getSeconde() % 60 == 0 && help == false) {
+            minute++;
+            help = true;
+        }
+        if(timer != null) {
+            setText(minute + "    " + timer.getSeconde() % 60);
+        }
     }
 }

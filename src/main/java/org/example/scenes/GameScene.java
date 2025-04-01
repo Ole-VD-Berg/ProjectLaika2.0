@@ -14,7 +14,7 @@ import org.example.entities.overlays.TestTimer;
 import org.example.entities.overlays.TimerText;
 
 
-public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer, TimerContainer {
+public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer {
     public ScoreText scoreText;
     private ProjectLaika game;
     private int score;
@@ -64,12 +64,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(new ObjectenSpawner(getWidth(), getHeight(), game, this));
-    }
-
-    @Override
-    public void setupTimers() {
-        TestTimer timer = new TestTimer(1000);
-        addTimer(timer);
     }
 
     public void doeScoreErbij(int score) {
