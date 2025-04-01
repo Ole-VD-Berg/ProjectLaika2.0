@@ -16,7 +16,7 @@ public class TimerText2 extends DynamicTextEntity implements UpdateExposer, Time
     public TimerText2(Coordinate2D initialLocation, ProjectLaika game) {
         super(initialLocation);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        setText("00:00");
+        setText("00    00");
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
         setFill(Color.WHITE);
         this.game = game;

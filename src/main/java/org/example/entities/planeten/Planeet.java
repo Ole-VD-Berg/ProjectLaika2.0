@@ -15,6 +15,7 @@ import java.util.Random;
 
 public abstract class Planeet extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
         protected int size;
+        private static int geslicedePlaneten = 0;
         protected Hitbox hitBox;
         protected SchermHitbox schermHitbox;
         protected Coordinate2D intitialLocation;
@@ -60,6 +61,7 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
     public void checkForSlice(){
         if(hitBox.getExit() && schermHitbox.getIsDragged()){
             doSlicingActie();
+            geslicedePlaneten++;
         }
 
     }
@@ -70,4 +72,8 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
     }
 
     protected abstract void doSlicingActie();
+
+    public int getGeslicedePlaneten() {
+        return geslicedePlaneten;
+    }
 }

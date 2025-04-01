@@ -28,9 +28,9 @@ public class Timer2 extends Timer {
 
     public String getTijd() {
         if (seconde < 10 && minuut < 10)
-            return "0" + minuut + ":0" + seconde;
+            return "0" + minuut + "    0" + seconde;
         else {
-            return "0" + minuut + ":" + seconde;
+            return "0" + minuut + "    " + seconde;
         } // mooi weergeven van de timer
     }
     public int getSeconde() {
