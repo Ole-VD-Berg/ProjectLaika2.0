@@ -37,7 +37,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight() / 2), this);
+        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
         addEntity(overlaySprite);
