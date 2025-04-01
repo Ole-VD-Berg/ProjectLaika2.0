@@ -12,9 +12,11 @@ import org.example.entities.titleScene.QuitButtonSprite;
 
 public class EndScene extends StaticScene {
     private ProjectLaika game;
+    private GameScene gameScene;
     private final int buttonX = 30;
     //private final int buttonY = (int) getHeight();
-    public EndScene(ProjectLaika game) {
+    public EndScene(ProjectLaika game, GameScene gameScene) {
+        this.gameScene = gameScene;
         this.game = game;
     }
 
@@ -33,7 +35,7 @@ public class EndScene extends StaticScene {
         addEntity(quitButtonSprite);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
         addEntity(overlaySprite);
-        ScoreText scoreText = new ScoreText(new Coordinate2D(390, getHeight() - 32));
+        ScoreText scoreText = new ScoreText(new Coordinate2D(390, getHeight() - 32), gameScene);
         addEntity(scoreText);
         TimerText timerText = new TimerText(new Coordinate2D(278, getHeight() - 32));
         addEntity(timerText);

@@ -1,5 +1,6 @@
 package org.example.entities.overlays;
 
+import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.TimerContainer;
@@ -14,6 +15,7 @@ public class TimerText extends TextEntity {
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
         setFill(Color.WHITE);
         setText("00    00");
+        setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
     public void setTimerText(int minute, int second) {

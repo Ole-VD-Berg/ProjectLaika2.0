@@ -3,12 +3,13 @@ package org.example.entities.planeten.onbewoondPlaneet;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import org.example.ProjectLaika;
+import org.example.entities.overlays.ScoreText;
 import org.example.entities.planeten.HitBox;
 import org.example.entities.planeten.Planeet;
 import org.example.scenes.GameScene;
 
 public class OnbewoondePlaneet extends Planeet {
-
+    //int test = 1;
     public OnbewoondePlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation, size, game, gameScene, direction);
     }
@@ -22,11 +23,10 @@ public class OnbewoondePlaneet extends Planeet {
 
         hitBox = new HitBox(new Coordinate2D(intitialLocation), game, this.size);
         addEntity(hitBox);
-
     }
 
-    @Override
     protected void doSlicingActie() {
+        gameScene.doeScoreErbij(1);
         remove();
     }
 }

@@ -22,6 +22,7 @@ import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer, TimerContainer {
     public ScoreText scoreText;
     private ProjectLaika game;
+    private int score;
     boolean isDragged = false;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
@@ -41,9 +42,9 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(laser);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()));
         addEntity(overlaySprite);
-        ScoreText scoreText = new ScoreText(new Coordinate2D(390, getHeight() - 32));
+        ScoreText scoreText = new ScoreText(new Coordinate2D(getWidth() / 1.6, getHeight() - 32), this);
         addEntity(scoreText);
-        TimerText timerText = new TimerText(new Coordinate2D(278, getHeight() - 32));
+        TimerText timerText = new TimerText(new Coordinate2D(getWidth() / 2, getHeight() - 32));
         addEntity(timerText);
         schermHitBox = new SchermHitBox(new Coordinate2D(0,0), game);
         addEntity(schermHitBox);
@@ -74,6 +75,14 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void setupTimers() {
         TestTimer timer = new TestTimer(1000);
         addTimer(timer);
+    }
+
+    public void doeScoreErbij(int score) {
+        this.score += score;
+    }
+
+    public int getScore() {
+        return score;
     }
 
 }
