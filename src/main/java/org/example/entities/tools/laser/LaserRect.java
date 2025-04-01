@@ -1,4 +1,4 @@
-package org.example.entities.tools;
+package org.example.entities.tools.laser;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;

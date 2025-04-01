@@ -7,9 +7,8 @@ import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.overlays.*;
-import org.example.entities.planeten.Planeet;
 import org.example.entities.timer.TimerText2;
-import org.example.entities.tools.Laser;
+import org.example.entities.tools.laser.Laser;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer {
@@ -17,7 +16,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private ProjectLaika game;
     private int score;
     private boolean laser = false;
-    Planeet planeet;
+    ObjectenSpawner objectenSpawner;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     public SchermHitbox schermHitbox;
@@ -31,15 +30,22 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     }
 
     @Override
+    public void setupEntitySpawners() {
+        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
+        addEntitySpawner(objectenSpawner);
+    }
+
+    @Override
     public void setupEntities() {
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
-        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2), this, planeet);
+//        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
+//        addEntity(planetenText);
         scoreText = new ScoreText(new Coordinate2D(getWidth() / 2, getHeight() / 2), this);
         addEntity(scoreText);
-        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() / 2), game);
+        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() / 2), game, objectenSpawner);
         addEntity(timerText2);
         schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
         addEntity(schermHitbox);
@@ -54,10 +60,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         return mouseCoordinates;
     }
 
-    @Override
-    public void setupEntitySpawners() {
-        addEntitySpawner(new ObjectenSpawner(getWidth(), getHeight(), game, this));
-    }
 
     public void doeScoreErbij(int score) {
         this.score += score;

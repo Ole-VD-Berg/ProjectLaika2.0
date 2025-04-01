@@ -76,4 +76,8 @@ public abstract class Planeet extends DynamicCompositeEntity implements UpdateEx
     public int getGeslicedePlaneten() {
         return geslicedePlaneten;
     }
+
+    public void resetGeslicedePlaneten() {
+        geslicedePlaneten = 0;
+    }
 }

@@ -5,25 +5,29 @@ import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import javafx.scene.paint.Color;
+import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.planeten.Planeet;
 import org.example.scenes.GameScene;
 
 public class PlanetenText extends DynamicTextEntity implements UpdateExposer {
     private int score = 0;
     private GameScene gameScene;
-    Planeet planeet;
-    public PlanetenText(Coordinate2D initialLocation, GameScene gameScene, Planeet planeet){
+    ObjectenSpawner objectenSpawner;
+    public PlanetenText(Coordinate2D initialLocation, GameScene gameScene, ObjectenSpawner objectenSpawner){
         super(initialLocation);
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
         setFill(Color.WHITE);
-        setText("Score: 0");
+        setText("plane: 0");
         this.gameScene = gameScene;
-        this.planeet = planeet;
+        this.objectenSpawner = objectenSpawner;
 
     }
 
     @Override
     public void explicitUpdate(long l) {
-        setText("Score: " + (planeet.getGeslicedePlaneten()));
+        if (objectenSpawner != null) {
+            Planeet planeet = objectenSpawner.getPlaneet();
+            setText("planeten: " + (planeet.getGeslicedePlaneten()));
+        }
     }
 }
