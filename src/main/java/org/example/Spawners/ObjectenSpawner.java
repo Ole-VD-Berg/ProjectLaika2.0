@@ -6,6 +6,7 @@ import org.example.ProjectLaika;
 import org.example.entities.planeten.bewoondePlaneet.BewoondePlaneet;
 import org.example.entities.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
+import org.example.entities.vijandig.Astroide;
 import org.example.scenes.GameScene;
 
 import java.util.Random;
@@ -27,14 +28,22 @@ public class ObjectenSpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
-    int randomNummer = new Random().nextInt(10);
+    int randomNummer = new Random().nextInt(15);
         if (randomNummer < 6) {
             spawn(new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
         } else if(randomNummer < 8){
             spawn(new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
         }
-        else{
+        else if(randomNummer < 10){
             spawn(new OnbekendePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction)));
+        }
+        else {
+            spawn(new Astroide(randomLocation(direction), 150, game, gameScene, angleConverter(direction)) {
+                @Override
+                protected void doSlicingActie() {
+
+                }
+            });
         }
 
     }

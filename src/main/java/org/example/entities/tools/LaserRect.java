@@ -1,16 +1,11 @@
-package org.example.entities.laser;
+package org.example.entities.tools;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
-import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
-import com.github.hanyaeger.api.userinput.MouseMovedListener;
-import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import org.example.scenes.GameScene;
 
-import static com.github.hanyaeger.api.entities.Direction.UP;
 import static javafx.scene.paint.Color.color;
 
 public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {

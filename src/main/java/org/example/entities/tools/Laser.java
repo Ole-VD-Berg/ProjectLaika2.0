@@ -1,12 +1,7 @@
-package org.example.entities.laser;
+package org.example.entities.tools;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
-import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
-import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
-import com.github.hanyaeger.api.scenes.DynamicScene;
 import org.example.scenes.GameScene;
 
 public class Laser extends DynamicCompositeEntity {

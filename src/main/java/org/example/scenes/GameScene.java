@@ -3,20 +3,15 @@ package org.example.scenes;
 import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
-import com.github.hanyaeger.api.userinput.MouseDraggedListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.overlays.SchermHitBox;
-import org.example.entities.laser.Laser;
+import org.example.entities.tools.Laser;
 import org.example.entities.overlays.OverlaySprite;
 import org.example.entities.overlays.ScoreText;
 import org.example.entities.overlays.TestTimer;
 import org.example.entities.overlays.TimerText;
-import org.example.entities.planeten.Planeet;
-import org.example.entities.planeten.bewoondePlaneet.BewoondePlaneet;
-import org.example.entities.planeten.onbekendePlaneet.OnbekendePlaneet;
-import org.example.entities.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer, TimerContainer {
