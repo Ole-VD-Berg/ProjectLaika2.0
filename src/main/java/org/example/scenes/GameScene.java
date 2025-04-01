@@ -44,10 +44,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(overlaySprite);
         ScoreText scoreText = new ScoreText(new Coordinate2D(getWidth() / 1.6, getHeight() - 32), this);
         addEntity(scoreText);
-        TimerText timerText = new TimerText(new Coordinate2D(getWidth() / 2, getHeight() - 32));
-        addEntity(timerText);
         schermHitBox = new SchermHitBox(new Coordinate2D(0,0), game);
         addEntity(schermHitBox);
+        TimerText timerText = new TimerText(new Coordinate2D(getWidth() / 2, getHeight() - 32));
+        addEntity(timerText);
 //        Planeet O1 = new OnbewoondePlaneet(new Coordinate2D(100,100) ,150, game, this, direction);
 //        addEntity(O1);
 //        Planeet O2 = new BewoondePlaneet(new Coordinate2D(300,100) ,150, game, this, direction);

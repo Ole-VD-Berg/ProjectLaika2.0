@@ -16,7 +16,7 @@ public class ObjectenSpawner extends EntitySpawner {
     private final double sceneHeight;
     GameScene gameScene;
     ProjectLaika game;
-    int direction = 1;
+    int direction = 2;
     public ObjectenSpawner(double sceneWidth, double sceneHeight, ProjectLaika game, GameScene gameScene) {
         super(300);
         this.sceneWidth = sceneWidth;
@@ -41,21 +41,26 @@ public class ObjectenSpawner extends EntitySpawner {
 
     private Coordinate2D randomLocation(int direction) {
         switch (direction) {
-            case 0:
+            case 0: //omlaag
                 double x = new Random().nextInt((int) sceneWidth);
                 return new Coordinate2D(x, 0);
 
-            case 1:
+            case 1: //rechts
                 double y = new Random().nextInt((int) sceneHeight);
                 return new Coordinate2D(0, y);
 
-            case 2:
+            case 2: //omhoog
                 double x2 = new Random().nextInt((int) sceneWidth);
-                return new Coordinate2D(x2, sceneHeight);
+                System.out.println(sceneWidth);
+                return new Coordinate2D(x2, sceneWidth * 0.35);
 
-            case 3:
+
+
+            case 3: //links
                 double y2 = new Random().nextInt((int) sceneHeight);
-                return new Coordinate2D(sceneWidth, y2);
+                //System.out.println(sceneHeight);
+                return new Coordinate2D(sceneHeight * 0.9, y2);
+
 
 
             default:
