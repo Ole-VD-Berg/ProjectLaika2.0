@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.userinput.*;
 import javafx.scene.paint.Color;
 import org.example.ProjectLaika;
-import org.example.entities.tools.LaserPunt;
+import org.example.entities.tools.laser.LaserPunt;
 import org.example.scenes.GameScene;
 
 import java.util.List;
