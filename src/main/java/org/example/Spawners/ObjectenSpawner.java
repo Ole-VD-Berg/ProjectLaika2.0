@@ -55,11 +55,11 @@ public class ObjectenSpawner extends EntitySpawner {
         }
         else {
             int randomAstroide = new Random().nextInt(10);
-            if (randomAstroide == 0) {
-                Astroide astroide = new Astroide(new Coordinate2D(0,0), 100, game, gameScene, 45);
+            if (randomAstroide == 1) {
+                Astroide astroide = new Astroide(new Coordinate2D(0,0), 100, game, gameScene, 45, 1);
                 spawn(astroide);
-            } else {
-                Astroide astroide = new Astroide(new Coordinate2D(gameScene.getWidth(), 0), 100, game, gameScene, 315);
+            } else if (randomAstroide == 2) {
+                Astroide astroide = new Astroide(new Coordinate2D(gameScene.getWidth() / 2, 50), 100, game, gameScene, 315, 0);
                 spawn(astroide);
             }
 

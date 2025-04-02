@@ -32,11 +32,13 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/backgroundUpscale.png");
+
     }
 
 
     @Override
     public void setupEntities() {
+
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
@@ -47,8 +49,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(scoreText);
         TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, objectenSpawner);
         addEntity(timerText2);
-        Astroide astroide = new Astroide(new Coordinate2D(100, 50), 100, game, this, 0);
-        addEntity(astroide);
+
+        System.out.println(getWidth());
         schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
         addEntity(schip);
         DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight() - 10), new Size(getWidth(), 10), overlaySprite);

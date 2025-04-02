@@ -15,8 +15,5 @@ public class OverlaySprite extends DynamicSpriteEntity {
     }
     public void increaseSpriteFrame() {
         setCurrentFrameIndex(getCurrentFrameIndex() + 1);
-        System.out.println(getCurrentFrameIndex());
-        var popSound = new SoundClip("audio/glas.mp3");
-        popSound.play();
     }
 }

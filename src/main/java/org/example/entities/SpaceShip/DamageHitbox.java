@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.CompositeEntity;
 import com.github.hanyaeger.api.entities.impl.RectangleEntity;
+import com.github.hanyaeger.api.media.SoundClip;
 import javafx.geometry.Bounds;
 import javafx.scene.paint.Color;
 import org.example.entities.overlays.OverlaySprite;
@@ -28,21 +29,24 @@ public class DamageHitbox extends RectangleEntity implements Collided {
     @Override
     public void onCollision(List<Collider> list) {
         for (Collider collider : list) {
-            if (collider instanceof Bullet) {
+            if (collider instanceof Bullet bullet) {
                 bulletHit++;
-                Bullet bullet = (Bullet) collider;
                 bullet.remove();
                 if(bulletHit == 3) {
                     overlaySprite.increaseSpriteFrame();
                     bulletHit = 0;
                 }
             }
-            if(collider instanceof Astroide) {
-                Astroide astroide = (Astroide) collider;
+            if(collider instanceof Astroide astroide) {
                 overlaySprite.increaseSpriteFrame();
                 astroide.remove();
-
+                playSound();
             }
         }
+    }
+    private void playSound() {
+        var glas = new SoundClip("audio/glas.mp3");
+        glas.setVolume(5);
+        glas.play();
     }
 }
