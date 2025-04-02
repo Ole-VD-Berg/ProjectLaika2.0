@@ -10,11 +10,8 @@ public class Timer2 extends Timer {
     private int seconde = 0;
     private int minuut = 2;
     public Timer2(long intervalInMs, ProjectLaika game, Planeet planeet) {
-<<<<<<< Updated upstream
-        super(1000);
-=======
         super(intervalInMs);
->>>>>>> Stashed changes
+
         this.game = game;
     }
 

@@ -23,11 +23,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     ObjectenSpawner objectenSpawner;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
-<<<<<<< Updated upstream
-=======
-    public SchermHitbox schermHitbox;
     Schip schip;
->>>>>>> Stashed changes
     public GameScene(ProjectLaika game) {
         this.game = game;
     }
@@ -50,13 +46,11 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(scoreText);
         TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, objectenSpawner);
         addEntity(timerText2);
-<<<<<<< Updated upstream
-        Schip schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270, bulletSpawner);
-=======
-        schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
-        addEntity(schermHitbox);
+
+        Schip schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
+
         schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
->>>>>>> Stashed changes
+
         addEntity(schip);
         DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight()), new Size(getWidth(), -10));
     }
