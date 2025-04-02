@@ -17,6 +17,7 @@ public class ScoreText extends DynamicTextEntity implements UpdateExposer {
         setFill(Color.WHITE);
         setText("Score: 0");
         this.gameScene = gameScene;
+        setViewOrder(10);
     }
 
     @Override

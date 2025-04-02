@@ -28,6 +28,7 @@ public class TimerText2 extends DynamicTextEntity implements UpdateExposer, Time
 //      if (objectenSpawner != null){
 //          this.planeet = objectenSpawner.getPlaneet();
 //      }
+        setViewOrder(10);
     }
 
 

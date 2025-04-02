@@ -20,6 +20,7 @@ public class PlanetenText extends DynamicTextEntity implements UpdateExposer {
         setText("plane: 0");
         this.gameScene = gameScene;
         this.objectenSpawner = objectenSpawner;
+        setViewOrder(10);
 
     }
 

@@ -9,6 +9,7 @@ import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.SpaceShip.DamageHitbox;
 import org.example.entities.overlays.*;
 import org.example.entities.sliceable.planeten.Hitbox;
+import org.example.entities.sliceable.vijandig.astroide.Astroide;
 import org.example.entities.sliceable.vijandig.schip.BulletSpawner;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
@@ -38,7 +39,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void setupEntities() {
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()), 3,1);
+        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
 //        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
 //        addEntity(planetenText);
@@ -46,13 +47,13 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(scoreText);
         TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, objectenSpawner);
         addEntity(timerText2);
-
-        Schip schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
-
+        Astroide astroide = new Astroide(new Coordinate2D(100, 50), 100, game, this, 0);
+        addEntity(astroide);
         schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
-
         addEntity(schip);
-        DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight()), new Size(getWidth(), -10));
+        DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight() - 10), new Size(getWidth(), 10), overlaySprite);
+        addEntity(damageHitbox);
+
     }
     @Override
     public void setupEntitySpawners() {
