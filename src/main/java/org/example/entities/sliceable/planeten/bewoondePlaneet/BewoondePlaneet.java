@@ -21,8 +21,8 @@ public class BewoondePlaneet extends Planeet {
         BewoondePlaneetSprite sprite = new BewoondePlaneetSprite("sprites/planeten/overlays/bewoond.png", new Coordinate2D(intitialLocation), new Size(size, size));
         addEntity(sprite);
 
-        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this.size, gameScene);
-        addEntity(hitBox);
+//        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this, gameScene, this.size);
+//        addEntity(hitBox);
     }
 
     @Override

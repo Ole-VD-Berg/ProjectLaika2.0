@@ -8,7 +8,6 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import org.example.ProjectLaika;
-import org.example.entities.overlays.SchermHitbox;
 import org.example.entities.sliceable.planeten.Hitbox;
 import org.example.scenes.GameScene;
 
@@ -17,7 +16,6 @@ import java.util.Random;
 public abstract class Astroide extends DynamicCompositeEntity implements UpdateExposer, SceneBorderCrossingWatcher {
         protected int size;
         protected Hitbox hitbox;
-        protected SchermHitbox schermHitbox;
         protected Coordinate2D intitialLocation;
         protected ProjectLaika game;
         protected GameScene gameScene;
@@ -28,7 +26,6 @@ public abstract class Astroide extends DynamicCompositeEntity implements UpdateE
         this.intitialLocation = initiallocation;
         this.game = game;
         this.gameScene = gameScene;
-        this.schermHitbox = gameScene.schermHitbox;
         double SPEED = new Random().nextDouble(1) + 1;
         setMotion(SPEED, direction);
     }
@@ -50,14 +47,14 @@ public abstract class Astroide extends DynamicCompositeEntity implements UpdateE
     public void explicitUpdate(long l) {
         size++;
         //System.out.println(size);
-        if(hitbox != null && schermHitbox != null) {
+        if(hitbox != null) {
             checkForSlice();
         }
 
     }
 
     public void checkForSlice(){
-        if(hitbox.getExit() && schermHitbox.getIsDragged()){
+        if(hitbox.getExit() && gameScene.getLaser()){
             doSlicingActie();
         }
 

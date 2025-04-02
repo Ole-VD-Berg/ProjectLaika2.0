@@ -33,12 +33,18 @@ public class LaserPunt extends DynamicCircleEntity implements Collider, UpdateEx
             setFill(Color.RED);
             setCursor(Cursor.NONE);
         }
-        Coordinate2D mouseCoordinates = laser.getMouseCoordinates();
+        this.mouseCoordinates = laser.getMouseCoordinates();
 
         if (mouseCoordinates != null) {
             double angle = angleTo(mouseCoordinates);
             double speed = distanceTo(mouseCoordinates);
             setMotion(speed, angle);
         }
+    }
+    public Coordinate2D getMouseCoordinates() {
+        if (mouseCoordinates != null) {
+            return mouseCoordinates;
+        }
+        return new Coordinate2D(0,0);
     }
 }

@@ -25,7 +25,7 @@ public class TimerText extends DynamicTextEntity implements UpdateExposer, Timer
 
     @Override
     public void setupTimers() {
-        timer = new TestTimer(100);
+        timer = new TestTimer(1000);
         addTimer(timer);
     }
 

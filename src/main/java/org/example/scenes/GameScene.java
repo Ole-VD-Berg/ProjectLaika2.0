@@ -8,6 +8,7 @@ import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.SpaceShip.DamageHitbox;
 import org.example.entities.overlays.*;
+import org.example.entities.sliceable.planeten.Hitbox;
 import org.example.entities.sliceable.vijandig.schip.BulletSpawner;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
@@ -23,7 +24,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     int direction = 0;
     BulletSpawner bulletSpawner;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
-    public SchermHitbox schermHitbox;
     public GameScene(ProjectLaika game) {
         this.game = game;
     }
@@ -52,8 +52,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(scoreText);
         TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() / 2), game, objectenSpawner);
         addEntity(timerText2);
-        schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
-        addEntity(schermHitbox);
         Schip schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270, bulletSpawner);
         addEntity(schip);
         DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight()), new Size(getWidth(), -10));

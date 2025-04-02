@@ -13,17 +13,20 @@ import org.example.scenes.GameScene;
 
 import java.util.List;
 
-public class Hitbox extends DynamicCircleEntity implements Collided, MouseDragExitedListener, MouseExitListener {
+public class Hitbox extends DynamicCircleEntity implements Collided {
 
     private ProjectLaika game;
     private GameScene gameScene;
+    private Planeet planeet;
     int size;
     public boolean exit = false;
     private boolean wasInsideHitbox = false;
-    public Hitbox(Coordinate2D initialLocation, ProjectLaika game, int size, GameScene gameScene) {
+
+    public Hitbox(Coordinate2D initialLocation, ProjectLaika game, Planeet planeet, GameScene gameScene, int size) {
         super(initialLocation);
         this.game = game;
         this.gameScene = gameScene;
+        this.planeet = planeet;
         this.size = size;
         setRadius(this.size / 4);
         //^grootte van sprite is in werkelijkheid 2x zo groot als de sprite die je ziet daarom nog een keer /2
@@ -35,18 +38,26 @@ public class Hitbox extends DynamicCircleEntity implements Collided, MouseDragEx
     public void onCollision(List<Collider> colliders) {
         for (Collider collider : colliders) {
             if (collider instanceof LaserPunt) {
+                LaserPunt laserPunt = (LaserPunt) collider;
+                double laserX = laserPunt.getMouseCoordinates().getX();
+                double laserY = laserPunt.getMouseCoordinates().getY();
+                if(isInHitbox(laserX, laserY)) {
+                    wasInsideHitbox = true;
+                }
+                if(!isInHitbox(laserX, laserY) && wasInsideHitbox){
+                    exit = true;
+                    wasInsideHitbox = false;
+                }
             }
         }
     }
 
-    @Override
-    public void onDragExited(Coordinate2D coordinate2D, MouseDraggedListener mouseDraggedListener) {
-        exit = true;
-    }
-
-    @Override
-    public void onMouseExited() {
-        exit = true;
+    private boolean isInHitbox(double laserX, double laserY) {
+        double hitboxX = planeet.getPlaneetLocation().getX();
+        double hitboxY = planeet.getPlaneetLocation().getY();
+        double hitboxRadius = getRadius();
+        double distance = Math.sqrt(Math.pow(laserX - hitboxX, 2) + Math.pow(laserY - hitboxY, 2));
+        return distance <= hitboxRadius;
     }
 
     public boolean getExit() {
