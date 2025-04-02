@@ -12,6 +12,7 @@ public class OverlaySprite extends DynamicSpriteEntity {
     public OverlaySprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns) {
         super(resource, initialLocation, size, rows, columns);
         setCurrentFrameIndex(2);
+        setViewOrder(-1);
 
 
     }

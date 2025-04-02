@@ -11,6 +11,7 @@ module ProjectLaika20 {
     opens sprites.planeten;
     opens sprites.planeten.overlays;
     opens sprites.vijandig;
+    opens sprites.onbekend;
     exports org.example;
 
 
