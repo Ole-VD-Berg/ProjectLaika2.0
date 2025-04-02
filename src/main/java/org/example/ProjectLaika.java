@@ -12,9 +12,10 @@ public class ProjectLaika extends YaegerGame
 {
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    double width = screenSize.getWidth();
-    double height = screenSize.getHeight();
-    
+    double ScreenWidth = screenSize.getWidth();
+    double ScreenHeight = screenSize.getHeight();
+    private final double width = ScreenWidth / 2;
+    private final double height = ScreenHeight / 2;
     public static void main( String[] args ) {
         launch(args);
     }
@@ -22,28 +23,29 @@ public class ProjectLaika extends YaegerGame
 
     @Override
     public void setupGame() {
+
         setGameTitle("project Laika");
-        setSize(new Size(width / 2, height / 2));
+        setSize(new Size(width, height));
 
     }
 
     @Override
     public void setupScenes() {
-//        addScene(0, new GameScene(this));// laad eerst de game scene
-//        addScene(1, new TitleScene(this));
+        addScene(0, new GameScene(this));// laad eerst de game scene
+        addScene(1, new TitleScene(this));
 
-        addScene(0, new TitleScene(this)); //laad eerst de title scene
-        addScene(1, new GameScene(this));
+//        addScene(0, new TitleScene(this)); //laad eerst de title scene
+//        addScene(1, new GameScene(this));
         addScene(2, new EndScene(this, new GameScene(this))); //laad de eind scene
 
     }
 
     public double getWidth() {
-        return width / 2;
+        return width;
     }
 
     public double getHeight() {
-        return height / 2;
+        return height;
     }
 }
 

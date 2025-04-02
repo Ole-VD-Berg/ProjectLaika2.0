@@ -22,8 +22,12 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private boolean laser = false;
     ObjectenSpawner objectenSpawner;
     int direction = 0;
-    BulletSpawner bulletSpawner;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
+<<<<<<< Updated upstream
+=======
+    public SchermHitbox schermHitbox;
+    Schip schip;
+>>>>>>> Stashed changes
     public GameScene(ProjectLaika game) {
         this.game = game;
     }
@@ -32,14 +36,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void setupScene() {
         setBackgroundImage("backgrounds/backgroundUpscale.png");
     }
-    @Override
-    public void setupEntitySpawners() {
-        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
-        addEntitySpawner(objectenSpawner);
-        bulletSpawner = new BulletSpawner(getWidth(), getHeight());
-        addEntitySpawner(bulletSpawner);
 
-    }
+
     @Override
     public void setupEntities() {
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
@@ -48,15 +46,27 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(overlaySprite);
 //        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
 //        addEntity(planetenText);
-        scoreText = new ScoreText(new Coordinate2D(getWidth() / 2, getHeight() / 2), this);
+        scoreText = new ScoreText(new Coordinate2D(getWidth() * 0.61, getHeight() * 0.92), this);
         addEntity(scoreText);
-        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() / 2), game, objectenSpawner);
+        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, objectenSpawner);
         addEntity(timerText2);
+<<<<<<< Updated upstream
         Schip schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270, bulletSpawner);
+=======
+        schermHitbox = new SchermHitbox(new Coordinate2D(0,0), game);
+        addEntity(schermHitbox);
+        schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
+>>>>>>> Stashed changes
         addEntity(schip);
         DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight()), new Size(getWidth(), -10));
     }
-
+    @Override
+    public void setupEntitySpawners() {
+        objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
+        addEntitySpawner(objectenSpawner);
+        BulletSpawner bulletSpawner = new BulletSpawner(getWidth(), getHeight(), this, schip);
+        addEntitySpawner(bulletSpawner);
+    }
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
@@ -84,5 +94,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         this.laser = laser;
     }
 
+//    public int getDirection(){
+//        return Schip.getDirection();
+//    }
 
 }

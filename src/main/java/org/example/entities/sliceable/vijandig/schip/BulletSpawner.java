@@ -1,6 +1,7 @@
 package org.example.entities.sliceable.vijandig.schip;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.Node;
@@ -16,19 +17,24 @@ import java.util.Optional;
 import java.util.Random;
 
 
-public class BulletSpawner extends EntitySpawner {
+public class BulletSpawner extends EntitySpawner implements UpdateExposer {
 
     private final double sceneWidth;
     private final double sceneHeight;
+    private final GameScene gameScene;
+    Schip schip;
     private int direction;
     int speed = 10;
 
     Planeet planeet;
-    public BulletSpawner(double sceneWidth, double sceneHeight) {
+    public BulletSpawner(double sceneWidth, double sceneHeight, GameScene gameScene, Schip schip) {
         super(300);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.direction = direction;
+        this.schip = schip;
+        this.gameScene = gameScene;
+
 
     }
 
@@ -38,10 +44,15 @@ public class BulletSpawner extends EntitySpawner {
             spawn(bullet);
 
     }
-    public void setDirection(int direction) {
-        this.direction = direction;
+//    public void setDirection(int direction) {
+//        this.direction = direction;
+//    }
+
+
+    @Override
+    public void explicitUpdate(long l) {
+       // this.direction = gameScene.getDirection();
+       // this.location = Schip.getLocation();
     }
-
-
 }
 
