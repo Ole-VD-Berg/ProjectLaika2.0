@@ -59,8 +59,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void setupEntitySpawners() {
         objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
         addEntitySpawner(objectenSpawner);
-        BulletSpawner bulletSpawner = new BulletSpawner(getWidth(), getHeight(), this, schip);
-        addEntitySpawner(bulletSpawner);
+//        BulletSpawner bulletSpawner = new BulletSpawner(getWidth(), getHeight(), this, schip);
+//        addEntitySpawner(bulletSpawner);
     }
 
     @Override

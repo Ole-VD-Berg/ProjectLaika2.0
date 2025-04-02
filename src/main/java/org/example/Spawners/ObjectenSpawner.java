@@ -7,6 +7,7 @@ import org.example.entities.sliceable.planeten.Planeet;
 import org.example.entities.sliceable.planeten.bewoondePlaneet.BewoondePlaneet;
 import org.example.entities.sliceable.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.sliceable.planeten.onbewoondPlaneet.OnbewoondePlaneet;
+import org.example.entities.sliceable.vijandig.astroide.Astroide;
 import org.example.scenes.GameScene;
 
 import java.util.Random;
@@ -36,7 +37,7 @@ public class ObjectenSpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
-    int randomNummer = new Random().nextInt(15);
+    int randomNummer = new Random().nextInt(12);
         if (randomNummer < 6) {
             OnbewoondePlaneet onbewoondePlaneet = new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(onbewoondePlaneet);
@@ -53,8 +54,15 @@ public class ObjectenSpawner extends EntitySpawner {
           //  planeet = onbekendePlaneet;
         }
         else {
-         //   spawn(new Astroide(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
-            // waarom tf is astroide abstract huhhh
+            int randomAstroide = new Random().nextInt(10);
+            if (randomAstroide == 0) {
+                Astroide astroide = new Astroide(new Coordinate2D(0,0), 100, game, gameScene, 45);
+                spawn(astroide);
+            } else {
+                Astroide astroide = new Astroide(new Coordinate2D(gameScene.getWidth(), 0), 100, game, gameScene, 315);
+                spawn(astroide);
+            }
+
         }
 
     }
