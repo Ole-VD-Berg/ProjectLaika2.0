@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import org.example.scenes.EndScene;
 import org.example.scenes.GameScene;
+import org.example.scenes.OnbekendeScene;
 import org.example.scenes.TitleScene;
 
 import java.awt.*;
@@ -31,13 +32,10 @@ public class ProjectLaika extends YaegerGame
 
     @Override
     public void setupScenes() {
-        addScene(1, new GameScene(this));// laad eerst de game scene
-        addScene(0, new TitleScene(this));
-
-//        addScene(0, new TitleScene(this)); //laad eerst de title scene
-//        addScene(1, new GameScene(this));
+        addScene(0, new TitleScene(this)); //laad eerst de title scene
+        addScene(1, new GameScene(this));
         addScene(2, new EndScene(this, new GameScene(this))); //laad de eind scene
-
+        addScene(3, new OnbekendeScene(this, new GameScene(this))); //laad de onbekende scene
     }
 
     public double getWidth() {
