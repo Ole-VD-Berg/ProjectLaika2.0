@@ -16,6 +16,7 @@ import org.example.entities.tools.laser.LaserPunt;
 import java.util.List;
 
 public class DamageHitbox extends RectangleEntity implements Collided {
+    private int bulletHit = 0;
     OverlaySprite overlaySprite;
 
     public DamageHitbox(Coordinate2D initialPosition, Size size, OverlaySprite overlaySprite) {
@@ -28,14 +29,19 @@ public class DamageHitbox extends RectangleEntity implements Collided {
     public void onCollision(List<Collider> list) {
         for (Collider collider : list) {
             if (collider instanceof Bullet) {
-
-
+                bulletHit++;
+                Bullet bullet = (Bullet) collider;
+                bullet.remove();
+                if(bulletHit == 3) {
+                    overlaySprite.increaseSpriteFrame();
+                    bulletHit = 0;
+                }
             }
             if(collider instanceof Astroide) {
                 Astroide astroide = (Astroide) collider;
                 overlaySprite.increaseSpriteFrame();
                 astroide.remove();
-                System.out.println("Astroide hit!");
+
             }
         }
     }
