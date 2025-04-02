@@ -4,13 +4,22 @@ import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.entities.Collider;
 import org.example.ProjectLaika;
 import org.example.entities.sliceable.SliceableObject;
+import org.example.entities.sliceable.planeten.AstroideHitbox;
+import org.example.entities.sliceable.planeten.Hitbox;
 import org.example.scenes.GameScene;
 
-public class Astroide extends SliceableObject implements Collider { ;
+public class Astroide extends SliceableObject implements Collider, UpdateExposer {
+    Coordinate2D locatie;
+    private int currentRow;
 
-    public Astroide(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
+    public Astroide(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction, int currentRow) {
         super(initialLocation, size, game, gameScene, direction);
         setMotion(SPEED, direction);
+        setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        this.currentRow = currentRow;
+        this.locatie = initialLocation;
+        this.locatie = getLocationInScene();
+
 
     }
 
@@ -18,10 +27,17 @@ public class Astroide extends SliceableObject implements Collider { ;
     @Override
     protected void setupEntities() {
         super.setupEntities();
-        AstroideSprite astroideSprite = new AstroideSprite("sprites/vijandig/astroide.png", new Coordinate2D(intitialLocation), new Size(size, size), 1, 4);
+        AstroideHitbox hitBox = new AstroideHitbox(new Coordinate2D(intitialLocation), game, this, gameScene, this.size);
+        addEntity(hitBox);
+        AstroideSprite astroideSprite = new AstroideSprite("sprites/vijandig/astroideSpriteSheet.png", new Coordinate2D(intitialLocation), new Size(size, size), 2, 4, currentRow);
         addEntity(astroideSprite);
-        setAnchorPoint(AnchorPoint.CENTER_CENTER);
+
+
     }
+    public Coordinate2D getPlaneetLocatie() {
+        return locatie;
+    }
+
 
     @Override
     protected void doSlicingActie() {

@@ -8,10 +8,10 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class AstroideSprite extends DynamicSpriteEntity {
 
-    protected AstroideSprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns) {
+    protected AstroideSprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns, int currentRow) {
         super(resource, initialLocation, size, rows, columns);
         setPreserveAspectRatio(true);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        setAutoCycle(100);
+        setAutoCycle(100, currentRow);
     }
 }
