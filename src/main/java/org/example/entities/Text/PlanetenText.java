@@ -1,4 +1,4 @@
-package org.example.entities.overlays;
+package org.example.entities.Text;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
@@ -6,7 +6,6 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
 import javafx.scene.paint.Color;
 import org.example.Spawners.ObjectenSpawner;
-import org.example.entities.sliceable.planeten.Planeet;
 import org.example.scenes.GameScene;
 
 public class PlanetenText extends DynamicTextEntity implements UpdateExposer {

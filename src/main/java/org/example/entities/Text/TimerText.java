@@ -1,11 +1,10 @@
-package org.example.entities.overlays;
+package org.example.entities.Text;
 
 import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
-import com.github.hanyaeger.api.entities.impl.TextEntity;
 import javafx.scene.paint.Color;
-import org.example.entities.timer.Timer2;
+import org.example.entities.overlays.TestTimer;
 
 public class TimerText extends DynamicTextEntity implements UpdateExposer, TimerContainer {
     TestTimer timer;

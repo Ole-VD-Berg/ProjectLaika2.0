@@ -1,9 +1,8 @@
-package org.example.entities.overlays;
+package org.example.entities.Text;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
-import com.github.hanyaeger.api.entities.impl.TextEntity;
 import javafx.scene.paint.Color;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
 import org.example.scenes.GameScene;
