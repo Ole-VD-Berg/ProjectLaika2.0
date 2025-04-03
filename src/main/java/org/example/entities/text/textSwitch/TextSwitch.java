@@ -1,5 +1,6 @@
 package org.example.entities.text.textSwitch;
 
+<<<<<<< Updated upstream
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
@@ -17,6 +18,21 @@ public class TextSwitch extends DynamicTextEntity implements UpdateExposer {
             "bewoonde, onbewoonde en onbekende planeten.",
             "onbewoonde planeten kan je vernietigen.",
             "bewoonde planeten zijn planeten die je door moet laten gaan.",
+=======
+import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
+
+public class TextSwitch extends DynamicTextEntity {
+    int zin = 0;
+    private String[] text = {
+            "druk op spatie om naar de volgende zin te gaan.",
+            "in deze game heb je 1 doel: de aarde beschermen.",
+            "dit doe je door te kiezen om planeten te vernietigen of niet.",
+            "je hebt 3 verschillende planeten",
+            "bewoonde planeten, onbekende planeten en onbewoonde planeten.",
+            "bewoonde planeten zijn planeten die je door moet laten gaan.",
+            "onbewoonde planeten kan je vernietigen.",
+>>>>>>> Stashed changes
             "onbekende planeten moet je bekijken met de zaklamp.",
             "je maakt een keuze om ze te vernietigen of niet door een kleine puzzel",
             "je sliced planeten met je laser",
@@ -29,9 +45,14 @@ public class TextSwitch extends DynamicTextEntity implements UpdateExposer {
     };
     public TextSwitch(Coordinate2D initialLocation) {
         super(initialLocation);
+<<<<<<< Updated upstream
         setFill(Color.WHITE);
         setFont(new CustomFont("fonts/Minecraft.ttf", 50));
         setText(text[zin]);
+=======
+        setText(text[zin]);
+
+>>>>>>> Stashed changes
     }
 
     public void nieuweZin() {
@@ -40,6 +61,7 @@ public class TextSwitch extends DynamicTextEntity implements UpdateExposer {
             setText(text[zin]);
         }
     }
+<<<<<<< Updated upstream
 
     @Override
     public void explicitUpdate(long l) {
@@ -48,4 +70,6 @@ public class TextSwitch extends DynamicTextEntity implements UpdateExposer {
     public int getZin() {
         return zin;
     }
+=======
+>>>>>>> Stashed changes
 }
