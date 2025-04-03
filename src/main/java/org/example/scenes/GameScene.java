@@ -12,6 +12,7 @@ import org.example.entities.overlays.*;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.laser.Laser;
+import org.example.entities.tools.zaklamp.Zaklamp;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer {
@@ -40,6 +41,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
         addEntity(laser);
+        Zaklamp zaklamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), this);
+        addEntity(zaklamp);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
 //        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
@@ -95,6 +98,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     public boolean getLaser() {
         return laser;
+    }
+
+    public boolean getZaklamp() {
+        return zaklamp;
     }
 
     public void setLaser(boolean laser) {

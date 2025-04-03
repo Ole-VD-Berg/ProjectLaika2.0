@@ -11,30 +11,30 @@ import org.example.entities.tools.laser.Laser;
 import org.example.scenes.GameScene;
 
 public class ZaklampPunt extends DynamicCircleEntity implements Collider, UpdateExposer {
-    private boolean laserSwitch;
+    private boolean zaklampSwitch;
     private GameScene gameScene;
-    private Laser laser;
+    private Zaklamp zaklamp;
     private Coordinate2D mouseCoordinates;
-    protected ZaklampPunt(Coordinate2D initialLocation, GameScene gameScene, Laser laser) {
+    protected ZaklampPunt(Coordinate2D initialLocation, GameScene gameScene, Zaklamp zaklamp) {
         super(initialLocation);
         setRadius(20);
         setViewOrder(10);
         this.gameScene = gameScene;
-        this.laser = laser;
+        this.zaklamp = zaklamp;
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
     @Override
     public void explicitUpdate(long l) {
-        this.laserSwitch = gameScene.getLaser();
-        if (!laserSwitch) {
+        this.zaklampSwitch = gameScene.getZaklamp();
+        if (!zaklampSwitch) {
             setFill(Color.TRANSPARENT);
             setCursor(Cursor.DEFAULT);
         } else {
             setFill(Color.RED);
             setCursor(Cursor.NONE);
         }
-        this.mouseCoordinates = laser.getMouseCoordinates();
+        this.mouseCoordinates = zaklamp.getMouseCoordinates();
 
         if (mouseCoordinates != null) {
             double angle = angleTo(mouseCoordinates);
