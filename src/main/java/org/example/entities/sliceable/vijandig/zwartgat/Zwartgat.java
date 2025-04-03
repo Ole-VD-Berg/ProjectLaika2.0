@@ -30,7 +30,7 @@ public class Zwartgat extends SliceableObject implements Collider, UpdateExposer
         super.setupEntities();
         ZwartgatHitbox hitBox = new ZwartgatHitbox(new Coordinate2D(intitialLocation), game, this, gameScene, this.size);
         addEntity(hitBox);
-        ZwartgatSprite zwartgatSprite = new ZwartgatSprite("sprites/vijandig/zwartgat.png", new Coordinate2D(intitialLocation), new Size(size, size), 1, 2, currentRow);
+        ZwartgatSprite zwartgatSprite = new ZwartgatSprite("sprites/vijandig/zwartgat.png", new Coordinate2D(intitialLocation), new Size(size, size), 1, 1, currentRow);
         addEntity(zwartgatSprite);
 
 
