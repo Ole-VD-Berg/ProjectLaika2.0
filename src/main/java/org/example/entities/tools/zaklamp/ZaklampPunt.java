@@ -31,7 +31,7 @@ public class ZaklampPunt extends DynamicCircleEntity implements Collider, Update
             setFill(Color.TRANSPARENT);
             setCursor(Cursor.DEFAULT);
         } else {
-            setFill(Color.RED);
+            setFill(Color.WHITE);
             setCursor(Cursor.NONE);
         }
         this.mouseCoordinates = zaklamp.getMouseCoordinates();

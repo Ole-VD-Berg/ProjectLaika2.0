@@ -72,15 +72,17 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         System.out.println(mouseButton);
         mouseCoordinates = coordinate2D;
         if (mouseButton == MouseButton.PRIMARY) {
-            zaklamp = false;
+            if (!laser) {
+                zaklamp = false;
+            }
             laser = !laser;
-
-        }
-        else if (mouseButton == MouseButton.SECONDARY) {
-            laser = false;
+        } else if (mouseButton == MouseButton.SECONDARY) {
+            if (!zaklamp) {
+                laser = false;
+            }
             zaklamp = !zaklamp;
-
         }
+
 
     }
     public Coordinate2D getMouseCoordinates() {
