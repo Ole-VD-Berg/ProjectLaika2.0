@@ -10,7 +10,6 @@ import org.example.scenes.GameScene;
 public class BewoondePlaneet extends Planeet {
     public BewoondePlaneet(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initialLocation, size, game, gameScene, direction);
-
     }
 
 
