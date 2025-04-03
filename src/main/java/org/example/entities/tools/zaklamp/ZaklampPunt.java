@@ -7,33 +7,34 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import javafx.scene.Cursor;
 import javafx.scene.paint.Color;
+import org.example.entities.tools.laser.Laser;
 import org.example.scenes.GameScene;
 
 public class ZaklampPunt extends DynamicCircleEntity implements Collider, UpdateExposer {
-    private boolean zaklampSwitch;
+    private boolean laserSwitch;
     private GameScene gameScene;
-    private Zaklamp zaklamp;
+    private Laser laser;
     private Coordinate2D mouseCoordinates;
-    protected ZaklampPunt(Coordinate2D initialLocation, GameScene gameScene, Zaklamp zaklamp) {
+    protected ZaklampPunt(Coordinate2D initialLocation, GameScene gameScene, Laser laser) {
         super(initialLocation);
         setRadius(20);
         setViewOrder(10);
         this.gameScene = gameScene;
-        this.zaklamp = zaklamp;
+        this.laser = laser;
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
     @Override
     public void explicitUpdate(long l) {
-        this.zaklampSwitch = gameScene.getZaklamp();
-        if (!zaklampSwitch) {
-            this.remove();
+        this.laserSwitch = gameScene.getLaser();
+        if (!laserSwitch) {
+            setFill(Color.TRANSPARENT);
             setCursor(Cursor.DEFAULT);
         } else {
-            setFill(Color.WHITE);
+            setFill(Color.YELLOW);
             setCursor(Cursor.NONE);
         }
-        this.mouseCoordinates = zaklamp.getMouseCoordinates();
+        this.mouseCoordinates = laser.getMouseCoordinates();
 
         if (mouseCoordinates != null) {
             double angle = angleTo(mouseCoordinates);
