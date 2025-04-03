@@ -14,6 +14,7 @@ public class Laser extends DynamicCompositeEntity implements MouseMovedListener,
     public Laser(Coordinate2D initialLocation, GameScene gameScene) {
         super(initialLocation);
         this.gameScene = gameScene;
+        setViewOrder(14);
     }
 
     @Override
