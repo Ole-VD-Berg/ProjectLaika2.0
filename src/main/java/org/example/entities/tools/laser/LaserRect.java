@@ -9,39 +9,43 @@ import org.example.scenes.GameScene;
 import static javafx.scene.paint.Color.color;
 
 public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {
-    private Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
+    private Coordinate2D mouseCoordinates;
     double angle = 0;
     GameScene gameScene;
     boolean laserSwitch;
     private Laser laser;
     int height = 50;
+
     protected LaserRect(Coordinate2D initialLocation, GameScene gameScene, Laser laser) {
         super(initialLocation);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         this.gameScene = gameScene;
-        setFill(Color.RED);
-        setWidth(5);
-        setHeight(1050);
-        this.laser = laser;
         this.mouseCoordinates = laser.getMouseCoordinates();
-    }
+        berekenMuis();
+        setWidth(5);
+        setFill(Color.TRANSPARENT);
+        this.laser = laser;
 
+    }
 
 
     @Override
     public void explicitUpdate(long l) {
+        mouseCoordinates = laser.getMouseCoordinates();
         this.laserSwitch = gameScene.getLaser();
-        if(!laserSwitch) {
+        if (!laserSwitch) {
             setFill(Color.TRANSPARENT);
+        } else {
+            setFill(Color.RED);
         }
-        else {setFill(Color.RED);}
-            mouseCoordinates = laser.getMouseCoordinates();
-        if (mouseCoordinates != null) {
-            angle = angleTo(mouseCoordinates);
-            var distance = distanceTo(mouseCoordinates);
-            setRotate(angle);
-            setHeight(distance * 2);
-            setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        }
+        berekenMuis();
+    }
+
+    public void berekenMuis() {
+        angle = angleTo(mouseCoordinates);
+        var distance = distanceTo(mouseCoordinates);
+        setRotate(angle);
+        setHeight(distance * 2);
+        setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 }
