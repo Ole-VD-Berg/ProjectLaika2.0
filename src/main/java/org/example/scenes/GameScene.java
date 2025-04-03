@@ -122,7 +122,9 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         getPlaneet().resetGeslicedePlaneten();
     }
     public void doeScoreErbij(int score) {
+        System.out.print(this.score + " + " + score);
         this.score += score;
+        System.out.println("  = " + this.score);
     }
 
     public int getScore() {

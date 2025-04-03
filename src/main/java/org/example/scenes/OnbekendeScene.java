@@ -24,7 +24,7 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
     private PlaneetSprite planeetSprite;
     private PlaneetHitbox planeetHitbox;
     private String planeet;
-    private static Random random = new Random();
+    private Random random = new Random();
     private int[] maanVolg = new int[] {1,2,3,4};
     private int maanKlick = 0;
     private int goed = 0;
@@ -46,7 +46,7 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
 
     @Override
     public void setupEntities() {
-         planeetSprite = new PlaneetSprite("sprites/planeten/" + planeet + ".png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(500, 500));
+        planeetSprite = new PlaneetSprite("sprites/planeten/" + planeet + ".png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(500, 500));
         addEntity(planeetSprite);
 
         maakVolg(maanVolg);
@@ -70,6 +70,11 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
 
     @Override
     public void explicitUpdate(long l) {
+        if(faal){
+            gameScene.doeScoreErbij(-3);
+            game.setActiveScene(1);
+            setReset();
+        }
         if (maan1.getBewoond() == 1 || maan2.getBewoond() == 1  || maan3.getBewoond() == 1  || maan4.getBewoond() == 1) {
             bewoond = 1;
             if(gameCompleted == 0) {
@@ -93,6 +98,7 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
                  gameScene.doeScoreErbij(-1);
              }
              System.out.println(planeetHitbox.getPlaneetKlick());
+                setReset();
              game.setActiveScene(1);
              }
         }
@@ -120,7 +126,7 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
     }
 
     public void maakVolg(int[] array) {
-        for (int r = 0; r < 10; r++) {
+        for (int r = 0; r < 20; r++) {
             for (int i = 0; i < array.length; i++) {
                 int j = random.nextInt(i + 1);
                 int temp = array[i];
@@ -132,13 +138,28 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        System.out.println("test");
             if (bewoond == 1) {
                 gameScene.doeScoreErbij(0);
             }
             if (bewoond == 2) {
                 gameScene.doeScoreErbij(3);
             }
+             setReset();
             game.setActiveScene(1);
+    }
+
+    public void setReset(){
+        maanKlick = 0;
+        faal = false;
+        goed = 0;
+        bewoond = 0;
+        maanVolg = new int[] {1,2,3,4};
+        gameCompleted = 0;
+        maan1.setRemover();
+        maan2.setRemover();
+        maan3.setRemover();
+        maan4.setRemover();
+        planeetHitbox.remove();
+        planeetSprite.remove();
     }
 }
