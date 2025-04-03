@@ -1,4 +1,4 @@
-package org.example.entities.sliceable.planeten;
+package org.example.entities.sliceable.vijandig.astroide;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -19,11 +19,11 @@ public class AstroideHitbox extends DynamicCircleEntity implements Collided {
     private ProjectLaika game;
     private GameScene gameScene;
     private Astroide astroide;
-    int size;
+    private int size;
     public boolean exit = false;
     private boolean wasInsideHitbox = false;
 
-    public AstroideHitbox(Coordinate2D initialLocation, ProjectLaika game, Astroide astroide, GameScene gameScene, int size) {
+    public AstroideHitbox(Coordinate2D initialLocation, ProjectLaika game, Astroide astroide, GameScene gameScene, int size, int direction) {
         super(initialLocation);
         this.game = game;
         this.gameScene = gameScene;
@@ -32,18 +32,24 @@ public class AstroideHitbox extends DynamicCircleEntity implements Collided {
         setRadius(this.size / 4);
         //^grootte van sprite is in werkelijkheid 2x zo groot als de sprite die je ziet daarom nog een keer /2
         setFill(Color.TRANSPARENT);
-        setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        if(direction == 315){
+            setAnchorPoint(AnchorPoint.TOP_RIGHT);
     }
+        else{
+            setAnchorPoint(AnchorPoint.TOP_LEFT);
+        }
+        }
 
     @Override
     public void onCollision(List<Collider> colliders) {
         for (Collider collider : colliders) {
-            if (collider instanceof LaserPunt) {
-                LaserPunt laserPunt = (LaserPunt) collider;
+            if (collider instanceof LaserPunt laserPunt) {
+
                 double laserX = laserPunt.getMouseCoordinates().getX();
                 double laserY = laserPunt.getMouseCoordinates().getY();
                 if(isInHitbox(laserX, laserY)) {
                     wasInsideHitbox = true;
+                    System.out.println("Hitbox is in hitbox");
                 }
                 if(!isInHitbox(laserX, laserY) && wasInsideHitbox){
                     exit = true;

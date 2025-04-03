@@ -10,24 +10,22 @@ import javafx.scene.paint.Color;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.sliceable.planeten.Planeet;
+import org.example.scenes.GameScene;
 
 
 public class TimerText2 extends DynamicTextEntity implements UpdateExposer, TimerContainer {
     ProjectLaika game;
     Timer2 timer2;
-    Planeet planeet;
+    GameScene gameScene;
 
-    public TimerText2(Coordinate2D initialLocation, ProjectLaika game, ObjectenSpawner objectenSpawner) {
+    public TimerText2(Coordinate2D initialLocation, ProjectLaika game, GameScene gameScene) {
         super(initialLocation);
         setAnchorPoint(AnchorPoint.TOP_CENTER);
         setText("00    00");
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
         setFill(Color.WHITE);
         this.game = game;
-        this.planeet = planeet;
-//      if (objectenSpawner != null){
-//          this.planeet = objectenSpawner.getPlaneet();
-//      }
+        this.gameScene = gameScene;
         setViewOrder(10);
     }
 
@@ -42,7 +40,7 @@ public class TimerText2 extends DynamicTextEntity implements UpdateExposer, Time
 
     @Override
     public void setupTimers() {
-        timer2 = new Timer2(1000, game, planeet);
+        timer2 = new Timer2(100, game, gameScene);
         addTimer(timer2);
     }
 }

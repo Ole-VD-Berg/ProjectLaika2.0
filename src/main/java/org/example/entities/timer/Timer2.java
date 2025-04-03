@@ -3,16 +3,19 @@ package org.example.entities.timer;
 import com.github.hanyaeger.api.Timer;
 import org.example.ProjectLaika;
 import org.example.entities.sliceable.planeten.Planeet;
+import org.example.scenes.GameScene;
 
 public class Timer2 extends Timer {
+    private final GameScene gameScene;
     private ProjectLaika game;
     private Planeet planeet;
     private int seconde = 0;
     private int minuut = 2;
-    public Timer2(long intervalInMs, ProjectLaika game, Planeet planeet) {
+    public Timer2(long intervalInMs, ProjectLaika game, GameScene gameScene) {
         super(intervalInMs);
 
         this.game = game;
+        this.gameScene = gameScene;
     }
 
     @Override
@@ -25,8 +28,8 @@ public class Timer2 extends Timer {
             }
         }
         else{
-            //planeet.resetGeslicedePlaneten();
-            game.setActiveScene(2);
+
+            gameScene.gefaalt();
         }
     }
 

@@ -42,17 +42,17 @@ public class ObjectenSpawner extends EntitySpawner {
         if (randomNummer < 6) {
             OnbewoondePlaneet onbewoondePlaneet = new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(onbewoondePlaneet);
-           // planeet = onbewoondePlaneet;
+            planeet = onbewoondePlaneet;
 
         } else if(randomNummer < 8){
             BewoondePlaneet bewoondePlaneet = new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(bewoondePlaneet);
-           // planeet = bewoondePlaneet;
+            planeet = bewoondePlaneet;
         }
         else if(randomNummer < 10){
             OnbekendePlaneet onbekendePlaneet = new OnbekendePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(onbekendePlaneet);
-          //  planeet = onbekendePlaneet;
+            planeet = onbekendePlaneet;
         }
         else if (randomNummer < 11) {
             int randomAstroide = new Random().nextInt(10);
@@ -69,9 +69,9 @@ public class ObjectenSpawner extends EntitySpawner {
         }
 
     }
-//    public Planeet getPlaneet() {
-//        return planeet;
-//    }
+    public Planeet getPlaneet() {
+        return planeet;
+    }
 
     private Coordinate2D randomLocation(int direction) {
         switch (direction) {

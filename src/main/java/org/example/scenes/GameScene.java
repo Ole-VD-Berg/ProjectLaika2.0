@@ -7,6 +7,9 @@ import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.SpaceShip.DamageHitbox;
+import org.example.entities.sliceable.planeten.Planeet;
+import org.example.entities.sliceable.vijandig.astroide.Astroide;
+import org.example.entities.text.PlanetenText;
 import org.example.entities.text.ScoreText;
 import org.example.entities.overlays.*;
 import org.example.entities.sliceable.vijandig.schip.Schip;
@@ -23,7 +26,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private int score;
     private boolean laserAan = false;
     private boolean zaklampAan = false;
-    ObjectenSpawner objectenSpawner;
+    private ObjectenSpawner objectenSpawner;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     Schip schip;
@@ -37,23 +40,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     }
 
-
-    @Override
-    public void setupEntities() {
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
-        addEntity(overlaySprite);
-//        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
-//        addEntity(planetenText);
-        scoreText = new ScoreText(new Coordinate2D(getWidth() * 0.61, getHeight() * 0.92), this);
-        addEntity(scoreText);
-        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, objectenSpawner);
-        addEntity(timerText2);
-        schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
-        addEntity(schip);
-        DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight() - 10), new Size(getWidth(), 10), overlaySprite);
-        addEntity(damageHitbox);
-
-    }
     @Override
     public void setupEntitySpawners() {
         objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
@@ -61,6 +47,27 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 //        BulletSpawner bulletSpawner = new BulletSpawner(getWidth(), getHeight(), this, schip);
 //        addEntitySpawner(bulletSpawner);
     }
+
+    @Override
+    public void setupEntities() {
+        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
+        addEntity(overlaySprite);
+        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() * 0.23, getHeight() * 0.92), this);
+        addEntity(planetenText);
+        scoreText = new ScoreText(new Coordinate2D(getWidth() * 0.65, getHeight() * 0.92), this);
+        addEntity(scoreText);
+
+        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, this);
+        addEntity(timerText2);
+        schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
+        addEntity(schip);
+        DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight() - 10), new Size(getWidth(), 10), overlaySprite);
+        addEntity(damageHitbox);
+        Astroide astroide = new Astroide(new Coordinate2D(getWidth() / 4, getHeight() / 4), 100, game, this, 45, 1);
+        addEntity(astroide);
+
+    }
+
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
@@ -72,7 +79,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
             zaklampAan = false;
             laserAan = !laserAan;
             setupLaser(laserAan);
-            System.out.println("test");
         }
         else if (mouseButton == MouseButton.SECONDARY) {
             if(laser != null) {
@@ -82,6 +88,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
             zaklampAan = !zaklampAan;
             setupZaklamp(zaklampAan);
         }
+
+    }
+    public Planeet getPlaneet(){
+        return objectenSpawner.getPlaneet();
 
     }
     public Coordinate2D getMouseCoordinates() {
@@ -107,7 +117,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
             lamp.setRemove();
         }
     }
-
+    public void gefaalt(){
+        game.setActiveScene(2);
+        getPlaneet().resetGeslicedePlaneten();
+    }
     public void doeScoreErbij(int score) {
         this.score += score;
     }

@@ -18,8 +18,7 @@ public class OnbekendePlaneet extends Planeet {
     }
     @Override
     protected void doSlicingActie() {
-        System.out.println("Onbekende planeet gesliced");
-        //gameScene.doeScoreErbij(1000);
+        geslicedePlaneten++;
         remove();
     }
 }

@@ -36,12 +36,12 @@ public class ZwartgatHitbox extends DynamicCircleEntity implements Collided {
     @Override
     public void onCollision(List<Collider> colliders) {
         for (Collider collider : colliders) {
-            if (collider instanceof LaserPunt) {
-                LaserPunt laserPunt = (LaserPunt) collider;
+            if (collider instanceof LaserPunt laserPunt) {
                 double laserX = laserPunt.getMouseCoordinates().getX();
                 double laserY = laserPunt.getMouseCoordinates().getY();
                 if(isInHitbox(laserX, laserY)) {
                     wasInsideHitbox = true;
+
                 }
                 if(!isInHitbox(laserX, laserY) && wasInsideHitbox){
                     exit = true;

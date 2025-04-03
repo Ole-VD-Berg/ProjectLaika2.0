@@ -11,7 +11,7 @@ import org.example.scenes.GameScene;
 
 
 public abstract class Planeet extends SliceableObject implements UpdateExposer {
-        private static int geslicedePlaneten = 0;
+        protected static int geslicedePlaneten = 0;
         protected Coordinate2D planeetLocation;
 
 
@@ -38,6 +38,7 @@ public abstract class Planeet extends SliceableObject implements UpdateExposer {
     protected int getRandomSprite() {
         return (int) (Math.random() * 8) + 1;
     }
+
     public int getGeslicedePlaneten() {
         return geslicedePlaneten;
     }
@@ -58,6 +59,5 @@ public abstract class Planeet extends SliceableObject implements UpdateExposer {
     public Coordinate2D getPlaneetLocation() {
         return planeetLocation;
     }
-
 
 }

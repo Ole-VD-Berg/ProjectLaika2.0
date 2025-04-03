@@ -23,5 +23,6 @@ public class OnbewoondePlaneet extends Planeet {
     protected void doSlicingActie() {
         gameScene.doeScoreErbij(1);
         remove();
+        geslicedePlaneten++;
     }
 }
