@@ -15,7 +15,7 @@ public class TextTimer extends Timer {
 
     @Override
     public void onAnimationUpdate(long l) {
-            ScrollableText.nieuweLetter();
+            //ScrollableText.nieuweLetter();
 
     }
 
