@@ -5,8 +5,8 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import org.example.ProjectLaika;
 import org.example.entities.overlays.OverlaySprite;
-import org.example.entities.Text.ScoreText;
-import org.example.entities.Text.TimerText;
+import org.example.entities.text.ScoreText;
+import org.example.entities.text.TimerText;
 import org.example.entities.titleScene.PlayButtonSprite;
 import org.example.entities.titleScene.QuitButtonSprite;
 

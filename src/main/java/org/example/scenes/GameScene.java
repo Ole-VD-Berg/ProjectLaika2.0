@@ -7,7 +7,7 @@ import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.SpaceShip.DamageHitbox;
-import org.example.entities.Text.ScoreText;
+import org.example.entities.text.ScoreText;
 import org.example.entities.overlays.*;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
@@ -19,6 +19,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private ProjectLaika game;
     private int score;
     private boolean laser = false;
+    private boolean zaklamp = false;
     ObjectenSpawner objectenSpawner;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
@@ -65,8 +66,19 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+        System.out.println(mouseButton);
         mouseCoordinates = coordinate2D;
-        laser = !laser;
+        if (mouseButton == MouseButton.PRIMARY) {
+            zaklamp = false;
+            laser = !laser;
+
+        }
+        else if (mouseButton == MouseButton.SECONDARY) {
+            laser = false;
+            zaklamp = !zaklamp;
+
+        }
+
     }
     public Coordinate2D getMouseCoordinates() {
         return mouseCoordinates;

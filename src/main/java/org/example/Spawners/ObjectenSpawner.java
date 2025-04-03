@@ -8,6 +8,7 @@ import org.example.entities.sliceable.planeten.bewoondePlaneet.BewoondePlaneet;
 import org.example.entities.sliceable.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.sliceable.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 import org.example.entities.sliceable.vijandig.astroide.Astroide;
+import org.example.entities.sliceable.vijandig.zwartgat.Zwartgat;
 import org.example.scenes.GameScene;
 
 import java.util.Random;
@@ -37,7 +38,7 @@ public class ObjectenSpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
-    int randomNummer = new Random().nextInt(12);
+    int randomNummer = new Random().nextInt(15);
         if (randomNummer < 6) {
             OnbewoondePlaneet onbewoondePlaneet = new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(onbewoondePlaneet);
@@ -53,16 +54,18 @@ public class ObjectenSpawner extends EntitySpawner {
             spawn(onbekendePlaneet);
           //  planeet = onbekendePlaneet;
         }
-        else {
-            int randomAstroide = new Random().nextInt(10);
-            if (randomAstroide == 1) {
+        else if (randomNummer < 12) {
+            int randomAstroide = new Random().nextInt(2);
+            if (randomAstroide == 0) {
                 Astroide astroide = new Astroide(new Coordinate2D(0,0), 100, game, gameScene, 45, 1);
                 spawn(astroide);
-            } else if (randomAstroide == 2) {
+            } else if (randomAstroide == 1) {
                 Astroide astroide = new Astroide(new Coordinate2D(gameScene.getWidth() / 2, 50), 100, game, gameScene, 315, 0);
                 spawn(astroide);
             }
-
+        } else {
+                Zwartgat zwartgat = new Zwartgat(new Coordinate2D(new Random().nextDouble(gameScene.getWidth() / 2), new Random().nextDouble(gameScene.getHeight() /2)), 90, game, gameScene, 0, 0);
+                spawn(zwartgat);
         }
 
     }
