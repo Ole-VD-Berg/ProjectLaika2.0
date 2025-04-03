@@ -7,7 +7,6 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import javafx.scene.Cursor;
 import javafx.scene.paint.Color;
-import org.example.entities.tools.laser.Laser;
 import org.example.scenes.GameScene;
 
 public class ZaklampPunt extends DynamicCircleEntity implements Collider, UpdateExposer {

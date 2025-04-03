@@ -29,11 +29,11 @@ public class ZaklampRect extends DynamicRectangleEntity implements UpdateExposer
 
     @Override
     public void explicitUpdate(long l) {
-        this.zaklampSwitch = gameScene.getLaser();
+        this.zaklampSwitch = gameScene.getZaklamp();
         if(!zaklampSwitch) {
             setFill(Color.TRANSPARENT);
         }
-        else {setFill(Color.RED);}
+        else {setFill(Color.WHITE);}
             mouseCoordinates = zaklamp.getMouseCoordinates();
         if (mouseCoordinates != null) {
             angle = angleTo(mouseCoordinates);
