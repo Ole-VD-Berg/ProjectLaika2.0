@@ -10,5 +10,6 @@ public class MaanSprite extends DynamicSpriteEntity  {
         super(resource, initialLocation, size, rows, columns);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         setPreserveAspectRatio(true);
+
     }
 }
