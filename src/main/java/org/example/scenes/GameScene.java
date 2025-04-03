@@ -57,7 +57,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         scoreText = new ScoreText(new Coordinate2D(getWidth() * 0.65, getHeight() * 0.92), this);
         addEntity(scoreText);
 
-        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, this);
+        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, this, objectenSpawner);
         addEntity(timerText2);
         schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
         addEntity(schip);
@@ -94,6 +94,9 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         return objectenSpawner.getPlaneet();
 
     }
+    public ObjectenSpawner getObjectenSpawner(){
+        return objectenSpawner;
+    }
     public Coordinate2D getMouseCoordinates() {
         return mouseCoordinates;
     }
@@ -123,8 +126,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     }
     public void doeScoreErbij(int score) {
         this.score += score;
+        if(this.score < 0){
+            this.score = 0;
+        }
     }
-
     public int getScore() {
         return score;
     }

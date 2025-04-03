@@ -11,13 +11,13 @@ import org.example.scenes.GameScene;
 
 public class Zwartgat extends SliceableObject implements Collider, UpdateExposer {
     Coordinate2D locatie;
-    private int currentRow;
 
-    public Zwartgat(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction, int currentRow) {
+
+    public Zwartgat(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initialLocation, size, game, gameScene, direction);
 
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        this.currentRow = currentRow;
+
         this.locatie = initialLocation;
         this.locatie = getLocationInScene();
 
@@ -30,7 +30,7 @@ public class Zwartgat extends SliceableObject implements Collider, UpdateExposer
         super.setupEntities();
         ZwartgatHitbox hitBox = new ZwartgatHitbox(new Coordinate2D(intitialLocation), game, this, gameScene, this.size);
         addEntity(hitBox);
-        ZwartgatSprite zwartgatSprite = new ZwartgatSprite("sprites/vijandig/zwartgat.png", new Coordinate2D(intitialLocation), new Size(size, size), 1, 2, currentRow);
+        ZwartgatSprite zwartgatSprite = new ZwartgatSprite("sprites/vijandig/zwartgat.png", new Coordinate2D(intitialLocation), new Size(size, size));
         addEntity(zwartgatSprite);
 
 

@@ -1,6 +1,7 @@
 package org.example.Spawners;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import org.example.ProjectLaika;
 import org.example.entities.sliceable.planeten.Planeet;
@@ -9,6 +10,7 @@ import org.example.entities.sliceable.planeten.onbekendePlaneet.OnbekendePlaneet
 import org.example.entities.sliceable.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 import org.example.entities.sliceable.vijandig.astroide.Astroide;
 import org.example.entities.sliceable.vijandig.zwartgat.Zwartgat;
+import org.example.entities.timer.Timer2;
 import org.example.scenes.GameScene;
 
 import java.util.Random;
@@ -21,7 +23,7 @@ public class ObjectenSpawner extends EntitySpawner {
     private final double sceneHeight;
     private GameScene gameScene;
     private ProjectLaika game;
-    private int direction = 1;
+    private int direction = 0;
     private final int DOWN = 0;
     private final int AFWIJKING = 10;
     private final int RIGHT = 90;
@@ -34,6 +36,7 @@ public class ObjectenSpawner extends EntitySpawner {
         this.sceneHeight = sceneHeight;
         this.game = game;
         this.gameScene = gameScene;
+        veranderKant();
     }
 
     @Override
@@ -64,14 +67,16 @@ public class ObjectenSpawner extends EntitySpawner {
                 spawn(astroide);
             }
         } else if (randomNummer == 14) {
-                Zwartgat zwartgat = new Zwartgat(new Coordinate2D(new Random().nextDouble(gameScene.getWidth() / 2), new Random().nextDouble(gameScene.getHeight() /2)), 90, game, gameScene, 0, 0);
+                Zwartgat zwartgat = new Zwartgat(new Coordinate2D(new Random().nextDouble(gameScene.getWidth() / 2), new Random().nextDouble(gameScene.getHeight() /2)), 90, game, gameScene, 0);
                 spawn(zwartgat);
         }
+        System.out.println(direction);
 
     }
     public Planeet getPlaneet() {
         return planeet;
     }
+
 
     private Coordinate2D randomLocation(int direction) {
         switch (direction) {
@@ -83,14 +88,8 @@ public class ObjectenSpawner extends EntitySpawner {
                 double y = new Random().nextInt((int) sceneHeight);
                 return new Coordinate2D(0, y);
 
-            case 2: //omhoog
-                double x2 = new Random().nextInt((int) sceneWidth);
-                System.out.println(sceneWidth);
-                return new Coordinate2D(x2, sceneWidth * 0.35);
-
-            case 3: //links
+            case 2: //links
                 double y2 = new Random().nextInt((int) sceneHeight);
-                //System.out.println(sceneHeight);
                 return new Coordinate2D(sceneHeight * 0.9, y2);
 
             default:
@@ -102,17 +101,18 @@ public class ObjectenSpawner extends EntitySpawner {
     private int angleConverter(int direction) {
         switch (direction) {
             case 0:
-
                 return new Random().nextInt(DOWN - AFWIJKING,DOWN + AFWIJKING);
             case 1:
                 return new Random().nextInt(RIGHT - AFWIJKING,RIGHT + AFWIJKING);
             case 2:
-                return new Random().nextInt(UP - AFWIJKING,UP + AFWIJKING);
-            case 3:
                 return new Random().nextInt(LEFT - AFWIJKING,LEFT + AFWIJKING);
             default:
                 return 0;
         }
+    }
+
+    public void veranderKant() {
+            direction = new Random().nextInt(3);
     }
 }
 

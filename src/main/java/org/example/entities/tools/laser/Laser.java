@@ -49,8 +49,10 @@ public class Laser extends DynamicCompositeEntity implements MouseMovedListener,
     }
 
     public void setRemove() {
-        laserRect.remove();
-        laserPunt.remove();
-        this.remove();
+        if(laserRect != null && laserPunt != null){
+            laserRect.remove();
+            laserPunt.remove();
+            this.remove();
+        }
     }
 }

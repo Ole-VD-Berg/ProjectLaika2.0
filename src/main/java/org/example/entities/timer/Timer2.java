@@ -2,18 +2,20 @@ package org.example.entities.timer;
 
 import com.github.hanyaeger.api.Timer;
 import org.example.ProjectLaika;
+import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.sliceable.planeten.Planeet;
 import org.example.scenes.GameScene;
 
 public class Timer2 extends Timer {
     private final GameScene gameScene;
+    private final ObjectenSpawner objectenSpawner;
     private ProjectLaika game;
     private Planeet planeet;
     private int seconde = 0;
     private int minuut = 2;
-    public Timer2(long intervalInMs, ProjectLaika game, GameScene gameScene) {
+    public Timer2(long intervalInMs, ProjectLaika game, GameScene gameScene, ObjectenSpawner objectenSpawner) {
         super(intervalInMs);
-
+        this.objectenSpawner = objectenSpawner;
         this.game = game;
         this.gameScene = gameScene;
     }
@@ -28,7 +30,6 @@ public class Timer2 extends Timer {
             }
         }
         else{
-
             gameScene.gefaalt();
         }
     }

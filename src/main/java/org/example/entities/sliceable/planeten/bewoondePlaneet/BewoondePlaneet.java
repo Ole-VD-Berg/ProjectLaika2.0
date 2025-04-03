@@ -8,8 +8,10 @@ import org.example.entities.sliceable.planeten.Planeet;
 import org.example.scenes.GameScene;
 
 public class BewoondePlaneet extends Planeet {
+    GameScene gameScene;
     public BewoondePlaneet(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initialLocation, size, game, gameScene, direction);
+        this.gameScene = gameScene;
     }
 
 
@@ -23,7 +25,9 @@ public class BewoondePlaneet extends Planeet {
 
     @Override
     protected void doSlicingActie() {
-        remove();
         geslicedePlaneten++;
+        gameScene.doeScoreErbij(-1);
+        remove();
+
     }
 }

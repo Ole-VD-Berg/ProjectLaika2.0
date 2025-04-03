@@ -7,10 +7,9 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 public class ZwartgatSprite extends DynamicSpriteEntity {
 
-    protected ZwartgatSprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns, int currentRow) {
-        super(resource, initialLocation, size, rows, columns);
+    protected ZwartgatSprite(String resource, Coordinate2D initialLocation, Size size) {
+        super(resource, initialLocation, size);
         setPreserveAspectRatio(true);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        setAutoCycle(500, currentRow);
     }
 }
