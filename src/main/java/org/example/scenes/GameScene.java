@@ -12,6 +12,7 @@ import org.example.entities.overlays.*;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.laser.Laser;
+import org.example.entities.tools.zaklamp.Zaklamp;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer {
@@ -37,9 +38,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-
-        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
-        addEntity(laser);
+//
+//        Zaklamp zaklamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), this);
+//        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
+//
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
 //        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
@@ -68,16 +70,29 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         System.out.println(mouseButton);
         mouseCoordinates = coordinate2D;
+        int i = 0;
+        i++;
+
         if (mouseButton == MouseButton.PRIMARY) {
-            zaklamp = false;
+            
+            if (!laser) {
+                zaklamp = false;
+                Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
+                addEntity(laser);
+            }
             laser = !laser;
+
 
         }
         else if (mouseButton == MouseButton.SECONDARY) {
-            laser = false;
+            if (!zaklamp) {
+                laser = false;
+                Zaklamp zaklamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), this);
+                addEntity(zaklamp);
+            }
             zaklamp = !zaklamp;
-
         }
+
 
     }
     public Coordinate2D getMouseCoordinates() {
@@ -95,6 +110,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     public boolean getLaser() {
         return laser;
+    }
+
+    public boolean getZaklamp() {
+        return zaklamp;
     }
 
     public void setLaser(boolean laser) {
