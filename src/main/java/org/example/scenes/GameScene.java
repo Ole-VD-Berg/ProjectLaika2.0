@@ -38,11 +38,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-
-        Zaklamp zaklamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), this);
-        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
-        addEntity(zaklamp);
-        addEntity(laser);
+//
+//        Zaklamp zaklamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), this);
+//        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
+//
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
 //        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
@@ -71,14 +70,24 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         System.out.println(mouseButton);
         mouseCoordinates = coordinate2D;
+        int i = 0;
+        i++;
+
         if (mouseButton == MouseButton.PRIMARY) {
+            
             if (!laser) {
                 zaklamp = false;
+                Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
+                addEntity(laser);
             }
             laser = !laser;
-        } else if (mouseButton == MouseButton.SECONDARY) {
+
+        }
+        else if (mouseButton == MouseButton.SECONDARY) {
             if (!zaklamp) {
                 laser = false;
+                Zaklamp zaklamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), this);
+                addEntity(zaklamp);
             }
             zaklamp = !zaklamp;
         }
