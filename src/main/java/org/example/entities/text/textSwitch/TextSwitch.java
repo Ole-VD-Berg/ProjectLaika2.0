@@ -29,11 +29,9 @@ public class TextSwitch extends DynamicTextEntity implements UpdateExposer {
     };
     public TextSwitch(Coordinate2D initialLocation) {
         super(initialLocation);
-
         setFill(Color.WHITE);
-        setFont(new CustomFont("fonts/Minecraft.ttf", 50));
+        setFont(new CustomFont("fonts/Minecraft.ttf", 20));
         setText(text[zin]);
-
     }
 
     public void nieuweZin() {

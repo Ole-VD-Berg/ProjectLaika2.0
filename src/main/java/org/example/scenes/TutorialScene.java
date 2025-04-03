@@ -41,10 +41,7 @@ public class TutorialScene extends DynamicScene implements TimerContainer,  KeyL
         addEntity(textSwitch);
         tutorialSprite = new TutorialSprite("backgrounds/overlays/spriteFrameTutorial.png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(getWidth(), getHeight()), 5, 1);
         addEntity(tutorialSprite);
-        textSwitch = new TextSwitch(new Coordinate2D(getWidth() / 2, getHeight() / 2));
-        addEntity(textSwitch);
-        OnbekendePlaneet onbekendePlaneet = new OnbekendePlaneet(new Coordinate2D(getWidth() / 2, getHeight() / 2), 150, game, gameScene, 0);
-        addEntity(onbekendePlaneet);
+
     }
     @Override
     public void onPressedKeysChange(Set<KeyCode> set) {

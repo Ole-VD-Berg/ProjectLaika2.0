@@ -54,8 +54,8 @@ public class ObjectenSpawner extends EntitySpawner {
             spawn(onbekendePlaneet);
           //  planeet = onbekendePlaneet;
         }
-        else if (randomNummer < 12) {
-            int randomAstroide = new Random().nextInt(2);
+        else if (randomNummer < 11) {
+            int randomAstroide = new Random().nextInt(10);
             if (randomAstroide == 0) {
                 Astroide astroide = new Astroide(new Coordinate2D(0,0), 100, game, gameScene, 45, 1);
                 spawn(astroide);
