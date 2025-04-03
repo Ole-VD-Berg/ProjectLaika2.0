@@ -49,7 +49,6 @@ public class AstroideHitbox extends DynamicCircleEntity implements Collided {
                 double laserY = laserPunt.getMouseCoordinates().getY();
                 if(isInHitbox(laserX, laserY)) {
                     wasInsideHitbox = true;
-                    System.out.println("Hitbox is in hitbox");
                 }
                 if(!isInHitbox(laserX, laserY) && wasInsideHitbox){
                     exit = true;

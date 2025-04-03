@@ -8,7 +8,6 @@ import org.example.scenes.GameScene;
 
 public class Astroide extends SliceableObject implements UpdateExposer, Collider {
     protected int direction;
-    //AstroideHitbox hitbox;
     Coordinate2D locatie;
     private int currentRow;
 
