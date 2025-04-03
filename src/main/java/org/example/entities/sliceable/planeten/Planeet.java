@@ -12,21 +12,16 @@ import org.example.scenes.GameScene;
 
 public abstract class Planeet extends SliceableObject implements UpdateExposer {
         protected static int geslicedePlaneten = 0;
-        protected Coordinate2D planeetLocation;
 
 
     public Planeet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation, size, game, gameScene, direction);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        this.planeetLocation = initiallocation;
-        this.planeetLocation = getLocationInScene();
         setMotion(SPEED, direction);
     }
 
     protected void setupEntities() {
         getPlaneetSprite(intitialLocation);
-        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this, gameScene, this.size);
-        addEntity(hitBox);
         super.setupEntities();
     }
 
@@ -50,14 +45,8 @@ public abstract class Planeet extends SliceableObject implements UpdateExposer {
     @Override
     public void explicitUpdate(long l) {
         super.explicitUpdate(l);
-        this.planeetLocation = getLocationInScene();
         if(!gameScene.getLaser()){
             hitBox.setExit(false);
         }
     }
-
-    public Coordinate2D getPlaneetLocation() {
-        return planeetLocation;
-    }
-
 }

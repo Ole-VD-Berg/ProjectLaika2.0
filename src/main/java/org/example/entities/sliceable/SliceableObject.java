@@ -20,6 +20,7 @@ public abstract class SliceableObject extends DynamicCompositeEntity implements 
     protected ProjectLaika game;
     protected GameScene gameScene;
     protected Coordinate2D initialLocation;
+    protected Coordinate2D objectLocation;
     protected double SPEED = new Random().nextDouble(1) + 1;
     public SliceableObject(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation);
@@ -28,17 +29,21 @@ public abstract class SliceableObject extends DynamicCompositeEntity implements 
         this.game = game;
         this.gameScene = gameScene;
         double SPEED = new Random().nextDouble(1) + 1;
+        this.objectLocation = initiallocation;
+        this.objectLocation = getLocationInScene();
     }
 
     @Override
     protected void setupEntities() {
-
+        hitBox = new Hitbox(new Coordinate2D(intitialLocation), game, this, gameScene, this.size);
+        addEntity(hitBox);
     }
 
 
 
     @Override
     public void explicitUpdate(long l) {
+        this.objectLocation = getLocationInScene();
         if(hitBox != null) {
             checkForSlice();
         }
@@ -62,5 +67,7 @@ public abstract class SliceableObject extends DynamicCompositeEntity implements 
 
     protected abstract void doSlicingActie();
 
-
+    public Coordinate2D getObjectLocation() {
+        return objectLocation;
+    }
 }

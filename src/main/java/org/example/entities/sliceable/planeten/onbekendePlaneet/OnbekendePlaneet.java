@@ -37,8 +37,8 @@ public class OnbekendePlaneet extends Planeet implements Collided {
                 ZaklampPunt lampPunt = (ZaklampPunt) collider;
                 double lampX = lampPunt.getMouseCoordinates().getX();
                 double lampY = lampPunt.getMouseCoordinates().getY();
-                double hitboxX = planeetLocation.getX();
-                double hitboxY = planeetLocation.getY();
+                double hitboxX = objectLocation.getX();
+                double hitboxY = objectLocation.getY();
                 double distance = Math.sqrt(Math.pow(lampX - hitboxX, 2) + Math.pow(lampY - hitboxY, 2));
                 if(distance < 25) {
                     game.setActiveScene(3);

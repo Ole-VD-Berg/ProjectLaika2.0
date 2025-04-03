@@ -8,6 +8,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.userinput.*;
 import javafx.scene.paint.Color;
 import org.example.ProjectLaika;
+import org.example.entities.sliceable.SliceableObject;
 import org.example.entities.tools.laser.LaserPunt;
 import org.example.scenes.GameScene;
 
@@ -17,16 +18,16 @@ public class Hitbox extends DynamicCircleEntity implements Collided {
 
     private ProjectLaika game;
     private GameScene gameScene;
-    private Planeet planeet;
+    private SliceableObject object;
     int size;
     public boolean exit = false;
     private boolean wasInsideHitbox = false;
 
-    public Hitbox(Coordinate2D initialLocation, ProjectLaika game, Planeet planeet, GameScene gameScene, int size) {
+    public Hitbox(Coordinate2D initialLocation, ProjectLaika game, SliceableObject object, GameScene gameScene, int size) {
         super(initialLocation);
         this.game = game;
         this.gameScene = gameScene;
-        this.planeet = planeet;
+        this.object = object;
         this.size = size;
         setRadius(this.size / 4);
         //^grootte van sprite is in werkelijkheid 2x zo groot als de sprite die je ziet daarom nog een keer /2
@@ -53,8 +54,8 @@ public class Hitbox extends DynamicCircleEntity implements Collided {
     }
 
     private boolean isInHitbox(double laserX, double laserY) {
-        double hitboxX = planeet.getPlaneetLocation().getX();
-        double hitboxY = planeet.getPlaneetLocation().getY();
+        double hitboxX = object.getObjectLocation().getX();
+        double hitboxY = object.getObjectLocation().getY();
         double hitboxRadius = getRadius();
         double distance = Math.sqrt(Math.pow(laserX - hitboxX, 2) + Math.pow(laserY - hitboxY, 2));
         return distance <= hitboxRadius;
