@@ -11,6 +11,6 @@ public class ZwartgatSprite extends DynamicSpriteEntity {
         super(resource, initialLocation, size, rows, columns);
         setPreserveAspectRatio(true);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        setAutoCycle(100, currentRow);
+        setAutoCycle(500, currentRow);
     }
 }
