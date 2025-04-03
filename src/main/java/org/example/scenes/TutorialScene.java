@@ -1,6 +1,7 @@
 package org.example.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
@@ -9,6 +10,7 @@ import org.example.ProjectLaika;
 import org.example.entities.sliceable.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.text.textSwitch.TextSwitch;
 import org.example.entities.text.textSwitch.TextTimer;
+import org.example.entities.text.textSwitch.TutorialSprite;
 
 import java.util.Set;
 
@@ -17,6 +19,7 @@ public class TutorialScene extends DynamicScene implements TimerContainer,  KeyL
     ProjectLaika game;
     TextSwitch textSwitch;
     TextTimer textTimer;
+    TutorialSprite tutorialSprite;
     public TutorialScene(ProjectLaika game, GameScene gameScene) {
         this.game = game;
         this.gameScene = gameScene;
@@ -33,11 +36,10 @@ public class TutorialScene extends DynamicScene implements TimerContainer,  KeyL
 
     @Override
     public void setupEntities() {
-        textSwitch = new TextSwitch(new Coordinate2D(getWidth() / 2, getHeight() / 2));
+        textSwitch = new TextSwitch(new Coordinate2D(getWidth() / 2, getHeight() / 12));
         addEntity(textSwitch);
-        OnbekendePlaneet onbekendePlaneet = new OnbekendePlaneet(new Coordinate2D(getWidth() / 2, getHeight() / 2), 150, game, gameScene, 0);
-        addEntity(onbekendePlaneet);
-
+        tutorialSprite = new TutorialSprite("backgrounds/overlays/spriteFrameTutorial.png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(getWidth(), getHeight()), 5, 1);
+        addEntity(tutorialSprite);
     }
     @Override
     public void onPressedKeysChange(Set<KeyCode> set) {
@@ -45,6 +47,11 @@ public class TutorialScene extends DynamicScene implements TimerContainer,  KeyL
             textSwitch.nieuweZin();
             textTimer.reset();
             textTimer.resume();
+            switch(textSwitch.getZin()) {
+                case 3, 5, 6, 7:
+                    tutorialSprite.nieuweFrame();
+                    break;
+            }
         }
     }
 

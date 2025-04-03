@@ -29,6 +29,7 @@ public class ProjectLaika extends YaegerGame
 
     @Override
     public void setupScenes() {
+<<<<<<< Updated upstream
 
         GameScene gameScene = new GameScene(this);
 //        addScene(4, new TutorialScene(this, gameScene)); //laad eerst de tutorial scene
@@ -41,6 +42,15 @@ public class ProjectLaika extends YaegerGame
         addScene(3, new OnbekendeScene(this, new GameScene(this), 2)); //laad de onbekende scene
         //addScene(4, new TutorialScene(this)); //laad eerst de tutorial scene
 
+=======
+        GameScene gameScene = new GameScene(this);
+        addScene(4, new TutorialScene(this, gameScene)); //laad eerst de tutorial scene
+        addScene(3, new OnbekendeScene(this, gameScene, 2)); //laad de onbekende scene
+
+        addScene(0, new TitleScene(this)); //laad eerst de title scene
+        addScene(1, new GameScene(this));
+        addScene(2, new EndScene(this, gameScene)); //laad de eind scene
+>>>>>>> Stashed changes
     }
 
     public double getWidth() {
