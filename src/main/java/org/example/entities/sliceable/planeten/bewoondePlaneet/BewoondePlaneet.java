@@ -25,8 +25,9 @@ public class BewoondePlaneet extends Planeet {
 
     @Override
     protected void doSlicingActie() {
+        gameScene.doeScoreErbij(-2);
+        remove();
         geslicedePlaneten++;
-        gameScene.doeScoreErbij(-1);
         remove();
 
     }

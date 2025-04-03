@@ -23,7 +23,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private ProjectLaika game;
     private Laser laser;
     private Zaklamp lamp;
-    private int score;
+    private static int score;
     private boolean laserAan = false;
     private boolean zaklampAan = false;
     private ObjectenSpawner objectenSpawner;
@@ -125,6 +125,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         getPlaneet().resetGeslicedePlaneten();
     }
     public void doeScoreErbij(int score) {
+        System.out.print(this.score + " + " + score);
         this.score += score;
         if(this.score < 0){
             this.score = 0;

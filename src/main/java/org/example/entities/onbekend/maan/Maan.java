@@ -18,7 +18,6 @@ public class Maan extends DynamicCompositeEntity implements UpdateExposer, Mouse
     private RandomSprite randomSprite;
     private int volg = 0;
     private OnbekendeScene onbekend;
-    private int klick = 0;
     private MaanTimer maanTimer;
     private CutSceneTimer cutSceneTimer;
     private int timerAantal = 0;
@@ -108,5 +107,20 @@ public class Maan extends DynamicCompositeEntity implements UpdateExposer, Mouse
             return bewoond;
         }
         return 0;
+    }
+
+    public void setRemover(){
+        sprite.remove();
+        if(randomSprite != null) {
+            randomSprite.remove();
+        }
+        cutSceneTimer.setReset();
+        cutSceneTimer.remove();
+        maanTimer.setReset();
+        maanTimer.remove();
+        timerAantal = 0;
+         CutsceneTijd = 0;
+         isGecklicked = false;
+         bewoond = 0;
     }
 }

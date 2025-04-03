@@ -12,7 +12,7 @@ public class PlanetenText extends DynamicTextEntity implements UpdateExposer {
     private int score = 0;
     private GameScene gameScene;
     ObjectenSpawner objectenSpawner;
-    public PlanetenText(Coordinate2D initialLocation, GameScene gameScene, ObjectenSpawner objectenSpawner){
+    public PlanetenText(Coordinate2D initialLocation, GameScene gameScene){
         super(initialLocation);
         setFont(new CustomFont("fonts/Minecraft.ttf", 10));
         setFill(Color.WHITE);
