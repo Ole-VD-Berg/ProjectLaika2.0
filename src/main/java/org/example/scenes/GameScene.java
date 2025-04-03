@@ -12,14 +12,17 @@ import org.example.entities.overlays.*;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.laser.Laser;
+import org.example.entities.tools.zaklamp.Zaklamp;
 
 
 public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer {
     public ScoreText scoreText;
     private ProjectLaika game;
+    private Laser laser;
+    private Zaklamp lamp;
     private int score;
-    private boolean laser = false;
-    private boolean zaklamp = false;
+    private boolean laserAan = false;
+    private boolean zaklampAan = false;
     ObjectenSpawner objectenSpawner;
     int direction = 0;
     Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
@@ -37,9 +40,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-
-        Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
-        addEntity(laser);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
 //        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
@@ -66,17 +66,23 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        System.out.println(mouseButton);
         mouseCoordinates = coordinate2D;
         if (mouseButton == MouseButton.PRIMARY) {
-            zaklamp = false;
-            laser = !laser;
-
+            if(lamp != null) {
+                lamp.setRemove();
+            }
+            zaklampAan = false;
+            laserAan = !laserAan;
+            setupLaser(laserAan);
+            System.out.println("test");
         }
         else if (mouseButton == MouseButton.SECONDARY) {
-            laser = false;
-            zaklamp = !zaklamp;
-
+            if(laser != null) {
+                laser.setRemove();
+            }
+            laserAan = false;
+            zaklampAan = !zaklampAan;
+            setupZaklamp(zaklampAan);
         }
 
     }
@@ -84,6 +90,25 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         return mouseCoordinates;
     }
 
+    public void setupLaser(boolean aan){
+        if(aan){
+            laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
+            addEntity(laser);
+        }
+        else{
+            laser.setRemove();
+        }
+    }
+
+    public void setupZaklamp(boolean aan){
+        if(aan){
+            lamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), this);
+            addEntity(lamp);
+        }
+        else{
+            lamp.setRemove();
+        }
+    }
 
     public void doeScoreErbij(int score) {
         this.score += score;
@@ -94,15 +119,16 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     }
 
     public boolean getLaser() {
-        return laser;
+        return laserAan;
     }
 
     public void setLaser(boolean laser) {
-        this.laser = laser;
+        this.laserAan = laser;
     }
-
-//    public int getDirection(){
-//        return Schip.getDirection();
-//    }
-
+    public boolean getZaklamp() {
+        return zaklampAan;
+    }
+    public void setZaklamp(boolean zaklamp) {
+        this.zaklampAan = zaklamp;
+    }
 }
