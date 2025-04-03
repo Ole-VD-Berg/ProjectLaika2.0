@@ -61,6 +61,7 @@ public class Zwartgat extends SliceableObject implements UpdateExposer, Collided
                 }
             }
             if (collider instanceof LaserPunt) {
+                hitBox.remove();
                 LaserPunt laserPunt = (LaserPunt) collider;
                 double laserX = laserPunt.getMouseCoordinates().getX();
                 double laserY = laserPunt.getMouseCoordinates().getY();
