@@ -17,42 +17,37 @@ import java.util.Optional;
 import java.util.Random;
 
 
-public class BulletSpawner extends EntitySpawner implements UpdateExposer {
-
-    private final double sceneWidth;
-    private final double sceneHeight;
+public class BulletSpawner extends EntitySpawner {
     private final GameScene gameScene;
     Schip schip;
     private int direction;
     int speed = 10;
-
-    Planeet planeet;
-    public BulletSpawner(double sceneWidth, double sceneHeight, GameScene gameScene, Schip schip) {
-        super(300);
-        this.sceneWidth = sceneWidth;
-        this.sceneHeight = sceneHeight;
-        this.direction = direction;
-        this.schip = schip;
+    Coordinate2D coordinates = new Coordinate2D(0,0);
+    public BulletSpawner(GameScene gameScene) {
+        super(500);
         this.gameScene = gameScene;
-
-
     }
+
 
     @Override
     protected void spawnEntities() {
-            Bullet bullet = new Bullet("sprites/vijandig/bullet.png", new Coordinate2D(0, 0), direction, speed);
+        if(gameScene.getObjectenSpawner().getSchip() != null) {
+            System.out.println(gameScene.getObjectenSpawner().getSchip());
+            Bullet bullet = new Bullet("sprites/vijandig/bullet.png", coordinates, direction, speed);
             spawn(bullet);
+        }
 
     }
-//    public void setDirection(int direction) {
-//        this.direction = direction;
-//    }
 
-
-    @Override
-    public void explicitUpdate(long l) {
-       // this.direction = gameScene.getDirection();
-       // this.location = Schip.getLocation();
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
+    public void setCoordinates(Coordinate2D coordinaten){
+        coordinates = coordinaten;
+    }
+
+
+
+
 }
 

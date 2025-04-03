@@ -9,6 +9,7 @@ import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.SpaceShip.DamageHitbox;
 import org.example.entities.sliceable.planeten.Planeet;
 import org.example.entities.sliceable.vijandig.astroide.Astroide;
+import org.example.entities.sliceable.vijandig.schip.BulletSpawner;
 import org.example.entities.text.PlanetenText;
 import org.example.entities.text.ScoreText;
 import org.example.entities.overlays.*;
@@ -28,8 +29,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private boolean zaklampAan = false;
     private ObjectenSpawner objectenSpawner;
     int direction = 0;
-    Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
-    Schip schip;
+    private Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
+    private Schip schip;
+    private BulletSpawner bulletSpawner;
+    private DamageHitbox damageHitbox;
     public GameScene(ProjectLaika game) {
         this.game = game;
     }
@@ -44,8 +47,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public void setupEntitySpawners() {
         objectenSpawner = new ObjectenSpawner(getWidth(), getHeight(), game, this);
         addEntitySpawner(objectenSpawner);
-//        BulletSpawner bulletSpawner = new BulletSpawner(getWidth(), getHeight(), this, schip);
-//        addEntitySpawner(bulletSpawner);
+        bulletSpawner = new BulletSpawner(this);
+        addEntitySpawner(bulletSpawner);
     }
 
     @Override
@@ -56,16 +59,10 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(planetenText);
         scoreText = new ScoreText(new Coordinate2D(getWidth() * 0.65, getHeight() * 0.92), this);
         addEntity(scoreText);
-
         TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, this, objectenSpawner);
         addEntity(timerText2);
-        schip = new Schip(new Coordinate2D(getWidth() / 2, getHeight() / 2), 100, game, this, 270);
-        addEntity(schip);
-        DamageHitbox damageHitbox = new DamageHitbox(new Coordinate2D(0, getHeight() - 10), new Size(getWidth(), 10), overlaySprite);
+        damageHitbox = new DamageHitbox(new Coordinate2D(getWidth() / 2, getHeight() - 10), new Size(getWidth() / 5, 10), overlaySprite);
         addEntity(damageHitbox);
-        Astroide astroide = new Astroide(new Coordinate2D(getWidth() / 4, getHeight() / 4), 100, game, this, 45, 1);
-        addEntity(astroide);
-
     }
 
 
@@ -90,10 +87,12 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         }
 
     }
+
     public Planeet getPlaneet(){
         return objectenSpawner.getPlaneet();
-
     }
+    public DamageHitbox getDamageHitbox(){return damageHitbox;}
+    public BulletSpawner getBulletSpawner(){return bulletSpawner;}
     public ObjectenSpawner getObjectenSpawner(){
         return objectenSpawner;
     }

@@ -1,5 +1,6 @@
 package org.example.entities.SpaceShip;
 
+import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -23,7 +24,9 @@ public class DamageHitbox extends RectangleEntity implements Collided {
     public DamageHitbox(Coordinate2D initialPosition, Size size, OverlaySprite overlaySprite) {
         super(initialPosition, size);
         this.overlaySprite = overlaySprite;
+        setAnchorPoint(AnchorPoint.CENTER_CENTER);
         setFill(Color.TRANSPARENT);
+
     }
 
     @Override
@@ -35,6 +38,7 @@ public class DamageHitbox extends RectangleEntity implements Collided {
                 if(bulletHit == 3) {
                     overlaySprite.increaseSpriteFrame();
                     bulletHit = 0;
+                    playSound();
                 }
             }
             if(collider instanceof Astroide astroide) {
