@@ -9,6 +9,7 @@ import org.example.entities.sliceable.planeten.bewoondePlaneet.BewoondePlaneet;
 import org.example.entities.sliceable.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.sliceable.planeten.onbewoondPlaneet.OnbewoondePlaneet;
 import org.example.entities.sliceable.vijandig.astroide.Astroide;
+import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.sliceable.vijandig.zwartgat.Zwartgat;
 import org.example.entities.timer.Timer2;
 import org.example.scenes.GameScene;
@@ -23,14 +24,14 @@ public class ObjectenSpawner extends EntitySpawner {
     private final double sceneHeight;
     private GameScene gameScene;
     private ProjectLaika game;
+    private Schip schip;
     private int direction = 0;
     private final int DOWN = 0;
     private final int AFWIJKING = 10;
     private final int RIGHT = 90;
-    private final int UP = 180;
     private final int LEFT = 270;
     Planeet planeet;
-    public ObjectenSpawner(double sceneWidth, double sceneHeight, ProjectLaika game, GameScene gameScene) {
+    public ObjectenSpawner(double sceneWidth, double sceneHeight, ProjectLaika game, GameScene gameScene ) {
         super(300);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
@@ -46,7 +47,6 @@ public class ObjectenSpawner extends EntitySpawner {
             OnbewoondePlaneet onbewoondePlaneet = new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(onbewoondePlaneet);
             planeet = onbewoondePlaneet;
-
         } else if(randomNummer < 8){
             BewoondePlaneet bewoondePlaneet = new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(bewoondePlaneet);
@@ -58,7 +58,7 @@ public class ObjectenSpawner extends EntitySpawner {
             planeet = onbekendePlaneet;
         }
         else if (randomNummer < 11) {
-            int randomAstroide = new Random().nextInt(10);
+            int randomAstroide = new Random().nextInt(2);
             if (randomAstroide == 0) {
                 Astroide astroide = new Astroide(new Coordinate2D(0,0), 100, game, gameScene, 45, 1);
                 spawn(astroide);
@@ -66,12 +66,20 @@ public class ObjectenSpawner extends EntitySpawner {
                 Astroide astroide = new Astroide(new Coordinate2D(gameScene.getWidth() / 2, 50), 100, game, gameScene, 315, 0);
                 spawn(astroide);
             }
-        } else if (randomNummer == 14) {
+        } else if (randomNummer < 13) {
                 Zwartgat zwartgat = new Zwartgat(new Coordinate2D(new Random().nextDouble(gameScene.getWidth() / 2), new Random().nextDouble(gameScene.getHeight() /2)), 90, game, gameScene, 0);
                 spawn(zwartgat);
         }
-        System.out.println(direction);
+        else if(randomNummer < 14){
+            schip = new Schip(new Coordinate2D(game.getWidth() / 4, game.getHeight() / 4), 100, game, gameScene, 270, this);
+            spawn(schip);
+        }
 
+
+
+    }
+    public Schip getSchip(){
+        return schip;
     }
     public Planeet getPlaneet() {
         return planeet;
@@ -113,6 +121,11 @@ public class ObjectenSpawner extends EntitySpawner {
 
     public void veranderKant() {
             direction = new Random().nextInt(3);
+    }
+
+
+    public void setSchipNaarNull() {
+        schip = null;
     }
 }
 

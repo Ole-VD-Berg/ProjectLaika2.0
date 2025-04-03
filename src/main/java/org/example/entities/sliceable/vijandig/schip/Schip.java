@@ -2,32 +2,38 @@ package org.example.entities.sliceable.vijandig.schip;
 
 import com.github.hanyaeger.api.*;
 import org.example.ProjectLaika;
+import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.sliceable.SliceableObject;
 import org.example.scenes.GameScene;
 
-public class Schip extends SliceableObject  {
-    private int direction;
-    public Schip(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
+public class Schip extends SliceableObject implements UpdateExposer  {
+    private final ObjectenSpawner objectenSpawner;
+    BulletSpawner bulletSpawner;
+    public Schip(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction, ObjectenSpawner objectenSpawner) {
         super(initialLocation, size, game, gameScene, direction);
-        //setMotion(SPEED, direction);
-
+        setMotion(SPEED, direction);
+        bulletSpawner = gameScene.getBulletSpawner();
+        this.objectenSpawner = objectenSpawner;
     }
-
-//    public Coordinate2D getLocation() {
-//        return getAnchorLocation();
-//    }
 
     @Override
     protected void setupEntities() {
-        super.setupEntities();
         SchipSprite schipSprite = new SchipSprite("sprites/vijandig/schip.png", new Coordinate2D(intitialLocation), new Size(size, size));
         addEntity(schipSprite);
-        SchipGun schipGun = new SchipGun( new Coordinate2D(intitialLocation), this);
-        addEntity(schipGun);
+        super.setupEntities();
+    }
+    @Override
+    public void explicitUpdate(long l) {
+        super.explicitUpdate(l);
+        int direction = (int) angleTo(gameScene.getDamageHitbox());
+        setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        bulletSpawner.setCoordinates(getLocationInScene());
+        bulletSpawner.setDirection(direction);
     }
 
     @Override
     protected void doSlicingActie() {
+        objectenSpawner.setSchipNaarNull();
         remove();
     }
 }

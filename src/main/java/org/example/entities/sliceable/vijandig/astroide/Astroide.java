@@ -18,7 +18,7 @@ public class Astroide extends SliceableObject implements UpdateExposer, Collider
         this.locatie = initialLocation;
         this.locatie = getLocationInScene();
         this.direction = direction;
-        //setMotion(SPEED, direction);
+        setMotion(SPEED, direction);
 
 
     }
@@ -49,7 +49,6 @@ public class Astroide extends SliceableObject implements UpdateExposer, Collider
     @Override
     protected void doSlicingActie() {
         remove();
-        System.out.println("Astroide gesliced");
     }
 }
 
