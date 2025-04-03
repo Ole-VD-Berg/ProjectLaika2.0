@@ -61,7 +61,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         addEntity(scoreText);
         TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, this, objectenSpawner);
         addEntity(timerText2);
-        damageHitbox = new DamageHitbox(new Coordinate2D(getWidth() / 2, getHeight() - 10), new Size(getWidth() / 5, 10), overlaySprite);
+        damageHitbox = new DamageHitbox(new Coordinate2D(getWidth() / 2, getHeight() - 10), new Size(getWidth() / 5, 10), overlaySprite, this);
         addEntity(damageHitbox);
     }
 

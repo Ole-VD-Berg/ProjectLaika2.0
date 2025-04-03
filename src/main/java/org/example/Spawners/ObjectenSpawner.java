@@ -71,7 +71,7 @@ public class ObjectenSpawner extends EntitySpawner {
                 spawn(zwartgat);
         }
         else if(randomNummer < 14){
-            schip = new Schip(new Coordinate2D(game.getWidth() / 4, game.getHeight() / 4), 100, game, gameScene, 270, this);
+            schip = new Schip(randomLocation(direction), 100, game, gameScene, angleConverter(direction), this, direction);
             spawn(schip);
         }
 

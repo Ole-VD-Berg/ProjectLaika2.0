@@ -32,7 +32,6 @@ public class BulletSpawner extends EntitySpawner {
     @Override
     protected void spawnEntities() {
         if(gameScene.getObjectenSpawner().getSchip() != null) {
-            System.out.println(gameScene.getObjectenSpawner().getSchip());
             Bullet bullet = new Bullet("sprites/vijandig/bullet.png", coordinates, direction, speed);
             spawn(bullet);
         }

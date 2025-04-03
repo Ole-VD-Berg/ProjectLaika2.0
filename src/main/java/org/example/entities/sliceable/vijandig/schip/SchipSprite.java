@@ -13,10 +13,11 @@ import java.util.Optional;
 
 public class SchipSprite extends DynamicSpriteEntity implements MouseButtonPressedListener {
 
-    protected SchipSprite(String resource, Coordinate2D initialLocation, Size size) {
-        super(resource, initialLocation, size);
+    protected SchipSprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns, int currentRow) {
+        super(resource, initialLocation, size, rows, columns);
         setPreserveAspectRatio(true);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        setAutoCycle(100, currentRow);
     }
 
     @Override
