@@ -8,6 +8,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
+import org.example.entities.onbekend.PlaneetHitbox;
 import org.example.entities.onbekend.PlaneetSprite;
 import org.example.entities.onbekend.maan.Maan;
 
@@ -17,9 +18,11 @@ import java.util.Set;
 
 import static java.lang.Math.random;
 
-public class OnbekendeScene extends DynamicScene implements UpdateExposer {
+public class OnbekendeScene extends DynamicScene implements UpdateExposer, MouseButtonPressedListener {
     ProjectLaika game;
     GameScene gameScene;
+    private PlaneetSprite planeetSprite;
+    private PlaneetHitbox planeetHitbox;
     private String planeet;
     private static Random random = new Random();
     private int[] maanVolg = new int[] {1,2,3,4};
@@ -27,6 +30,8 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer {
     private int goed = 0;
     private boolean faal = false;
     private Maan maan1, maan2, maan3, maan4;
+    private int bewoond = 0;
+    private int gameCompleted = 0;
 
     public OnbekendeScene(ProjectLaika game, GameScene gameScene, int planeet) {
         this.game = game;
@@ -41,7 +46,7 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer {
 
     @Override
     public void setupEntities() {
-        PlaneetSprite planeetSprite = new PlaneetSprite("sprites/planeten/" + planeet + ".png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(500, 500));
+         planeetSprite = new PlaneetSprite("sprites/planeten/" + planeet + ".png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(500, 500));
         addEntity(planeetSprite);
 
         maakVolg(maanVolg);
@@ -65,7 +70,37 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer {
 
     @Override
     public void explicitUpdate(long l) {
-        System.out.println(goed + " " + faal + " " + maanKlick);
+        if (maan1.getBewoond() == 1 || maan2.getBewoond() == 1  || maan3.getBewoond() == 1  || maan4.getBewoond() == 1) {
+            bewoond = 1;
+            if(gameCompleted == 0) {
+                setHitbox();
+                gameCompleted++;
+            }
+        }
+        if (maan1.getBewoond() == 2 || maan2.getBewoond() == 2  || maan3.getBewoond() == 2  || maan4.getBewoond() == 2) {
+            bewoond = 2;
+            if(gameCompleted == 0) {
+                setHitbox();
+                gameCompleted++;
+            }
+        }
+        if(gameCompleted == 1){
+            if(planeetHitbox.getPlaneetKlick()) {
+             if (bewoond == 1) {
+                 gameScene.doeScoreErbij(3);
+             }
+             if (bewoond == 2) {
+                 gameScene.doeScoreErbij(-1);
+             }
+             System.out.println(planeetHitbox.getPlaneetKlick());
+             game.setActiveScene(1);
+             }
+        }
+    }
+
+    public void setHitbox(){
+        planeetHitbox = new PlaneetHitbox(new Coordinate2D(getWidth() / 2, getHeight() / 2), 500);
+        addEntity(planeetHitbox);
     }
 
     public void setFaal(){
@@ -93,6 +128,17 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer {
                 array[j] = temp;
             }
         }
-        System.out.println(array[0] + " " + array[1] + " " + array[2] + " " + array[3]);
+    }
+
+    @Override
+    public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+        System.out.println("test");
+            if (bewoond == 1) {
+                gameScene.doeScoreErbij(0);
+            }
+            if (bewoond == 2) {
+                gameScene.doeScoreErbij(3);
+            }
+            game.setActiveScene(1);
     }
 }

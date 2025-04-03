@@ -1,5 +1,4 @@
 package org.example.entities.timer;
-
 import com.github.hanyaeger.api.Timer;
 import org.example.entities.Text.ScrollableText.ScrollableText;
 
