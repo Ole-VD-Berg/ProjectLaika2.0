@@ -11,17 +11,20 @@ public class Laser extends DynamicCompositeEntity implements MouseMovedListener,
 
     private Coordinate2D mouseCoordinates;
     private  GameScene gameScene;
+    private LaserRect laserRect;
+    private LaserPunt laserPunt;
     public Laser(Coordinate2D initialLocation, GameScene gameScene) {
         super(initialLocation);
         this.gameScene = gameScene;
         setViewOrder(14);
+        this.mouseCoordinates = gameScene.getMouseCoordinates();
     }
 
     @Override
     protected void setupEntities() {
-        LaserRect laserRect = new LaserRect(new Coordinate2D(0, 0), gameScene, this);
+        laserRect = new LaserRect(new Coordinate2D(0, 0), gameScene, this);
         addEntity(laserRect);
-        LaserPunt laserPunt = new LaserPunt(new Coordinate2D(0, 0), gameScene, this);
+        laserPunt = new LaserPunt(new Coordinate2D(0, 0), gameScene, this);
         addEntity(laserPunt);
 
     }
@@ -43,5 +46,11 @@ public class Laser extends DynamicCompositeEntity implements MouseMovedListener,
     @Override
     public void explicitUpdate(long l) {
 
+    }
+
+    public void setRemove() {
+        laserRect.remove();
+        laserPunt.remove();
+        this.remove();
     }
 }
