@@ -15,15 +15,15 @@ public class TextSwitch extends DynamicTextEntity implements UpdateExposer {
             "in deze game heb je 1 doel: de aarde beschermen.",
             "dit doe je door te kiezen om planeten te vernietigen of niet.",
             "je hebt 3 verschillende planeten",
-            "bewoonde planeten, onbekende planeten en onbewoonde planeten.",
-            "bewoonde planeten zijn planeten die je door moet laten gaan.",
+            "bewoonde, onbewoonde en onbekende planeten.",
             "onbewoonde planeten kan je vernietigen.",
+            "bewoonde planeten zijn planeten die je door moet laten gaan.",
             "onbekende planeten moet je bekijken met de zaklamp.",
             "je maakt een keuze om ze te vernietigen of niet door een kleine puzzel",
             "je sliced planeten met je laser",
             "je zet de laser aan door ergens te klikken met je linkermuisknop",
             "je kan de zaklamp aanzetten door midel van je rechtermuisknop",
-            "je kan de ze beide uitzetten door nog een keer te klikken",
+            "je kan ze beide uitzetten door nog een keer te klikken",
             "planeten gaan kapot als je er door heen snijdt"
 
     };
