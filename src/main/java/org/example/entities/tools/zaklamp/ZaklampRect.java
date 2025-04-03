@@ -20,7 +20,7 @@ public class ZaklampRect extends DynamicRectangleEntity implements UpdateExposer
         this.gameScene = gameScene;
         setFill(Color.RED);
         setWidth(5);
-        setHeight(1050);
+        setHeight(10);
         this.zaklamp = zaklamp;
         this.mouseCoordinates = zaklamp.getMouseCoordinates();
     }
@@ -31,7 +31,7 @@ public class ZaklampRect extends DynamicRectangleEntity implements UpdateExposer
     public void explicitUpdate(long l) {
         this.zaklampSwitch = gameScene.getZaklamp();
         if(!zaklampSwitch) {
-            setFill(Color.TRANSPARENT);
+            this.remove();
         }
         else {setFill(Color.WHITE);}
             mouseCoordinates = zaklamp.getMouseCoordinates();

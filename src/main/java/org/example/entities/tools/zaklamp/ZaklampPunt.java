@@ -27,7 +27,7 @@ public class ZaklampPunt extends DynamicCircleEntity implements Collider, Update
     public void explicitUpdate(long l) {
         this.zaklampSwitch = gameScene.getZaklamp();
         if (!zaklampSwitch) {
-            setFill(Color.TRANSPARENT);
+            this.remove();
             setCursor(Cursor.DEFAULT);
         } else {
             setFill(Color.WHITE);

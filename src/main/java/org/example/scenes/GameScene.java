@@ -82,6 +82,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
             }
             laser = !laser;
 
+
         }
         else if (mouseButton == MouseButton.SECONDARY) {
             if (!zaklamp) {

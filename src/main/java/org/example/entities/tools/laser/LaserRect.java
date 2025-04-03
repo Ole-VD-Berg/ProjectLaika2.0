@@ -21,7 +21,7 @@ public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {
         this.gameScene = gameScene;
         setFill(Color.RED);
         setWidth(5);
-        setHeight(1050);
+        setHeight(10);
         this.laser = laser;
         this.mouseCoordinates = laser.getMouseCoordinates();
     }
@@ -32,7 +32,7 @@ public class LaserRect extends DynamicRectangleEntity implements UpdateExposer {
     public void explicitUpdate(long l) {
         this.laserSwitch = gameScene.getLaser();
         if(!laserSwitch) {
-            setFill(Color.TRANSPARENT);
+            this.remove();
         }
         else {setFill(Color.RED);}
             mouseCoordinates = laser.getMouseCoordinates();
