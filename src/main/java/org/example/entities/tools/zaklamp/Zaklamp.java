@@ -25,8 +25,8 @@ public class Zaklamp extends DynamicCompositeEntity implements MouseMovedListene
     protected void setupEntities() {
         zaklampTriangle  = new ZaklampTriangle(new Coordinate2D(0, 0), gameScene, this);
         addEntity(zaklampTriangle);
-//        ZaklampPunt zaklampPunt = new ZaklampPunt(new Coordinate2D(0, 0), gameScene, this);
-//        addEntity(zaklampPunt);
+        ZaklampPunt zaklampPunt = new ZaklampPunt(new Coordinate2D(0, 0), gameScene, this);
+        addEntity(zaklampPunt);
 
     }
 

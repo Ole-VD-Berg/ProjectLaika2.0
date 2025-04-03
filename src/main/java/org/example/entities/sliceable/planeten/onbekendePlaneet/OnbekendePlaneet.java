@@ -2,12 +2,17 @@ package org.example.entities.sliceable.planeten.onbekendePlaneet;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collided;
+import com.github.hanyaeger.api.entities.Collider;
 import org.example.ProjectLaika;
 import org.example.entities.sliceable.planeten.Hitbox;
 import org.example.entities.sliceable.planeten.Planeet;
+import org.example.entities.tools.zaklamp.ZaklampPunt;
 import org.example.scenes.GameScene;
 
-public class OnbekendePlaneet extends Planeet {
+import java.util.List;
+
+public class OnbekendePlaneet extends Planeet implements Collided {
     public OnbekendePlaneet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initiallocation, size, game, gameScene, direction);
     }
@@ -18,7 +23,28 @@ public class OnbekendePlaneet extends Planeet {
     }
     @Override
     protected void doSlicingActie() {
+
         geslicedePlaneten++;
+        System.out.println("Onbekende planeet gesliced");
+        gameScene.doeScoreErbij(-1);
         remove();
+    }
+
+    @Override
+    public void onCollision(List<Collider> list) {
+        for (Collider collider : list) {
+            if (collider instanceof ZaklampPunt) {
+                ZaklampPunt lampPunt = (ZaklampPunt) collider;
+                double lampX = lampPunt.getMouseCoordinates().getX();
+                double lampY = lampPunt.getMouseCoordinates().getY();
+                double hitboxX = planeetLocation.getX();
+                double hitboxY = planeetLocation.getY();
+                double distance = Math.sqrt(Math.pow(lampX - hitboxX, 2) + Math.pow(lampY - hitboxY, 2));
+                if(distance < 25) {
+                    game.setActiveScene(3);
+                    remove();
+                }
+            }
+        }
     }
 }

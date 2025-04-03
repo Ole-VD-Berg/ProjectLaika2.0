@@ -13,14 +13,14 @@ import org.example.scenes.GameScene;
 public class ZaklampPunt extends DynamicCircleEntity implements Collider, UpdateExposer {
     private boolean laserSwitch;
     private GameScene gameScene;
-    private Laser laser;
+    private Zaklamp lamp;
     private Coordinate2D mouseCoordinates;
-    protected ZaklampPunt(Coordinate2D initialLocation, GameScene gameScene, Laser laser) {
+    protected ZaklampPunt(Coordinate2D initialLocation, GameScene gameScene, Zaklamp lamp) {
         super(initialLocation);
-        setRadius(20);
+        setRadius(2);
         setViewOrder(10);
         this.gameScene = gameScene;
-        this.laser = laser;
+        this.lamp = lamp;
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
@@ -34,7 +34,7 @@ public class ZaklampPunt extends DynamicCircleEntity implements Collider, Update
             setFill(Color.YELLOW);
             setCursor(Cursor.NONE);
         }
-        this.mouseCoordinates = laser.getMouseCoordinates();
+        this.mouseCoordinates = lamp.getMouseCoordinates();
 
         if (mouseCoordinates != null) {
             double angle = angleTo(mouseCoordinates);
