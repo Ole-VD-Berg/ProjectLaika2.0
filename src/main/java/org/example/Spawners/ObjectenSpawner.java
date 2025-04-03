@@ -63,7 +63,7 @@ public class ObjectenSpawner extends EntitySpawner {
                 Astroide astroide = new Astroide(new Coordinate2D(gameScene.getWidth() / 2, 50), 100, game, gameScene, 315, 0);
                 spawn(astroide);
             } else if (randomAstroide == 1) {
-                Zwartgat zwartgat = new Zwartgat(new Coordinate2D(new Random().nextDouble(gameScene.getWidth() / 2), new Random().nextDouble(gameScene.getHeight() /2)), 90, game, gameScene, 315, 0);
+                Zwartgat zwartgat = new Zwartgat(new Coordinate2D(new Random().nextDouble(gameScene.getWidth() / 2), new Random().nextDouble(gameScene.getHeight() /2)), 90, game, gameScene, 0, 0);
                 spawn(zwartgat);
             }
 
