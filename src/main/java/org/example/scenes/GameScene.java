@@ -7,7 +7,7 @@ import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.SpaceShip.DamageHitbox;
-import org.example.entities.Text.ScoreText;
+import org.example.entities.text.ScoreText;
 import org.example.entities.overlays.*;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
