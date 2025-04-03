@@ -8,7 +8,7 @@ import org.example.scenes.GameScene;
 public class Schip extends SliceableObject  {
     private int direction;
     public Schip(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
-        super(initialLocation, size, game, gameScene, direction);
+        super(initialLocation, size, game, gameScene);
         //setMotion(SPEED, direction);
 
     }

@@ -16,7 +16,7 @@ public abstract class Planeet extends SliceableObject implements UpdateExposer {
 
 
     public Planeet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
-        super(initiallocation, size, game, gameScene, direction);
+        super(initiallocation, size, game, gameScene);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         this.planeetLocation = initiallocation;
         this.planeetLocation = getLocationInScene();

@@ -8,26 +8,25 @@ import org.example.scenes.GameScene;
 
 public class Astroide extends SliceableObject implements UpdateExposer, Collider {
     protected int direction;
-    AstroideHitbox hitbox;
     Coordinate2D locatie;
     private int currentRow;
 
     public Astroide(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction, int currentRow) {
-        super(initialLocation, size, game, gameScene, direction);
+        super(initialLocation, size, game, gameScene);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         this.currentRow = currentRow;
         this.locatie = initialLocation;
         this.locatie = getLocationInScene();
         this.direction = direction;
-        //setMotion(SPEED, direction);
+        setMotion(SPEED, direction);
 
 
     }
 
     @Override
     protected void setupEntities() {
-         hitbox = new AstroideHitbox(new Coordinate2D(intitialLocation), game, this, gameScene, this.size, direction);
-        addEntity(hitbox);
+        astroideHitbox = new AstroideHitbox(new Coordinate2D(intitialLocation), game, this, gameScene, this.size, direction);
+        addEntity(astroideHitbox);
         AstroideSprite astroideSprite = new AstroideSprite("sprites/vijandig/astroideSpriteSheet.png", new Coordinate2D(intitialLocation), new Size(size, size), 2, 4, currentRow);
         addEntity(astroideSprite);
         super.setupEntities();
@@ -39,7 +38,7 @@ public class Astroide extends SliceableObject implements UpdateExposer, Collider
         super.explicitUpdate(l);
         this.locatie = getLocationInScene();
         if(!gameScene.getLaser()){
-            hitbox.setExit(false);
+            astroideHitbox.setExit(false);
         }
     }
     public Coordinate2D getPlaneetLocatie() {

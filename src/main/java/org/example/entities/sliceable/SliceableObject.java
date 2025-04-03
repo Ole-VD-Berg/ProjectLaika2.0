@@ -8,6 +8,7 @@ import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import org.example.ProjectLaika;
 import org.example.entities.sliceable.planeten.Hitbox;
+import org.example.entities.sliceable.vijandig.astroide.AstroideHitbox;
 import org.example.scenes.GameScene;
 
 import java.util.Random;
@@ -16,12 +17,13 @@ public abstract class SliceableObject extends DynamicCompositeEntity implements 
     protected int size;
     private static int geslicedePlaneten = 0;
     protected Hitbox hitBox;
+    protected AstroideHitbox astroideHitbox;
     protected Coordinate2D intitialLocation;
     protected ProjectLaika game;
     protected GameScene gameScene;
     protected Coordinate2D initialLocation;
     protected double SPEED = new Random().nextDouble(1) + 1;
-    public SliceableObject(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
+    public SliceableObject(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene) {
         super(initiallocation);
         this.size = size;
         this.intitialLocation = initiallocation;
@@ -39,7 +41,10 @@ public abstract class SliceableObject extends DynamicCompositeEntity implements 
 
     @Override
     public void explicitUpdate(long l) {
-        if(hitBox != null) {
+//        if( hitBox != null) {
+//            checkForSlice();
+//        }
+        if( astroideHitbox != null) {
             checkForSlice();
         }
 
@@ -47,11 +52,12 @@ public abstract class SliceableObject extends DynamicCompositeEntity implements 
 
     public void checkForSlice(){
         if(!gameScene.getLaser()){
-            hitBox.setExit(false);
+            astroideHitbox.setExit(false);
         }
-        if(hitBox.getExit() && gameScene.getLaser()){
+        if( astroideHitbox.getExit() && gameScene.getLaser()){
             doSlicingActie();
             geslicedePlaneten++;
+
         }
     }
 

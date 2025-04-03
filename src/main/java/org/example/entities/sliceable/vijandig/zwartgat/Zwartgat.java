@@ -14,7 +14,7 @@ public class Zwartgat extends SliceableObject implements Collider, UpdateExposer
 
 
     public Zwartgat(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
-        super(initialLocation, size, game, gameScene, direction);
+        super(initialLocation, size, game, gameScene);
 
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
 
