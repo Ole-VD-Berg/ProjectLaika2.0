@@ -7,7 +7,6 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import org.example.ProjectLaika;
-import org.example.entities.sliceable.planeten.Hitbox;
 import org.example.scenes.GameScene;
 
 import java.util.Random;

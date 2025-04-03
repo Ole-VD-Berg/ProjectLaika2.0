@@ -5,7 +5,6 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import org.example.ProjectLaika;
-import org.example.entities.sliceable.planeten.Hitbox;
 import org.example.entities.sliceable.planeten.Planeet;
 import org.example.entities.tools.zaklamp.ZaklampPunt;
 import org.example.scenes.GameScene;

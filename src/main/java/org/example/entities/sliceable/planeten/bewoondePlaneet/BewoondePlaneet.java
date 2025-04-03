@@ -3,7 +3,6 @@ package org.example.entities.sliceable.planeten.bewoondePlaneet;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import org.example.ProjectLaika;
-import org.example.entities.sliceable.planeten.Hitbox;
 import org.example.entities.sliceable.planeten.Planeet;
 import org.example.scenes.GameScene;
 
