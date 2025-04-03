@@ -41,8 +41,8 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
         Zaklamp zaklamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), this);
         Laser laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
-        addEntity(laser);
         addEntity(zaklamp);
+        addEntity(laser);
         OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
 //        PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 20), this, objectenSpawner);
