@@ -138,13 +138,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         return laserAan;
     }
 
-    public void setLaser(boolean laser) {
-        this.laserAan = laser;
-    }
     public boolean getZaklamp() {
         return zaklampAan;
-    }
-    public void setZaklamp(boolean zaklamp) {
-        this.zaklampAan = zaklamp;
     }
 }
