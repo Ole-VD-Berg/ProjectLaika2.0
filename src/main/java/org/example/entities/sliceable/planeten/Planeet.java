@@ -12,6 +12,7 @@ import org.example.scenes.GameScene;
 
 public abstract class Planeet extends SliceableObject implements UpdateExposer {
         protected static int geslicedePlaneten = 0;
+        protected int planeetNr;
 
 
     public Planeet(Coordinate2D initiallocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
@@ -26,7 +27,8 @@ public abstract class Planeet extends SliceableObject implements UpdateExposer {
     }
 
     protected void getPlaneetSprite( Coordinate2D initialLocation) {
-        PlaneetSprite sprite = new PlaneetSprite("sprites/planeten/planeet" + getRandomSprite() + ".png", new Coordinate2D(initialLocation), new Size(size, size));
+        planeetNr = getRandomSprite();
+        PlaneetSprite sprite = new PlaneetSprite("sprites/planeten/planeet" + planeetNr + ".png", new Coordinate2D(initialLocation), new Size(size, size));
         addEntity(sprite);
     }
 

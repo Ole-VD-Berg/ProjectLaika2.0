@@ -8,12 +8,10 @@ import org.example.ProjectLaika;
 import org.example.Spawners.ObjectenSpawner;
 import org.example.entities.SpaceShip.DamageHitbox;
 import org.example.entities.sliceable.planeten.Planeet;
-import org.example.entities.sliceable.vijandig.astroide.Astroide;
 import org.example.entities.sliceable.vijandig.schip.BulletSpawner;
 import org.example.entities.text.PlanetenText;
 import org.example.entities.text.ScoreText;
 import org.example.entities.overlays.*;
-import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.timer.TimerText2;
 import org.example.entities.tools.laser.Laser;
 import org.example.entities.tools.zaklamp.Zaklamp;
@@ -35,6 +33,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     private BulletSpawner bulletSpawner;
     private DamageHitbox damageHitbox;
+    private int planeetNr;
     public GameScene(ProjectLaika game) {
         this.game = game;
     }
@@ -153,7 +152,13 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     public int getMinuten() {
         return minuten;
     }
-    public void setSceneOnbekend(){
+
+    public int getPlaneetNr() {
+            return planeetNr;
+    }
+
+    public void setSceneOnbekend(int planeetNr){
+        this.planeetNr = planeetNr;
         game.setActiveScene(3);
     }
     public void setReset(){

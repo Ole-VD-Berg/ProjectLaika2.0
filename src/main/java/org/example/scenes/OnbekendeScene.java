@@ -23,7 +23,7 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
     GameScene gameScene;
     private PlaneetSprite planeetSprite;
     private PlaneetHitbox planeetHitbox;
-    private String planeet;
+    private int planeet;
     private Random random = new Random();
     private int[] maanVolg = new int[] {1,2,3,4};
     private int maanKlick = 0;
@@ -33,10 +33,9 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
     private int bewoond = 0;
     private int gameCompleted = 0;
 
-    public OnbekendeScene(ProjectLaika game, GameScene gameScene, int planeet) {
+    public OnbekendeScene(ProjectLaika game, GameScene gameScene) {
         this.game = game;
         this.gameScene = gameScene;
-        this.planeet = "planeet" + planeet;
     }
 
     @Override
@@ -46,7 +45,8 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
 
     @Override
     public void setupEntities() {
-        planeetSprite = new PlaneetSprite("sprites/planeten/" + planeet + ".png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(500, 500));
+        this.planeet = gameScene.getPlaneetNr();
+        planeetSprite = new PlaneetSprite("sprites/planeten/planeet" + planeet + ".png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(500, 500));
         addEntity(planeetSprite);
 
         maakVolg(maanVolg);

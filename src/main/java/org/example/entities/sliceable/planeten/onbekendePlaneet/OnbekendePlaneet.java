@@ -38,8 +38,8 @@ public class OnbekendePlaneet extends Planeet implements Collided {
                 double hitboxY = objectLocation.getY();
                 double distance = Math.sqrt(Math.pow(lampX - hitboxX, 2) + Math.pow(lampY - hitboxY, 2));
                 if(distance < 25) {
+                    gameScene.setSceneOnbekend(planeetNr);
                     remove();
-                    gameScene.setSceneOnbekend();
                 }
             }
         }
