@@ -27,6 +27,7 @@ public class LaserPunt extends DynamicCircleEntity implements Collider, UpdateEx
         if (mouseCoordinates != null) {
             return mouseCoordinates;
         }
+        setFill(Color.TRANSPARENT);
         return new Coordinate2D(0,0);
     }
 

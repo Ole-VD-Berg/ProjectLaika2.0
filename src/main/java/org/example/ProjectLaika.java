@@ -32,12 +32,12 @@ public class ProjectLaika extends YaegerGame
 
 
         GameScene gameScene = new GameScene(this);
-
         addScene(0, new TitleScene(this)); //laad eerst de title scene
         addScene(1, gameScene);
         addScene(2, new EndScene(this, gameScene)); //laad de eind scene
         addScene(3, new OnbekendeScene(this, gameScene)); //laad de onbekende scene
-        addScene(4, new TutorialScene(this, gameScene)); //laad de tutorial scene
+        addScene(4, new TutorialScene(this, gameScene));
+         //laad de tutorial scene
 
     }
 

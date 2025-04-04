@@ -5,11 +5,8 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
-import org.example.entities.sliceable.planeten.onbekendePlaneet.OnbekendePlaneet;
 import org.example.entities.text.textSwitch.TextSwitch;
 import org.example.entities.text.textSwitch.TextTimer;
 import org.example.entities.text.textSwitch.TutorialSprite;
@@ -26,9 +23,6 @@ public class TutorialScene extends DynamicScene implements TimerContainer,  KeyL
     TutorialSprite tutorialSprite;
     private Laser laser;
     private Zaklamp lamp;
-    private boolean laserAan = false;
-    private boolean zaklampAan = false;
-    Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
 
     public TutorialScene(ProjectLaika game, GameScene gameScene) {
         this.game = game;
@@ -46,9 +40,9 @@ public class TutorialScene extends DynamicScene implements TimerContainer,  KeyL
 
     @Override
     public void setupEntities() {
-        tutorialSprite = new TutorialSprite("backgrounds/overlays/spriteFrameTutorial.png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(getWidth(), getHeight()), 8, 1);
+        tutorialSprite = new TutorialSprite("backgrounds/overlays/spriteFrameTutorial.png", new Coordinate2D(getWidth() / 2, getHeight() / 2), new Size(getWidth(), getHeight()), 9, 1);
         addEntity(tutorialSprite);
-        textSwitch = new TextSwitch(new Coordinate2D(getWidth() / 2, getHeight() / 12), game);
+        textSwitch = new TextSwitch(new Coordinate2D(getWidth() / 2, getHeight() / 12), this);
         addEntity(textSwitch);
 
     }
@@ -58,33 +52,41 @@ public class TutorialScene extends DynamicScene implements TimerContainer,  KeyL
             textSwitch.nieuweZin();
             textTimer.reset();
             textTimer.resume();
-
             switch(textSwitch.getZin()) {
-                case 3, 5, 6, 7, 11:
+                case 3, 5, 6, 7, 11, 13, 15:
                     tutorialSprite.nieuweFrame();
                     break;
-                case 15:
+                case 17:
                     tutorialSprite.nieuweFrame();
                     setupLaser();
                     break;
-                case 17:
+                case 19:
                     setupZaklamp();
                     break;
+                case  20:
+                    gameScene.setZaklamp(false);
+                case 21:
+                    veranderScene();
             }
+
+
         }
     }
 
 
     public void setupLaser(){
-            laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), gameScene);
-            addEntity(laser);
-            System.out.println("laser aan");
+        gameScene.setLaser(true);
+        laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), gameScene);
+        addEntity(laser);
     }
 
     public void setupZaklamp(){
+        gameScene.setLaser(false);
+        gameScene.setZaklamp(true);
             lamp = new Zaklamp(new Coordinate2D(getWidth() / 2, getHeight()), gameScene);
             addEntity(lamp);
-            laser.setRemove();
-        System.out.println("zaklamp");
+    }
+    public void veranderScene(){
+        game.setActiveScene(0);
     }
 }

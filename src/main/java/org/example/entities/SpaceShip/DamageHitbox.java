@@ -51,7 +51,7 @@ public class DamageHitbox extends DynamicRectangleEntity implements Collided, Up
     }
     private void playSound() {
         var glas = new SoundClip("audio/glas.mp3");
-        glas.setVolume(5);
+        glas.setVolume(0.1);
         glas.play();
     }
 

@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.userinput.MouseMovedWhileDraggingListener;
 import javafx.application.Platform;
 import org.example.scenes.GameScene;
 
-public class Laser extends DynamicCompositeEntity implements MouseMovedListener, MouseMovedWhileDraggingListener, UpdateExposer {
+public class Laser extends DynamicCompositeEntity implements MouseMovedListener, MouseMovedWhileDraggingListener {
 
     private Coordinate2D mouseCoordinates;
     private  GameScene gameScene;
@@ -45,10 +45,6 @@ public class Laser extends DynamicCompositeEntity implements MouseMovedListener,
         return mouseCoordinates;
     }
 
-    @Override
-    public void explicitUpdate(long l) {
-
-    }
 
     public void setRemove() {
             laserRect.remove();

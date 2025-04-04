@@ -10,8 +10,6 @@ import org.example.entities.titleScene.TutorialButtonSprite;
 
 public class TitleScene extends StaticScene {
     private ProjectLaika game;
-    private final int buttonX = 30;
-    //private final int buttonY = (int) getHeight();
     public TitleScene(ProjectLaika game) {
         this.game = game;
     }
@@ -31,7 +29,7 @@ public class TitleScene extends StaticScene {
         addEntity(quitButtonSprite);
         TutorialButtonSprite tutorial = new TutorialButtonSprite("sprites/titleScene/tutorialbutton.png", new Coordinate2D(getWidth() - 50, getHeight() - 50), new Size( 75), game);
         addEntity(tutorial);
-        TutorialButtonSprite tutorialTextSprite = new TutorialButtonSprite("sprites/titleScene/tutorialTextSprite.png", new Coordinate2D(getWidth() * 0.83, getHeight() * 0.72 ), new Size(120,90), game);
+        TutorialButtonSprite tutorialTextSprite = new TutorialButtonSprite("sprites/titleScene/tutorialTextSprite.png", new Coordinate2D(getWidth() * 0.83, getHeight() * 0.72), new Size(120,90), game);
         addEntity(tutorialTextSprite);
     }
 }
