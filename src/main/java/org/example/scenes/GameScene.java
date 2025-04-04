@@ -35,7 +35,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
     private BulletSpawner bulletSpawner;
     private DamageHitbox damageHitbox;
-    private int damage;
     public GameScene(ProjectLaika game) {
         this.game = game;
     }
@@ -156,16 +155,12 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         return minuten;
     }
     public void setSceneOnbekend(){
-        damage = overlaySprite.getSpriteframes();
         game.setActiveScene(3);
     }
-    public void setreset(){
+    public void setReset(){
         minuten = 2;
         seconden = 0;
         score = 0;
-        overlaySprite.setSpriteFrames(0);
-    }
-    public int getOverlaySprite(){
-        return damage;
+        overlaySprite.setDamage(0);
     }
 }

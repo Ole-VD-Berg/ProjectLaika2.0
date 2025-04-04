@@ -12,11 +12,12 @@ public class ScoreText extends DynamicTextEntity implements UpdateExposer {
     private GameScene gameScene;
     public ScoreText(Coordinate2D initialLocation, GameScene gameScene){
         super(initialLocation);
-        setFont(new CustomFont("fonts/Minecraft.ttf", 10));
+        setFont(new CustomFont("fonts/Minecraft.ttf", 20));
         setFill(Color.WHITE);
-        setText("Score: 0");
         this.gameScene = gameScene;
+        setText("score: " + gameScene.getScore());
         setViewOrder(10);
+
     }
 
     @Override

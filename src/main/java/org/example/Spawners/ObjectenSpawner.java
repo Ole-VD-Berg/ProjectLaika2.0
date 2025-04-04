@@ -7,7 +7,7 @@ import org.example.ProjectLaika;
 import org.example.entities.sliceable.planeten.Planeet;
 import org.example.entities.sliceable.planeten.bewoondePlaneet.BewoondePlaneet;
 import org.example.entities.sliceable.planeten.onbekendePlaneet.OnbekendePlaneet;
-import org.example.entities.sliceable.planeten.onbewoondPlaneet.OnbewoondePlaneet;
+import org.example.entities.sliceable.planeten.onbewoondePlaneet.OnbewoondePlaneet;
 import org.example.entities.sliceable.vijandig.astroide.Astroide;
 import org.example.entities.sliceable.vijandig.schip.Schip;
 import org.example.entities.sliceable.vijandig.zwartgat.Zwartgat;

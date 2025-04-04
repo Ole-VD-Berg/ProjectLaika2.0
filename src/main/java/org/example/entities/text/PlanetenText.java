@@ -27,12 +27,9 @@ public class PlanetenText extends DynamicTextEntity implements UpdateExposer {
 
     @Override
     public void explicitUpdate(long l) {
-
         Planeet planeet = gameScene.getPlaneet();
         if(planeet != null){
             setText("" + planeet.getGeslicedePlaneten());
         }
-
-
     }
 }
