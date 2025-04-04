@@ -32,7 +32,7 @@ public class ObjectenSpawner extends EntitySpawner {
     private final int LEFT = 270;
     Planeet planeet;
     public ObjectenSpawner(double sceneWidth, double sceneHeight, ProjectLaika game, GameScene gameScene ) {
-        super(300);
+        super(400);
         this.sceneWidth = sceneWidth;
         this.sceneHeight = sceneHeight;
         this.game = game;
@@ -43,11 +43,11 @@ public class ObjectenSpawner extends EntitySpawner {
     @Override
     protected void spawnEntities() {
     int randomNummer = new Random().nextInt(15);
-        if (randomNummer < 6) {
+        if (randomNummer < 7) {
             OnbewoondePlaneet onbewoondePlaneet = new OnbewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(onbewoondePlaneet);
             planeet = onbewoondePlaneet;
-        } else if(randomNummer < 8){
+        } else if(randomNummer < 9){
             BewoondePlaneet bewoondePlaneet = new BewoondePlaneet(randomLocation(direction), 150, game, gameScene, angleConverter(direction));
             spawn(bewoondePlaneet);
             planeet = bewoondePlaneet;
@@ -66,11 +66,11 @@ public class ObjectenSpawner extends EntitySpawner {
                 Astroide astroide = new Astroide(new Coordinate2D(gameScene.getWidth() / 2, 50), 100, game, gameScene, 315, 0);
                 spawn(astroide);
             }
-        } else if (randomNummer < 13) {
+        } else if (randomNummer < 12) {
                 Zwartgat zwartgat = new Zwartgat(randomLocation(direction), 90, game, gameScene, angleConverter(direction));
                 spawn(zwartgat);
         }
-        else if(randomNummer < 14){
+        else if(randomNummer < 13){
             schip = new Schip(randomLocation(direction), 100, game, gameScene, angleConverter(direction), this, direction);
             spawn(schip);
         }
