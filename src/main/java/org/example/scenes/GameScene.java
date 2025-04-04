@@ -19,7 +19,7 @@ import org.example.entities.tools.laser.Laser;
 import org.example.entities.tools.zaklamp.Zaklamp;
 
 
-public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer, UpdateExposer {
+public class GameScene extends DynamicScene implements MouseButtonPressedListener, EntitySpawnerContainer {
     public ScoreText scoreText;
     private ProjectLaika game;
     private Laser laser;
@@ -28,7 +28,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private static int score;
     private static int seconden = 0;
     private static int minuten = 2;
-    private static int damage;
     private boolean laserAan = false;
     private boolean zaklampAan = false;
     private ObjectenSpawner objectenSpawner;
@@ -155,27 +154,5 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     }
     public int getMinuten() {
         return minuten;
-    }
-    public int getDamage(){
-            return damage;
-    }
-    public void setDamage(int damage){
-        GameScene.damage = damage;
-    }
-    public void setDamageMet1(){
-        damage ++;
-    }
-    public void setReset(){
-        seconden = 0;
-        minuten = 2;
-        score = 0;
-        overlaySprite.setSpriteFrame(0);
-    }
-
-    @Override
-    public void explicitUpdate(long l) {
-        if(overlaySprite != null) {
-            overlaySprite.setSpriteFrame(damage);
-        }
     }
 }
