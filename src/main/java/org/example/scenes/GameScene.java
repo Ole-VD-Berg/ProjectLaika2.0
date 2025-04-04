@@ -117,7 +117,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         game.setActiveScene(2);
     }
     public void doeScoreErbij(int score) {
-        System.out.print(this.score + " + " + score);
         this.score += score;
         if(this.score < 0){
             this.score = 0;
@@ -166,7 +165,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         seconden = 0;
         score = 0;
         overlaySprite.setDamage(0);
-        System.out.println("test");
         getPlaneet().resetGeslicedePlaneten();
     }
 }

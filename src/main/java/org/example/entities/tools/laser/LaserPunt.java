@@ -41,7 +41,6 @@ public class LaserPunt extends DynamicCircleEntity implements Collider, UpdateEx
         }
         if (!laserSwitch) {
             setCursor(Cursor.DEFAULT);
-            System.out.println("Laser is uit");
             laser.setRemove();
         } else {
             setFill(Color.RED);
