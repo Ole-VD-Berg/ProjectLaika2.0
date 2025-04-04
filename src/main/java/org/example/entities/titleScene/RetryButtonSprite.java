@@ -25,7 +25,7 @@ public class RetryButtonSprite extends DynamicSpriteEntity implements MouseButto
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        gameScene.setReset();
+        //gameScene.setReset();
         game.setActiveScene(1);
     }
 
