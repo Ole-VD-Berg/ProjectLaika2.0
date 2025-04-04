@@ -10,7 +10,7 @@ import org.example.ProjectLaika;
 import org.example.entities.sliceable.planeten.Planeet;
 import org.example.entities.sliceable.planeten.bewoondePlaneet.BewoondePlaneet;
 import org.example.entities.sliceable.planeten.onbekendePlaneet.OnbekendePlaneet;
-import org.example.entities.sliceable.planeten.onbewoondPlaneet.OnbewoondePlaneet;
+import org.example.entities.sliceable.planeten.onbewoondePlaneet.OnbewoondePlaneet;
 import org.example.scenes.GameScene;
 
 import java.util.Optional;
