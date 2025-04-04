@@ -23,28 +23,29 @@ public class LaserPunt extends DynamicCircleEntity implements Collider, UpdateEx
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
-    @Override
-    public void explicitUpdate(long l) {
-        this.laserSwitch = gameScene.getLaser();
-        if (!laserSwitch) {
-            this.remove();
-            setCursor(Cursor.DEFAULT);
-        } else {
-            setFill(Color.RED);
-            setCursor(Cursor.NONE);
-        }
-        this.mouseCoordinates = laser.getMouseCoordinates();
-
-        if (mouseCoordinates != null) {
-            double angle = angleTo(mouseCoordinates);
-            double speed = distanceTo(mouseCoordinates);
-            setMotion(speed, angle);
-        }
-    }
     public Coordinate2D getMouseCoordinates() {
         if (mouseCoordinates != null) {
             return mouseCoordinates;
         }
         return new Coordinate2D(0,0);
+    }
+
+    @Override
+    public void explicitUpdate(long l) {
+        this.laserSwitch = gameScene.getLaser();
+        this.mouseCoordinates = laser.getMouseCoordinates();
+        if (mouseCoordinates != null) {
+            double angle = angleTo(mouseCoordinates);
+            double speed = distanceTo(mouseCoordinates);
+            setMotion(speed, angle);
+        }
+        if (!laserSwitch) {
+            setCursor(Cursor.DEFAULT);
+            System.out.println("Laser is uit");
+            laser.setRemove();
+        } else {
+            setFill(Color.RED);
+            setCursor(Cursor.NONE);
+        }
     }
 }

@@ -138,14 +138,16 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+        if(gameCompleted == 1) {
             if (bewoond == 1) {
                 gameScene.doeScoreErbij(0);
             }
             if (bewoond == 2) {
                 gameScene.doeScoreErbij(3);
             }
-             setReset();
+            setReset();
             game.setActiveScene(1);
+        }
     }
 
     public void setReset(){
@@ -159,7 +161,9 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
         maan2.setRemover();
         maan3.setRemover();
         maan4.setRemover();
-        planeetHitbox.remove();
+        if(planeetHitbox != null) {
+            planeetHitbox.remove();
+        }
         planeetSprite.remove();
     }
 }

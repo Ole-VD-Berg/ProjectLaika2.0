@@ -9,19 +9,23 @@ import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
 import javafx.scene.input.MouseButton;
 import org.example.ProjectLaika;
+import org.example.scenes.GameScene;
 
-public class PlayButtonSprite extends DynamicSpriteEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+public class RetryButtonSprite extends DynamicSpriteEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
     private ProjectLaika game;
-    public PlayButtonSprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns, ProjectLaika game) {
+    private GameScene gameScene;
+    public RetryButtonSprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns, ProjectLaika game, GameScene gameScene) {
         super(resource, initialLocation, size, rows, columns);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
         setPreserveAspectRatio(true);
         this.game = game;
+        this.gameScene = gameScene;
 
     }
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+        gameScene.setReset();
         game.setActiveScene(1);
     }
 
@@ -35,3 +39,4 @@ public class PlayButtonSprite extends DynamicSpriteEntity implements MouseButton
         setCurrentFrameIndex(1);
     }
 }
+
