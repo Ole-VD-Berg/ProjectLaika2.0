@@ -54,7 +54,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-        overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
+        overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1, this);
         addEntity(overlaySprite);
         PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() * 0.23, getHeight() * 0.92), this);
         addEntity(planetenText);
@@ -116,7 +116,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     }
     public void gefaalt(){
         game.setActiveScene(2);
-        getPlaneet().resetGeslicedePlaneten();
     }
     public void doeScoreErbij(int score) {
         System.out.print(this.score + " + " + score);
@@ -162,5 +161,7 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         seconden = 0;
         score = 0;
         overlaySprite.setDamage(0);
+        System.out.println("test");
+        getPlaneet().resetGeslicedePlaneten();
     }
 }

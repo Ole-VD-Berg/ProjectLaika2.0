@@ -67,7 +67,7 @@ public class ObjectenSpawner extends EntitySpawner {
                 spawn(astroide);
             }
         } else if (randomNummer < 13) {
-                Zwartgat zwartgat = new Zwartgat(new Coordinate2D(new Random().nextDouble(gameScene.getWidth() / 2), new Random().nextDouble(gameScene.getHeight() /2)), 90, game, gameScene, 0);
+                Zwartgat zwartgat = new Zwartgat(randomLocation(direction), 90, game, gameScene, angleConverter(direction));
                 spawn(zwartgat);
         }
         else if(randomNummer < 14){

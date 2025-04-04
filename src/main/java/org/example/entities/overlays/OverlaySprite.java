@@ -10,10 +10,12 @@ import org.example.scenes.GameScene;
 
 public class OverlaySprite extends DynamicSpriteEntity implements UpdateExposer {
     private static int damage = 0;
-    public OverlaySprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns) {
+    private GameScene gameScene;
+    public OverlaySprite(String resource, Coordinate2D initialLocation, Size size, int rows, int columns, GameScene gameScene) {
         super(resource, initialLocation, size, rows, columns);
         setCurrentFrameIndex(0);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        this.gameScene = gameScene;
         setViewOrder(11);
     }
     public void increaseSpriteFrame() {
@@ -31,5 +33,8 @@ public class OverlaySprite extends DynamicSpriteEntity implements UpdateExposer 
     @Override
     public void explicitUpdate(long l) {
         setCurrentFrameIndex(damage);
+        if(damage > 2){
+            gameScene.gefaalt();
+        }
     }
 }

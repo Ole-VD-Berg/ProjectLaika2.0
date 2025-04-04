@@ -15,7 +15,6 @@ public class BewoondePlaneet extends Planeet {
 
 
     protected void setupEntities() {
-        System.out.println(intitialLocation);
         super.setupEntities();
 
         BewoondePlaneetSprite sprite = new BewoondePlaneetSprite("sprites/planeten/overlays/bewoond.png", new Coordinate2D(intitialLocation), new Size(size, size));

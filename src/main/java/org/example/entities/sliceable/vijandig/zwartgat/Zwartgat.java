@@ -1,9 +1,6 @@
 package org.example.entities.sliceable.vijandig.zwartgat;
 
-import com.github.hanyaeger.api.AnchorPoint;
-import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.UpdateExposer;
+import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import org.example.ProjectLaika;
@@ -13,20 +10,42 @@ import org.example.entities.tools.zaklamp.ZaklampPunt;
 import org.example.scenes.GameScene;
 
 import java.util.List;
+import java.util.Random;
 
-public class Zwartgat extends SliceableObject implements UpdateExposer, Collided {
+public class Zwartgat extends SliceableObject implements UpdateExposer, Collided, TimerContainer {
     Coordinate2D locatie;
-
-
+    private int direction;
+    private int bocht = 0;
+    private ZwartGatTimer bochtTimer;
+    private ZwartGatTimer startTimer;
+    private ZwartGatTimer damageTimer;
+    private int randomStop = new Random().nextInt(140,300);
+    private int randomDraai = new Random().nextInt(1,2) * 2 - 3;
+    private int randomStart = new Random().nextInt(0,200);
     public Zwartgat(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initialLocation, size, game, gameScene, direction);
-
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
-
         this.locatie = initialLocation;
         this.locatie = getLocationInScene();
+        this.direction = direction;
+        setMotion(SPEED, direction);
 
 
+
+    }
+
+    @Override
+    public void explicitUpdate(long l) {
+        super.explicitUpdate(l);
+        this.locatie = getLocationInScene();
+        if(startTimer.getAantalInterval() > randomStart) {
+            if (bocht < randomStop) {
+                bocht = bochtTimer.getAantalInterval() - 10;
+                bocht *= randomDraai;
+            }
+            setMotion(SPEED, direction + bocht);
+            System.out.println(getObjectLocation());
+        }
     }
 
 
@@ -66,8 +85,9 @@ public class Zwartgat extends SliceableObject implements UpdateExposer, Collided
                 double laserX = laserPunt.getMouseCoordinates().getX();
                 double laserY = laserPunt.getMouseCoordinates().getY();
                 double distance = berekenAfstand(laserX, laserY);
-                if(distance < 25) {
-                    // Hier kun je de actie toevoegen die moet gebeuren als de laser het zwart gat raakt
+                if(distance < 25 && damageTimer.getAantalInterval() >= 1) {
+                    gameScene.doeScoreErbij(-1);
+                    damageTimer.resetInterval();
                 }
             }
         }
@@ -77,6 +97,16 @@ public class Zwartgat extends SliceableObject implements UpdateExposer, Collided
         double hitboxX = objectLocation.getX();
         double hitboxY = objectLocation.getY();
         return Math.sqrt(Math.pow(x - hitboxX, 2) + Math.pow(y - hitboxY, 2));
+    }
+
+    @Override
+    public void setupTimers() {
+        bochtTimer = new ZwartGatTimer(5, 0);
+        addTimer(bochtTimer);
+        startTimer = new ZwartGatTimer(10, 0);
+        addTimer(startTimer);
+        damageTimer = new ZwartGatTimer(500, 1);
+        addTimer(damageTimer);
     }
 }
 
