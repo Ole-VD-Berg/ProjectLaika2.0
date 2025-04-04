@@ -14,6 +14,7 @@ public class Zaklamp extends DynamicCompositeEntity implements MouseMovedListene
     private Coordinate2D mouseCoordinates;
     private GameScene gameScene;
     private ZaklampTriangle zaklampTriangle;
+    private ZaklampPunt zaklampPunt;
     public Zaklamp(Coordinate2D initialLocation, GameScene gameScene) {
         super(initialLocation);
         this.gameScene = gameScene;
@@ -25,7 +26,7 @@ public class Zaklamp extends DynamicCompositeEntity implements MouseMovedListene
     protected void setupEntities() {
         zaklampTriangle  = new ZaklampTriangle(new Coordinate2D(0, 0), gameScene, this);
         addEntity(zaklampTriangle);
-        ZaklampPunt zaklampPunt = new ZaklampPunt(new Coordinate2D(0, 0), gameScene, this);
+        zaklampPunt = new ZaklampPunt(new Coordinate2D(0, 0), gameScene, this);
         addEntity(zaklampPunt);
 
     }
@@ -50,7 +51,7 @@ public class Zaklamp extends DynamicCompositeEntity implements MouseMovedListene
     }
     public void setRemove() {
         zaklampTriangle.remove();
-        //laserPunt.remove();
+        zaklampPunt.remove();
         this.remove();
     }
 }

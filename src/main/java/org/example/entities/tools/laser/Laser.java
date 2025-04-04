@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.userinput.MouseMovedListener;
 import com.github.hanyaeger.api.userinput.MouseMovedWhileDraggingListener;
+import javafx.application.Platform;
 import org.example.scenes.GameScene;
 
 public class Laser extends DynamicCompositeEntity implements MouseMovedListener, MouseMovedWhileDraggingListener, UpdateExposer {
@@ -31,13 +32,14 @@ public class Laser extends DynamicCompositeEntity implements MouseMovedListener,
 
     @Override
     public void onMouseMoved(Coordinate2D coordinate2D) {
-        mouseCoordinates = coordinate2D;
+            mouseCoordinates = coordinate2D;
     }
 
     @Override
     public void onMouseMovedWhileDragging(Coordinate2D coordinate2D) {
-        mouseCoordinates = coordinate2D;
+            mouseCoordinates = coordinate2D;
     }
+    // deze functie geeft een error als je de laser uitzet terwijl je de muis beweegd ik kan hier vvor de rest niks aan doen omdat het probleem in yaeger zit.
 
     public Coordinate2D getMouseCoordinates() {
         return mouseCoordinates;
@@ -49,10 +51,8 @@ public class Laser extends DynamicCompositeEntity implements MouseMovedListener,
     }
 
     public void setRemove() {
-        if(laserRect != null && laserPunt != null){
             laserRect.remove();
             laserPunt.remove();
-            this.remove();
-        }
+            remove();
     }
 }

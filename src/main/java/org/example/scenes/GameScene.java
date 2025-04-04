@@ -24,13 +24,15 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     private ProjectLaika game;
     private Laser laser;
     private Zaklamp lamp;
+    private OverlaySprite overlaySprite;
     private static int score;
+    private static int seconden = 0;
+    private static int minuten = 2;
     private boolean laserAan = false;
     private boolean zaklampAan = false;
     private ObjectenSpawner objectenSpawner;
-    int direction = 0;
+    private TimerText2 timerText2;
     private Coordinate2D mouseCoordinates = new Coordinate2D(0, 0);
-    private Schip schip;
     private BulletSpawner bulletSpawner;
     private DamageHitbox damageHitbox;
     public GameScene(ProjectLaika game) {
@@ -53,13 +55,13 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntities() {
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
+        overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlaySpritesheet.png", new Coordinate2D(getWidth() /2, getHeight() / 2), new Size(getWidth(), getHeight()), 3,1);
         addEntity(overlaySprite);
         PlanetenText planetenText = new PlanetenText(new Coordinate2D(getWidth() * 0.23, getHeight() * 0.92), this);
         addEntity(planetenText);
         scoreText = new ScoreText(new Coordinate2D(getWidth() * 0.65, getHeight() * 0.92), this);
         addEntity(scoreText);
-        TimerText2 timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, this, objectenSpawner);
+        timerText2 = new TimerText2(new Coordinate2D(getWidth() / 2, getHeight() * 0.92), game, this, objectenSpawner);
         addEntity(timerText2);
         damageHitbox = new DamageHitbox(new Coordinate2D(getWidth() / 2, getHeight() - 10), new Size(getWidth() / 5, 10), overlaySprite, this);
         addEntity(damageHitbox);
@@ -78,9 +80,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
             setupLaser(laserAan);
         }
         else if (mouseButton == MouseButton.SECONDARY) {
-            if(laser != null) {
-                laser.setRemove();
-            }
             laserAan = false;
             zaklampAan = !zaklampAan;
             setupZaklamp(zaklampAan);
@@ -104,9 +103,6 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
         if(aan){
             laser = new Laser(new Coordinate2D(getWidth() / 2, getHeight()), this);
             addEntity(laser);
-        }
-        else{
-            laser.setRemove();
         }
     }
 
@@ -146,5 +142,17 @@ public class GameScene extends DynamicScene implements MouseButtonPressedListene
     }
     public void setZaklamp(boolean zaklamp) {
         this.zaklampAan = zaklamp;
+    }
+    public void setSeconden(int seconden) {
+        this.seconden = seconden;
+    }
+    public int getSeconden() {
+        return seconden;
+    }
+    public void setMinuten(int minuten) {
+        this.minuten = minuten;
+    }
+    public int getMinuten() {
+        return minuten;
     }
 }

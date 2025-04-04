@@ -7,7 +7,7 @@ import org.example.ProjectLaika;
 import org.example.entities.overlays.OverlaySprite;
 import org.example.entities.text.ScoreText;
 import org.example.entities.text.TimerText;
-import org.example.entities.titleScene.PlayButtonSprite;
+import org.example.entities.titleScene.RetryButtonSprite;
 import org.example.entities.titleScene.QuitButtonSprite;
 
 public class EndScene extends StaticScene {
@@ -29,12 +29,10 @@ public class EndScene extends StaticScene {
     @Override
     public void setupEntities() {
        // var TitleText
-        PlayButtonSprite playButtonSprite = new PlayButtonSprite("sprites/titleScene/retryButtonSpriteSheet.png", new Coordinate2D(getWidth() / 2 - 100, getHeight() / 2 - 40), new Size( 150), 2,1, game);
-        addEntity(playButtonSprite);
+        RetryButtonSprite retryButtonSprite = new RetryButtonSprite("sprites/titleScene/retryButtonSpriteSheet.png", new Coordinate2D(getWidth() / 2 - 100, getHeight() / 2 - 40), new Size( 150), 2,1, game, gameScene);
+        addEntity(retryButtonSprite);
         QuitButtonSprite quitButtonSprite = new QuitButtonSprite("sprites/titleScene/quitButtonSpriteSheet.png", new Coordinate2D(getWidth() / 2 + 50, getHeight() / 2 + 50), new Size( 35), 2,1, game);
         addEntity(quitButtonSprite);
-        OverlaySprite overlaySprite = new OverlaySprite("backgrounds/overlays/gameOverlayCrack1.png", new Coordinate2D(0, 0), new Size(getWidth(), getHeight()), 1,3);
-        addEntity(overlaySprite);
         ScoreText scoreText = new ScoreText(new Coordinate2D(390, getHeight() - 32), gameScene);
         addEntity(scoreText);
         TimerText timerText = new TimerText(new Coordinate2D(278, getHeight() - 32));

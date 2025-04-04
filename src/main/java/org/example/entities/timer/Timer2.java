@@ -11,13 +11,15 @@ public class Timer2 extends Timer {
     private final ObjectenSpawner objectenSpawner;
     private ProjectLaika game;
     private Planeet planeet;
-    private int seconde = 0;
-    private int minuut = 2;
-    public Timer2(long intervalInMs, ProjectLaika game, GameScene gameScene, ObjectenSpawner objectenSpawner) {
+    private int seconde;
+    private int minuut;
+    public Timer2(long intervalInMs, ProjectLaika game, GameScene gameScene, ObjectenSpawner objectenSpawner, int minuut, int seconde) {
         super(intervalInMs);
         this.objectenSpawner = objectenSpawner;
         this.game = game;
         this.gameScene = gameScene;
+        this.seconde = seconde;
+        this.minuut = minuut;
     }
 
     @Override

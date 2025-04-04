@@ -43,11 +43,13 @@ public class TimerText2 extends DynamicTextEntity implements UpdateExposer, Time
                 }
             }
         }
+        gameScene.setSeconden(timer2.getSeconde());
+        gameScene.setMinuten(timer2.getMinuut());
     }
 
     @Override
     public void setupTimers() {
-        timer2 = new Timer2(1000, game, gameScene, objectenSpawner);
+        timer2 = new Timer2(1000, game, gameScene, objectenSpawner, gameScene.getMinuten(), gameScene.getSeconden());
         addTimer(timer2);
     }
 
