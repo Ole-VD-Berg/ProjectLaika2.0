@@ -21,7 +21,8 @@ public class Zwartgat extends SliceableObject implements UpdateExposer, Collided
     private ZwartGatTimer damageTimer;
     private int randomStop = new Random().nextInt(140,300);
     private int randomDraai = new Random().nextInt(1,2) * 2 - 3;
-    private int randomStart = new Random().nextInt(0,200);
+    private int randomStart = new Random().nextInt(0,150);
+    private int resetEenKeer = 0;
     public Zwartgat(Coordinate2D initialLocation, int size, ProjectLaika game, GameScene gameScene, int direction) {
         super(initialLocation, size, game, gameScene, direction);
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
@@ -37,14 +38,17 @@ public class Zwartgat extends SliceableObject implements UpdateExposer, Collided
     @Override
     public void explicitUpdate(long l) {
         super.explicitUpdate(l);
-        this.locatie = getLocationInScene();
         if(startTimer.getAantalInterval() > randomStart) {
-            if (bocht < randomStop) {
-                bocht = bochtTimer.getAantalInterval() - 10;
+            if (bocht < randomStop && bocht > (randomStop * -1) ){
+                if (resetEenKeer == 0) {
+                    bochtTimer.resetInterval();
+                    resetEenKeer++;
+                }
+                bocht = bochtTimer.getAantalInterval();
                 bocht *= randomDraai;
+                System.out.println(bocht);
             }
-            setMotion(SPEED, direction + bocht);
-            System.out.println(getObjectLocation());
+            setMotion(SPEED, this.direction + bocht);
         }
     }
 
