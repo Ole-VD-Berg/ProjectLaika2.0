@@ -43,6 +43,7 @@ public class Astroide extends SliceableObject implements UpdateExposer, Collider
 
     @Override
     protected void doSlicingActie() {
+        gameScene.doeScoreErbij(1);
         remove();
     }
 }
