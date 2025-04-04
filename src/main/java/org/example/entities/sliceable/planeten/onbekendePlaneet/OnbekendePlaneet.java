@@ -22,9 +22,7 @@ public class OnbekendePlaneet extends Planeet implements Collided {
     }
     @Override
     protected void doSlicingActie() {
-
         geslicedePlaneten++;
-        System.out.println("Onbekende planeet gesliced");
         gameScene.doeScoreErbij(-1);
         remove();
     }
@@ -40,8 +38,8 @@ public class OnbekendePlaneet extends Planeet implements Collided {
                 double hitboxY = objectLocation.getY();
                 double distance = Math.sqrt(Math.pow(lampX - hitboxX, 2) + Math.pow(lampY - hitboxY, 2));
                 if(distance < 25) {
-                    game.setActiveScene(3);
                     remove();
+                    gameScene.setSceneOnbekend();
                 }
             }
         }

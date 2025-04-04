@@ -16,4 +16,11 @@ public class OverlaySprite extends DynamicSpriteEntity {
     public void increaseSpriteFrame() {
         setCurrentFrameIndex(getCurrentFrameIndex() + 1);
     }
+
+    public int getSpriteframes(){
+        return getCurrentFrameIndex();
+    }
+    public void setSpriteFrames(int frame){
+        setCurrentFrameIndex(frame);
+    }
 }
