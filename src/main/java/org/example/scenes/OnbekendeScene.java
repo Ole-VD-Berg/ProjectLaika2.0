@@ -97,7 +97,6 @@ public class OnbekendeScene extends DynamicScene implements UpdateExposer, Mouse
              if (bewoond == 2) {
                  gameScene.doeScoreErbij(-1);
              }
-             System.out.println(planeetHitbox.getPlaneetKlick());
                 setReset();
              game.setActiveScene(1);
              }

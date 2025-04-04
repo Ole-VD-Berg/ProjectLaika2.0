@@ -46,7 +46,6 @@ public class Zwartgat extends SliceableObject implements UpdateExposer, Collided
                 }
                 bocht = bochtTimer.getAantalInterval();
                 bocht *= randomDraai;
-                System.out.println(bocht);
             }
             setMotion(SPEED, this.direction + bocht);
         }
